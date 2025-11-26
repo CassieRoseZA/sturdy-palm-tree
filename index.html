@@ -6,142 +6,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* Base styling */
-body {
-  font-family: 'Inter', Arial, sans-serif;
-  background: #f2f4f8;
-  padding: 40px;
-  color: #111;
-  transition: background .3s, color .3s;
-}
 
-.dark {
-  background: #181818;
-  color: #eee;
+body {
+    font-size: 16px;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #181818;
+    color: #eee;
+    padding: 40px;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #fff;
 }
 
-/* Table wrapping card */
-.table-container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  overflow-x: auto;
+#search,
+.filter-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #222;
+    color: #eee;
+    font-size: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-.dark .table-container {
-  background: #262626;
-}
-
-/* Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-}
-
-.dark th, .dark td {
-  border-color: #444;
-}
-
-th {
-  background: #e9ecf1;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.dark th {
-  background: #333;
-}
-
-tr:hover td {
-  background: #f8fafc;
-}
-
-.dark tr:hover td {
-  background: #2a2a2a;
-}
-
-/* Search input */
 #search {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border: 1px solid #bbb;
-  font-size: 16px;
+    margin-bottom: 20px;
 }
 
-.dark #search {
-  background: #2c2c2c;
-  color: #eee;
-  border-color: #555;
+#search:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: #0099ff;
+    box-shadow: 0 0 0 2px rgba(0, 153, 255, 0.5);
 }
 
-/* Filter dropdowns */
 .filters {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .filter-block {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 180px;
+    font-size: 14px;
 }
 
-.filter-select {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #bbb;
+.filter-block label {
+    margin-bottom: 5px;
 }
 
-.dark .filter-select {
-  background: #2c2c2c;
-  color: #eee;
-  border-color: #555;
+.table-container {
+    background: #262626;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+    overflow-x: auto;
 }
 
-/* Dark mode button */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #000;
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
 }
 
-.dark .theme-toggle {
-  background: #fff;
-  color: #000;
+th, td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #444;
+    text-align: left;
 }
+
+th {
+    background: #333;
+    cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+}
+
+th:hover {
+    background: #3a3a3a;
+}
+
+td {
+    cursor: default;
+}
+
+tbody tr:nth-child(odd) {
+    background: #1f1f1f;
+}
+tbody tr:nth-child(even) {
+    background: #242424;
+}
+
+tbody tr:hover {
+    background: #2f2f2f;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
 </style>
-
 </head>
-<body>
 
-<button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+<body>
 
 <h1>Game Library</h1>
 
-<input type="text" id="search" placeholder="Search games...">
+<input id="search" type="text" placeholder="Search games...">
 
 <div class="filters">
 
@@ -158,14 +139,6 @@ tr:hover td {
         <select class='filter-select' data-col='Age Rating'>
             <option value=''>All</option>
             <option value='PEGI 12'>PEGI 12</option><option value='PEGI 12, PEGI 7'>PEGI 12, PEGI 7</option><option value='PEGI 16'>PEGI 16</option><option value='PEGI 16, PEGI 3'>PEGI 16, PEGI 3</option><option value='PEGI 18'>PEGI 18</option><option value='PEGI 3'>PEGI 3</option><option value='PEGI 3, PEGI 7'>PEGI 3, PEGI 7</option><option value='PEGI 7'>PEGI 7</option>
-        </select>
-    </div>
-    
-    <div class='filter-block'>
-        <label>Categories</label>
-        <select class='filter-select' data-col='Categories'>
-            <option value=''>All</option>
-            
         </select>
     </div>
     
@@ -193,885 +166,904 @@ tr:hover td {
         </select>
     </div>
     
+    <div class='filter-block'>
+        <label>Sources</label>
+        <select class='filter-select' data-col='Sources'>
+            <option value=''>All</option>
+            <option value='Amazon'>Amazon</option><option value='Epic'>Epic</option><option value='GOG'>GOG</option><option value='Steam'>Steam</option><option value='Ubisoft Connect'>Ubisoft Connect</option><option value='Xbox'>Xbox</option>
+        </select>
+    </div>
+    
 </div>
 
 <div class="table-container">
 <table id="data-table">
 <thead>
 <tr>
-<th onclick='sortTable(0)'>Name</th><th onclick='sortTable(1)'>Age Rating</th><th onclick='sortTable(2)'>Categories</th><th onclick='sortTable(3)'>Developers</th><th onclick='sortTable(4)'>Release Date</th><th onclick='sortTable(5)'>Last Played</th>
+<th onclick='sortTable(0)'>Name</th><th onclick='sortTable(1)'>Age Rating</th><th onclick='sortTable(2)'>Developers</th><th onclick='sortTable(3)'>Release Date</th><th onclick='sortTable(4)'>Last Played</th><th onclick='sortTable(5)'>Sources</th>
 </tr>
 </thead>
 <tbody>
-<tr><td>>observer_</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>112 Operator</td><td>PEGI 16</td><td></td><td>Jutsu Games</td><td>2020/04/23</td><td>2025/02/04 12:20:31</td></tr>
-<tr><td>20 Minutes Till Dawn</td><td>PEGI 7</td><td></td><td>flanne</td><td>2022/06/08</td><td></td></tr>
-<tr><td>20XX</td><td></td><td></td><td>InfernoPlus</td><td>2020/05/15</td><td></td></tr>
-<tr><td>3 out of 10, EP 1: "Welcome To Shovelworks"</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3 out of 10, EP 2: "Foundation 101"</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3 out of 10, EP 3: "Pivot Like A Champion"</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3 out of 10, EP 4: "Thank You For Being An Asset"</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3 out of 10, EP 5: "The Rig Is Up!"</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3 out of 10: Season Two</td><td></td><td></td><td>Terrible Posture Games</td><td>2021/04/08</td><td></td></tr>
-<tr><td>911 Operator</td><td>PEGI 12, PEGI 7</td><td></td><td>Jutsu Games</td><td>2017/02/24</td><td></td></tr>
-<tr><td>911 Operator</td><td>PEGI 12</td><td></td><td>Jutsu Games</td><td>2017/02/24</td><td></td></tr>
-<tr><td>A House of Many Doors</td><td></td><td></td><td>Pixel Trickery</td><td>2017/02/03</td><td></td></tr>
-<tr><td>A Plague Tale: Innocence</td><td>PEGI 18</td><td></td><td>Asobo Studio</td><td>2019/05/14</td><td></td></tr>
-<tr><td>A Plague Tale: Innocence</td><td>PEGI 18</td><td></td><td>Asobo Studio</td><td>2019/05/14</td><td>2022/09/14 19:33:13</td></tr>
-<tr><td>ABZU</td><td>PEGI 7</td><td></td><td>Giant Squid</td><td>2016/08/02</td><td></td></tr>
-<tr><td>Aegis Defenders</td><td>PEGI 7</td><td></td><td>GUTS Department</td><td>2018/02/08</td><td></td></tr>
-<tr><td>Agony</td><td></td><td></td><td>Madmind Studio</td><td>2018/05/29</td><td></td></tr>
-<tr><td>Agony UNRATED</td><td></td><td></td><td>Madmind Studio</td><td>2018/10/30</td><td></td></tr>
-<tr><td>Akalabeth: World of Doom</td><td></td><td></td><td>Richard Garriott</td><td>1979/06/30</td><td></td></tr>
-<tr><td>Alan Wake Remastered</td><td>PEGI 16</td><td></td><td>Remedy Entertainment</td><td>2021/10/05</td><td></td></tr>
-<tr><td>Alder's Blood Prologue</td><td></td><td></td><td>Shockwork Games</td><td>2020/02/12</td><td></td></tr>
-<tr><td>Alien: Isolation</td><td></td><td></td><td>The Creative Assembly</td><td>2021/12/16</td><td></td></tr>
-<tr><td>Amnesia:  The Dark Descent</td><td>PEGI 16</td><td></td><td>Frictional Games</td><td>2010/09/08</td><td></td></tr>
-<tr><td>Amnesia: A Machine for Pigs</td><td></td><td></td><td>The Chinese Room</td><td>2013/09/10</td><td></td></tr>
-<tr><td>Amnesia: Rebirth</td><td>PEGI 18</td><td></td><td>Frictional Games</td><td>2020/10/20</td><td>2023/10/03 20:10:53</td></tr>
-<tr><td>Amnesia: The Bunker</td><td>PEGI 16</td><td></td><td>Frictional Games</td><td>2023/06/06</td><td></td></tr>
-<tr><td>Among the Sleep - Enhanced Edition</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Among Us</td><td>PEGI 7</td><td></td><td>Innersloth</td><td>2018/06/15</td><td></td></tr>
-<tr><td>Among Us</td><td>PEGI 7</td><td></td><td>Innersloth</td><td>2018/06/15</td><td>2021/05/13 20:54:02</td></tr>
-<tr><td>Ancestors Legacy</td><td>PEGI 18</td><td></td><td>Destructive Creations</td><td>2018/05/22</td><td></td></tr>
-<tr><td>Ancestors: The Humankind Odyssey </td><td>PEGI 16</td><td></td><td>Panache Digital Games</td><td>2019/08/27</td><td>2021/03/01 18:06:35</td></tr>
-<tr><td>Angry Video Game Nerd II: ASSimilation</td><td></td><td></td><td>FreakZone Games</td><td>2016/03/29</td><td></td></tr>
-<tr><td>Anno 1404 - History Edition</td><td>PEGI 7</td><td></td><td>Ubisoft Blue Byte</td><td>2020/06/25</td><td></td></tr>
-<tr><td>Anno 1800</td><td>PEGI 12</td><td></td><td>Ubisoft Blue Byte</td><td>2019/04/16</td><td></td></tr>
-<tr><td>Aperture Tag: The Paint Gun Testing Initiative</td><td></td><td></td><td>Aperture Tag Team</td><td>2014/07/15</td><td>2025/05/21 19:03:03</td></tr>
-<tr><td>Are You Smarter Than A 5th Grader</td><td>PEGI 3</td><td></td><td>Black Lantern Studios</td><td>2015/08/31</td><td></td></tr>
-<tr><td>Arid</td><td></td><td></td><td>Sad Viscacha Studio</td><td>2021/05/26</td><td></td></tr>
-<tr><td>ARK Crystal Isles</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>ARK ModKit (UE4)</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>ARK Ragnarok</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>ARK The Center</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>ARK: Survival Evolved</td><td>PEGI 16</td><td></td><td>Studio Wildcard</td><td>2015/06/02</td><td></td></tr>
-<tr><td>ARK: Survival Evolved</td><td>PEGI 16</td><td></td><td>Studio Wildcard</td><td>2015/06/02</td><td></td></tr>
-<tr><td>ARK: Survival Of The Fittest</td><td></td><td></td><td>Efecto Studios, Instinct Games, Studio Wildcard, Virtual Basement LLC</td><td>2016/03/15</td><td></td></tr>
-<tr><td>Assassin’s Creed Chronicles India</td><td>PEGI 16</td><td></td><td>Climax Studios</td><td>2016/01/12</td><td></td></tr>
-<tr><td>Assassin’s Creed Chronicles Russia</td><td>PEGI 16</td><td></td><td>Climax Studios</td><td>2016/02/09</td><td></td></tr>
-<tr><td>Assassin's Creed Chronicles China</td><td>PEGI 16</td><td></td><td>Climax Studios</td><td>2015/04/21</td><td></td></tr>
-<tr><td>Assassin's Creed II</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal, Virtuos</td><td>2016/11/15</td><td></td></tr>
-<tr><td>Assassin's Creed Mirage</td><td>PEGI 18</td><td></td><td>Ubisoft Bordeaux</td><td>2023/10/05</td><td></td></tr>
-<tr><td>Assassin's Creed Odyssey</td><td>PEGI 18</td><td></td><td>Ubisoft Québec</td><td>2018/10/05</td><td></td></tr>
-<tr><td>Assassin's Creed Origins</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2017/10/26</td><td></td></tr>
-<tr><td>Assassins Creed Syndicate</td><td>PEGI 18</td><td></td><td>Ubisoft Québec</td><td>2015/10/23</td><td></td></tr>
-<tr><td>Assassin's Creed Syndicate</td><td>PEGI 18</td><td></td><td>Ubisoft Québec</td><td>2015/10/23</td><td></td></tr>
-<tr><td>Assassin's Creed Valhalla</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2020/11/10</td><td></td></tr>
-<tr><td>Assassin's Creed Valhalla</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2020/11/10</td><td></td></tr>
-<tr><td>Astrometica: Prologue</td><td></td><td></td><td></td><td></td><td>2025/03/15 18:44:50</td></tr>
-<tr><td>Atomfall</td><td>PEGI 18</td><td></td><td>Rebellion</td><td>2025/03/27</td><td>2025/07/18 23:36:03</td></tr>
-<tr><td>Autobahn Police Simulator</td><td></td><td></td><td>Z-Software</td><td>2015/08/26</td><td>2020/04/15 19:35:38</td></tr>
-<tr><td>Aven Colony</td><td>PEGI 12</td><td></td><td>Mothership Entertainment</td><td>2017/07/25</td><td></td></tr>
-<tr><td>Aztez</td><td></td><td></td><td>Team Colorblind</td><td>2017/08/01</td><td></td></tr>
-<tr><td>Back to the Future: The Game</td><td>PEGI 16</td><td></td><td>Telltale Games</td><td>2011</td><td></td></tr>
-<tr><td>Batman Arkham Asylum Game of the Year Edition</td><td>PEGI 12</td><td></td><td>Rocksteady Studios</td><td>2010/03/26</td><td></td></tr>
-<tr><td>Batman Arkham City - Game of the Year Edition</td><td>PEGI 16</td><td></td><td>Rocksteady Studios</td><td>2012/05/29</td><td></td></tr>
-<tr><td>Batman Arkham Knight</td><td>PEGI 18</td><td></td><td>Rocksteady Studios</td><td>2015/06/23</td><td></td></tr>
-<tr><td>Batman: Arkham Asylum GOTY Edition</td><td>PEGI 12</td><td></td><td>Rocksteady Studios</td><td>2010/03/26</td><td></td></tr>
-<tr><td>Batman: Arkham City GOTY</td><td>PEGI 16</td><td></td><td>Rocksteady Studios</td><td>2012/05/29</td><td></td></tr>
-<tr><td>Batman: Arkham Knight</td><td>PEGI 18</td><td></td><td>Rocksteady Studios</td><td>2015/06/23</td><td>2023/11/10 20:12:22</td></tr>
-<tr><td>Batman: Arkham Origins</td><td>PEGI 16</td><td></td><td>Splash Damage, Warner Bros. Interactive Entertainment, WB Games Montréal</td><td>2013/10/16</td><td>2022/12/25 16:30:07</td></tr>
-<tr><td>Battlerite</td><td></td><td></td><td>Stunlock Studios</td><td>2017/11/08</td><td></td></tr>
-<tr><td>Battlerite Public Test</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Beer Factory - Prologue</td><td></td><td></td><td></td><td></td><td>2023/03/22 17:46:43</td></tr>
-<tr><td>Beer Factory Playtest</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Ben 10</td><td>PEGI 7</td><td></td><td>Torus Games</td><td>2017/11/10</td><td>2020/10/22 16:05:37</td></tr>
-<tr><td>Ben 10 Omniverse</td><td>PEGI 12</td><td></td><td>Vicious Cycle Software</td><td>2014</td><td></td></tr>
-<tr><td>Ben 10 Omniverse 2</td><td>PEGI 7</td><td></td><td>High Voltage Software</td><td>2013</td><td></td></tr>
-<tr><td>Ben 10: Galactic Racing</td><td></td><td></td><td>Monkey Bar Games</td><td>2011</td><td></td></tr>
-<tr><td>Bendy and the Ink Machine</td><td>PEGI 12</td><td></td><td>Joey Drew Studios, TheMeatly Games, Ltd.</td><td>2017/02/10</td><td></td></tr>
-<tr><td>Beneath a Steel Sky (1994)</td><td></td><td></td><td>Revolution Software</td><td>1994/03/01</td><td></td></tr>
-<tr><td>Beyond Blue</td><td>PEGI 7</td><td></td><td>E-Line Media</td><td>2020/04/17</td><td></td></tr>
-<tr><td>Bio Menace</td><td></td><td></td><td>Apogee Software</td><td>1993/08/03</td><td></td></tr>
-<tr><td>BioShock</td><td>PEGI 18</td><td></td><td>2K Australia, 2K Boston</td><td>2007/08/21</td><td></td></tr>
-<tr><td>BioShock 2</td><td>PEGI 18</td><td></td><td>2K Australia, 2K China, Digital Extremes</td><td>2010/02/09</td><td>2022/05/01 14:04:28</td></tr>
-<tr><td>BioShock 2 Remastered</td><td>PEGI 18</td><td></td><td>2K Australia, 2K China, Digital Extremes, Feral Interactive</td><td>2016/09/14</td><td></td></tr>
-<tr><td>BioShock 2 Remastered</td><td>PEGI 18</td><td></td><td>2K Australia, 2K China, Digital Extremes, Feral Interactive</td><td>2016/09/14</td><td>2022/06/14 10:35:30</td></tr>
-<tr><td>BioShock Infinite</td><td>PEGI 18</td><td></td><td>Irrational Games</td><td>2013/02/26</td><td>2022/06/25 20:24:29</td></tr>
-<tr><td>BioShock Infinite: Complete Edition</td><td>PEGI 18</td><td></td><td>Irrational Games</td><td>2014/11/04</td><td></td></tr>
-<tr><td>BioShock Remastered</td><td>PEGI 18</td><td></td><td>2K Australia, 2K Boston, Feral Interactive</td><td>2016/09/14</td><td></td></tr>
-<tr><td>BioShock Remastered</td><td>PEGI 18</td><td></td><td>2K Australia, 2K Boston, Feral Interactive</td><td>2016/09/14</td><td>2022/05/31 21:14:48</td></tr>
-<tr><td>Black Desert</td><td>PEGI 16</td><td></td><td>Pearl Abyss</td><td>2015/12/31</td><td></td></tr>
-<tr><td>Black Desert (Retired)</td><td>PEGI 16</td><td></td><td>Pearl Abyss</td><td>2015/12/31</td><td></td></tr>
-<tr><td>Black Mesa</td><td></td><td></td><td>Crowbar Collective</td><td>2015/05/05</td><td>2023/06/19 17:07:01</td></tr>
-<tr><td>Blair Witch</td><td>PEGI 16</td><td></td><td>Bloober Team</td><td>2019/08/30</td><td></td></tr>
-<tr><td>Blair Witch</td><td>PEGI 16</td><td></td><td>Bloober Team</td><td>2019/08/30</td><td>2023/10/21 16:39:42</td></tr>
-<tr><td>Blasphemous</td><td>PEGI 16</td><td></td><td>The Game Kitchen</td><td>2019/09/10</td><td></td></tr>
-<tr><td>Blender</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Borderlands 2</td><td>PEGI 18</td><td></td><td>Gearbox Software</td><td>2012/09/18</td><td></td></tr>
-<tr><td>Borderlands 2</td><td>PEGI 18</td><td></td><td>Gearbox Software</td><td>2012/09/18</td><td></td></tr>
-<tr><td>Borderlands 3</td><td>PEGI 18</td><td></td><td>Gearbox Software</td><td>2019/09/13</td><td></td></tr>
-<tr><td>Borderlands GOTY</td><td>PEGI 18</td><td></td><td>Feral Interactive, Gearbox Software</td><td>2009/10/20</td><td></td></tr>
-<tr><td>Borderlands GOTY Enhanced</td><td></td><td></td><td>Blind Squirrel Games, Gearbox Software</td><td>2019/04/03</td><td>2024/02/27 18:22:05</td></tr>
-<tr><td>Borderlands: The Pre-Sequel</td><td>PEGI 18</td><td></td><td>2K Australia, Gearbox Software</td><td>2014/10/14</td><td></td></tr>
-<tr><td>Brick-Force</td><td>PEGI 12</td><td></td><td></td><td>2012/07/12</td><td>2015/06/06 08:50:02</td></tr>
-<tr><td>Bridge Constructor: The Walking Dead</td><td>PEGI 16</td><td></td><td>ClockStone Studios</td><td>2020/11/19</td><td></td></tr>
-<tr><td>Brothers: A Tale of Two Sons</td><td>PEGI 16</td><td></td><td>Starbreeze Studios</td><td>2013/08/07</td><td></td></tr>
-<tr><td>Builders of Egypt Playtest</td><td></td><td></td><td></td><td></td><td>2023/08/11 20:23:03</td></tr>
-<tr><td>Builders of Egypt: Prologue</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Builders of Egypt: Prologue</td><td></td><td></td><td></td><td></td><td>2020/03/26 17:24:42</td></tr>
-<tr><td>Bus Simulator 21 Next Stop</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Bus Simulator 21: Next Stop</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Cakey's Twisted Bakery</td><td></td><td></td><td>TinyMindz</td><td>2024/07/05</td><td></td></tr>
-<tr><td>Call of Cthulhu</td><td>PEGI 18</td><td></td><td>Cyanide Studio</td><td>2018/10/29</td><td>2025/01/17 19:04:17</td></tr>
-<tr><td>Call of the Sea</td><td>PEGI 7</td><td></td><td>Out of the Blue Games</td><td>2020/12/08</td><td></td></tr>
-<tr><td>Call of the Wild: The Angler</td><td>PEGI 7</td><td></td><td>Expansive Worlds</td><td>2022/08/31</td><td></td></tr>
-<tr><td>Captain America : Super Soldier</td><td></td><td></td><td>Next Level Games</td><td>2011</td><td></td></tr>
-<tr><td>Car Detailing Simulator</td><td>PEGI 3, PEGI 7</td><td></td><td>Game Formatic, Games Incubator</td><td>2022/04/13</td><td>2025/11/07 17:35:43</td></tr>
-<tr><td>Car Detailing Simulator: Prologue</td><td></td><td></td><td></td><td></td><td>2024/01/15 21:53:54</td></tr>
-<tr><td>Car Mechanic Simulator 2014</td><td>PEGI 3</td><td></td><td>PlayWay, Red Dot Games</td><td>2014/01/24</td><td></td></tr>
-<tr><td>Car Mechanic Simulator 2015</td><td>PEGI 3</td><td></td><td>Red Dot Games</td><td>2015/03/04</td><td>2022/10/19 18:35:29</td></tr>
-<tr><td>Car Mechanic Simulator 2018</td><td>PEGI 3</td><td></td><td>Red Dot Games</td><td>2017/07/21</td><td></td></tr>
-<tr><td>Carcassonne</td><td>PEGI 3</td><td></td><td>Frima Studio</td><td>2017/11/29</td><td></td></tr>
-<tr><td>CAYNE</td><td></td><td></td><td>The Brotherhood Games</td><td>2017/01/24</td><td></td></tr>
-<tr><td>Cepheus Protocol</td><td>PEGI 18</td><td></td><td>Halcyon Winds</td><td>2020/05/15</td><td></td></tr>
-<tr><td>Cepheus Protocol Experimental Branch</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Child of Light</td><td>PEGI 7</td><td></td><td>Ubisoft Montreal</td><td>2014/04/29</td><td></td></tr>
-<tr><td>Cities Skylines</td><td>PEGI 3</td><td></td><td>Colossal Order</td><td>2015/03/10</td><td></td></tr>
-<tr><td>Class of '09</td><td></td><td></td><td>SBN3</td><td>2021/06/10</td><td>2025/09/06 19:42:53</td></tr>
-<tr><td>Close to the Sun</td><td>PEGI 18</td><td></td><td>Storm in a Teacup</td><td>2019/05/02</td><td></td></tr>
-<tr><td>Cognition Method: Initiation</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Come with Me</td><td></td><td></td><td>Xin Ye</td><td>2021/05/14</td><td>2021/06/19 16:26:27</td></tr>
-<tr><td>Company of Heroes 2</td><td>PEGI 18</td><td></td><td>Feral Interactive, Relic Entertainment</td><td>2013/06/25</td><td></td></tr>
-<tr><td>Construction Simulator</td><td>PEGI 3</td><td></td><td>weltenbauer. Software Entwicklung GmbH</td><td>2022/09/20</td><td>2023/01/27 19:59:11</td></tr>
-<tr><td>Contraband Police</td><td></td><td></td><td>Crazy Rocks</td><td>2023/03/08</td><td></td></tr>
-<tr><td>Control</td><td></td><td></td><td></td><td>2022/12/31</td><td></td></tr>
-<tr><td>Cook, Serve, Delicious! 3?!</td><td>PEGI 7</td><td></td><td>Vertigo Gaming</td><td>2020/01/30</td><td></td></tr>
-<tr><td>Cooking Simulator</td><td>PEGI 3</td><td></td><td>Big Cheese Studio</td><td>2019/06/06</td><td></td></tr>
-<tr><td>Cooking Simulator</td><td>PEGI 3</td><td></td><td>Big Cheese Studio</td><td>2019/06/06</td><td>2025/10/26 20:09:37</td></tr>
-<tr><td>Core</td><td></td><td></td><td></td><td>2020/03/16</td><td></td></tr>
-<tr><td>Corma</td><td></td><td></td><td></td><td></td><td>2020/08/03 21:17:17</td></tr>
-<tr><td>Counter-Strike</td><td>PEGI 16</td><td></td><td>Valve</td><td>2000/11/09</td><td></td></tr>
-<tr><td>Counter-Strike 2</td><td>PEGI 18</td><td></td><td>Hidden Path Entertainment, Valve</td><td>2012/08/21</td><td></td></tr>
-<tr><td>Counter-Strike: Condition Zero</td><td>PEGI 16</td><td></td><td>Gearbox Software, Ritual Entertainment, Turtle Rock Studios, Valve</td><td>2004/03/23</td><td></td></tr>
-<tr><td>Counter-Strike: Condition Zero Deleted Scenes</td><td>PEGI 16</td><td></td><td>Valve</td><td>2004/03/23</td><td></td></tr>
-<tr><td>Counter-Strike: Source</td><td>PEGI 16</td><td></td><td>Hidden Path Entertainment, Valve</td><td>2004/11/01</td><td></td></tr>
-<tr><td>Crash Drive 3</td><td>PEGI 7</td><td></td><td>M2H</td><td>2021/07/08</td><td></td></tr>
-<tr><td>Crayta</td><td>PEGI 12</td><td></td><td>Unit 2 Games</td><td>2020/07/01</td><td></td></tr>
-<tr><td>CreativeDestruction</td><td></td><td></td><td>NetEase Games</td><td>2018/08/03</td><td>2020/01/17 22:01:35</td></tr>
-<tr><td>Creativerse</td><td></td><td></td><td>Playful Corporation</td><td>2017/05/08</td><td></td></tr>
-<tr><td>Creature in the Well</td><td>PEGI 7</td><td></td><td>Flight School Studio</td><td>2019/09/06</td><td></td></tr>
-<tr><td>Crime Scene Cleaner</td><td></td><td></td><td>President Studio</td><td>2024/08/14</td><td>2025/11/16 09:03:50</td></tr>
-<tr><td>Crime Scene Cleaner</td><td>PEGI 12</td><td></td><td>President Studio S.A.</td><td>2025/04/17</td><td>2025/04/19 08:16:55</td></tr>
-<tr><td>Crossout</td><td></td><td></td><td>Targem Games</td><td>2017/05/30</td><td>2020/02/05 19:30:14</td></tr>
-<tr><td>Crumble</td><td>PEGI 3</td><td></td><td>BRUTE FORCE</td><td>2020/12/04</td><td></td></tr>
-<tr><td>Cry of Fear</td><td></td><td></td><td>Team Psykskallar</td><td>2013/04/25</td><td></td></tr>
-<tr><td>Crypto Mining Simulator</td><td></td><td></td><td>Stanislaw Dev</td><td>2021/04/24</td><td>2023/01/10 19:16:42</td></tr>
-<tr><td>Ctrl CV</td><td></td><td></td><td>ZPink</td><td>2018/05/18</td><td>2018/09/14 21:28:13</td></tr>
-<tr><td>Cubic Castles</td><td></td><td></td><td>Cosmic Cow LLC</td><td>2014/07/03</td><td></td></tr>
-<tr><td>Cursed to Golf</td><td>PEGI 3</td><td></td><td>Chuhai Labs</td><td>2022/08/18</td><td></td></tr>
-<tr><td>Dark Future: Blood Red States</td><td></td><td></td><td></td><td>2018/05/16</td><td></td></tr>
-<tr><td>Dark Sector</td><td>PEGI 18</td><td></td><td>Digital Extremes, Noviy Disk</td><td>2008/03/25</td><td></td></tr>
-<tr><td>Darkest Dungeon</td><td>PEGI 12</td><td></td><td>Red Hook Studios</td><td>2015/12/31</td><td></td></tr>
-<tr><td>Darksiders II Deathinitive Edition</td><td>PEGI 16</td><td></td><td>Vigil Games</td><td>2012/08/14</td><td></td></tr>
-<tr><td>Darksiders Warmastered Edition</td><td>PEGI 18</td><td></td><td>Kaiko</td><td>2016/11/22</td><td></td></tr>
-<tr><td>Darkwood</td><td>PEGI 18</td><td></td><td>Acid Wizard Studio</td><td>2017/08/17</td><td></td></tr>
-<tr><td>Dead by Daylight</td><td>PEGI 18</td><td></td><td>Behaviour Interactive</td><td>2016/06/14</td><td></td></tr>
-<tr><td>Dead Island Riptide Definitive Edition</td><td>PEGI 18</td><td></td><td>Techland</td><td>2016/05/31</td><td></td></tr>
-<tr><td>Deadlock</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Death Coming</td><td>PEGI 16</td><td></td><td>NEXT Studio</td><td>2017/11/06</td><td></td></tr>
-<tr><td>Death Stranding</td><td>PEGI 18</td><td></td><td>Kojima Productions</td><td>2019/11/08</td><td></td></tr>
-<tr><td>Death Stranding Content</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>DEATH STRANDING DIGITAL SOUNDTRACK</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>DEATH STRANDING DIRECTOR'S CUT</td><td>PEGI 18</td><td></td><td>Kojima Productions</td><td>2021/09/24</td><td>2023/05/01 11:55:11</td></tr>
-<tr><td>DEATHLOOP</td><td>PEGI 18</td><td></td><td>Arkane Studios</td><td>2021/09/14</td><td></td></tr>
-<tr><td>Death's Door</td><td>PEGI 12</td><td></td><td>Acid Nerve</td><td>2021/07/20</td><td></td></tr>
-<tr><td>Deep Rock Galactic</td><td>PEGI 16</td><td></td><td>Ghost Ship Games</td><td>2018/02/28</td><td>2025/10/03 18:06:45</td></tr>
-<tr><td>Deep Rock Galactic</td><td>PEGI 16</td><td></td><td>Ghost Ship Games</td><td>2020/05/13</td><td>2024/08/06 21:12:53</td></tr>
-<tr><td>Degrees</td><td></td><td></td><td></td><td>2018/05/18</td><td></td></tr>
-<tr><td>Deiland</td><td>PEGI 7</td><td></td><td>Chibig</td><td>2018/03/01</td><td></td></tr>
-<tr><td>Deliver Us Mars</td><td>PEGI 12</td><td></td><td>KeokeN Interactive</td><td>2023/02/02</td><td></td></tr>
-<tr><td>Demonicon</td><td></td><td></td><td>Noumena Studios</td><td>2013/10/25</td><td></td></tr>
-<tr><td>Deponia: The Complete Journey</td><td>PEGI 12</td><td></td><td>Daedalic Entertainment</td><td>2014/06/02</td><td></td></tr>
-<tr><td>Desert Child</td><td>PEGI 16</td><td></td><td>Oscar Brittain</td><td>2018/12/11</td><td></td></tr>
-<tr><td>Desolate</td><td></td><td></td><td>Nearga</td><td>2019/01/17</td><td>2021/09/12 22:39:10</td></tr>
-<tr><td>Destiny 2</td><td>PEGI 16</td><td></td><td>Bungie</td><td>2017/09/06</td><td></td></tr>
-<tr><td>Desynced</td><td></td><td></td><td>Stage Games</td><td>2023/08/15</td><td>2024/06/23 21:30:18</td></tr>
-<tr><td>Deus Ex - Mankind Divided</td><td>PEGI 18</td><td></td><td>Eidos Montréal, Square Enix</td><td>2016/08/23</td><td></td></tr>
-<tr><td>Deus Ex: Game of the Year Edition</td><td></td><td></td><td>Ion Storm</td><td>2000/06/22</td><td>2023/11/28 16:42:07</td></tr>
-<tr><td>Deus Ex: Human Revolution - Director's Cut</td><td>PEGI 18</td><td></td><td>Eidos Montréal, Eidos US, GRIP Entertainment</td><td>2013/10/22</td><td>2023/11/28 17:28:16</td></tr>
-<tr><td>Deus Ex: Invisible War</td><td></td><td></td><td>Ion Storm</td><td>2003/12/02</td><td></td></tr>
-<tr><td>Deus Ex: Mankind Divided</td><td>PEGI 18</td><td></td><td>Eidos Montréal, Square Enix</td><td>2016/08/23</td><td></td></tr>
-<tr><td>Deus Ex: The Fall</td><td>PEGI 18</td><td></td><td>nFusion Interactive LLC</td><td>2013/07/10</td><td></td></tr>
-<tr><td>Devolverland Expo</td><td></td><td></td><td>Flying Wild Hog</td><td>2020/07/11</td><td>2020/09/28 20:27:18</td></tr>
-<tr><td>Disco Elysium</td><td></td><td></td><td>ZA/UM</td><td>2019/10/15</td><td></td></tr>
-<tr><td>Discord Bot Maker</td><td></td><td></td><td></td><td></td><td>2024/03/24 14:20:32</td></tr>
-<tr><td>Discovery Tour by Assassin's Creed: Ancient Egypt</td><td>PEGI 12</td><td></td><td>Ubisoft Montreal</td><td>2018/02/20</td><td></td></tr>
-<tr><td>Discovery Tour: Ancient Greece by Ubisoft</td><td></td><td></td><td>Ubisoft Montreal</td><td>2019/09/10</td><td></td></tr>
-<tr><td>Dishonored - Definitive Edition</td><td>PEGI 18</td><td></td><td>Arkane Studios</td><td>2013/10/08</td><td></td></tr>
-<tr><td>Dishonored: Death of the Outsider</td><td>PEGI 18</td><td></td><td>Arkane Studios</td><td>2017/09/14</td><td></td></tr>
-<tr><td>Divide by Sheep</td><td></td><td></td><td>Denis Novikov, Victor Solodilov</td><td>2015/07/02</td><td></td></tr>
-<tr><td>Doctor Who: The Adventure Games</td><td></td><td></td><td>Sumo Digital</td><td>2011/10/31</td><td>2022/11/05 21:30:02</td></tr>
-<tr><td>Doctor Who: The Eternity Clock</td><td>PEGI 12</td><td></td><td>Supermassive Games</td><td>2012/05/23</td><td>2020/04/30 21:15:59</td></tr>
-<tr><td>Doctor Who: The Lonely Assassins</td><td>PEGI 12</td><td></td><td>Kaigan Games</td><td>2021/03/19</td><td>2024/10/27 17:10:40</td></tr>
-<tr><td>Don't Starve Together</td><td>PEGI 12</td><td></td><td>Klei Entertainment</td><td>2016/04/21</td><td></td></tr>
-<tr><td>DOOM 64</td><td>PEGI 16</td><td></td><td>Midway Studios San Diego</td><td>2020/03/20</td><td></td></tr>
-<tr><td>Doomdark's Revenge</td><td>PEGI 7</td><td></td><td>Mike Singleton</td><td>2014/02/05</td><td></td></tr>
-<tr><td>Drawful 2</td><td>PEGI 12</td><td></td><td>Jackbox Games, Inc.</td><td>2016/06/21</td><td></td></tr>
-<tr><td>Drawful 2</td><td>PEGI 12</td><td></td><td>Jackbox Games, Inc.</td><td>2016/06/21</td><td></td></tr>
-<tr><td>DREDGE</td><td>PEGI 12</td><td></td><td>Black Salt Games</td><td>2023/03/30</td><td></td></tr>
-<tr><td>Drifter's Tales</td><td></td><td></td><td></td><td>2022/07/09</td><td></td></tr>
-<tr><td>Drug Dealer Simulator: Free Sample</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Dying Light</td><td>PEGI 18</td><td></td><td>Techland</td><td>2015/01/26</td><td>2022/10/26 20:14:04</td></tr>
-<tr><td>Eastern Exorcist</td><td>PEGI 12</td><td></td><td>Wildfire Game</td><td>2021/07/08</td><td></td></tr>
-<tr><td>Electrician Simulator</td><td>PEGI 3</td><td></td><td>Take IT Studio!</td><td>2022/09/21</td><td></td></tr>
-<tr><td>Electrician Simulator</td><td>PEGI 3</td><td></td><td>Take IT Studio!</td><td>2022/09/21</td><td>2024/06/22 13:41:31</td></tr>
-<tr><td>Electro Ride Prologue</td><td></td><td></td><td></td><td></td><td>2020/06/15 15:43:29</td></tr>
-<tr><td>Electronics Store Simulator Playtest</td><td></td><td></td><td></td><td></td><td>2025/11/14 19:36:46</td></tr>
-<tr><td>Elite Dangerous</td><td>PEGI 7</td><td></td><td>Frontier Developments</td><td>2014/12/16</td><td></td></tr>
-<tr><td>Empyrion - Galactic Survival</td><td></td><td></td><td>Eleon Game Studios</td><td>2020/08/05</td><td></td></tr>
-<tr><td>Encased</td><td></td><td></td><td>Dark Crystal Games</td><td>2021/09/07</td><td></td></tr>
-<tr><td>Endzone - A World Apart</td><td></td><td></td><td>Gentlymad Studios</td><td>2020/04/02</td><td>2022/02/08 20:05:01</td></tr>
-<tr><td>Escape Academy</td><td>PEGI 7</td><td></td><td>Coin Crew Games</td><td>2022/07/13</td><td></td></tr>
-<tr><td>Eschalon: Book I</td><td></td><td></td><td>Basilisk Games</td><td>2007/11/19</td><td></td></tr>
-<tr><td>EVE Online</td><td>PEGI 12</td><td></td><td>CCP Games</td><td>2003/05/06</td><td></td></tr>
-<tr><td>Everything</td><td>PEGI 3</td><td></td><td>David OReilly</td><td>2017/03/21</td><td></td></tr>
-<tr><td>F.E.A.R.</td><td>PEGI 18</td><td></td><td>Monolith Productions</td><td>2005/10/17</td><td>2024/10/25 21:27:19</td></tr>
-<tr><td>F.E.A.R. 2: Project Origin</td><td>PEGI 18</td><td></td><td>Monolith Productions</td><td>2009/02/10</td><td></td></tr>
-<tr><td>F.E.A.R. 3</td><td>PEGI 18</td><td></td><td>Day 1 Studios</td><td>2011/06/21</td><td></td></tr>
-<tr><td>F.E.A.R.: Extraction Point</td><td>PEGI 18</td><td></td><td>TimeGate Studios</td><td>2006/10/24</td><td></td></tr>
-<tr><td>F.E.A.R.: Perseus Mandate</td><td>PEGI 18</td><td></td><td>TimeGate Studios</td><td>2007/11/06</td><td></td></tr>
-<tr><td>F1 2018</td><td>PEGI 3</td><td></td><td>Codemasters</td><td>2018/08/24</td><td></td></tr>
-<tr><td>Faeria</td><td>PEGI 7</td><td></td><td>Abrakam</td><td>2017/03/08</td><td></td></tr>
-<tr><td>Fall Guys</td><td>PEGI 3</td><td></td><td>Mediatonic</td><td>2020/08/04</td><td></td></tr>
-<tr><td>Fall Guys</td><td>PEGI 3</td><td></td><td>Mediatonic</td><td>2020/08/04</td><td>2020/09/06 19:10:07</td></tr>
-<tr><td>Fallout 2</td><td>PEGI 16</td><td></td><td>Black Isle Studios</td><td>1998/10/29</td><td></td></tr>
-<tr><td>Fallout 2: A Post Nuclear Role Playing Game</td><td>PEGI 16</td><td></td><td>Black Isle Studios, The Omni Group</td><td>1998/10/29</td><td></td></tr>
-<tr><td>Fallout 3: Game of the Year Edition</td><td>PEGI 18</td><td></td><td>Bethesda Game Studios</td><td>2009/10/13</td><td></td></tr>
-<tr><td>Fallout 4</td><td>PEGI 18</td><td></td><td>Bethesda Game Studios</td><td>2015/11/09</td><td>2024/05/12 20:04:56</td></tr>
-<tr><td>Fallout New Vegas: Courier's Stash</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fallout New Vegas: Dead Money</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fallout New Vegas: Gun Runners’ Arsenal</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fallout New Vegas: Honest Hearts</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fallout New Vegas: Lonesome Road</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fallout New Vegas: Old World Blues</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fallout Tactics</td><td>PEGI 16</td><td></td><td>Micro Forté</td><td>2001/03/15</td><td></td></tr>
-<tr><td>Fallout Tactics: Brotherhood of Steel</td><td>PEGI 16</td><td></td><td>Micro Forté</td><td>2001/03/15</td><td></td></tr>
-<tr><td>Fallout: A Post Nuclear Role Playing Game</td><td>PEGI 16</td><td></td><td>Black Isle Studios, The Omni Group</td><td>1997/09/30</td><td></td></tr>
-<tr><td>Fallout: New Vegas</td><td>PEGI 18</td><td></td><td>Obsidian Entertainment</td><td>2010/10/19</td><td></td></tr>
-<tr><td>Far Cry 2</td><td>PEGI 16</td><td></td><td>Ubisoft Montreal</td><td>2008/10/21</td><td></td></tr>
-<tr><td>Far Cry 3</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2012/11/28</td><td></td></tr>
-<tr><td>Far Cry 3 Deluxe Edition</td><td></td><td></td><td>Ubisoft Montreal</td><td>2013/12/31</td><td></td></tr>
-<tr><td>Far Cry 4</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2014/11/18</td><td></td></tr>
-<tr><td>Far Cry 5</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2018/03/26</td><td></td></tr>
-<tr><td>Far Cry 6</td><td>PEGI 18</td><td></td><td>Ubisoft Toronto</td><td>2021/10/07</td><td>2025/03/15 18:43:49</td></tr>
-<tr><td>Far Cry 6</td><td>PEGI 18</td><td></td><td>Ubisoft Toronto</td><td>2021/10/07</td><td></td></tr>
-<tr><td>Far Cry New Dawn</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2019/02/15</td><td></td></tr>
-<tr><td>Far Cry New Dawn</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2019/02/15</td><td>2024/04/10 19:54:31</td></tr>
-<tr><td>Far Cry New Dawn</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2019/02/15</td><td></td></tr>
-<tr><td>Farmer's Dynasty</td><td>PEGI 3</td><td></td><td>Toplitz Productions</td><td>2019/11/07</td><td></td></tr>
-<tr><td>Farming Simulator 19</td><td>PEGI 3</td><td></td><td>Giants Software</td><td>2018/11/19</td><td></td></tr>
-<tr><td>Farming Simulator 22</td><td>PEGI 3</td><td></td><td>Giants Software</td><td>2021/11/22</td><td></td></tr>
-<tr><td>Faster Than Light</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Fearless Fantasy</td><td></td><td></td><td>Enter Skies</td><td>2014/05/15</td><td></td></tr>
-<tr><td>Figment</td><td>PEGI 12</td><td></td><td>Bedtime Digital Games</td><td>2017/09/22</td><td></td></tr>
-<tr><td>Figment 2: Creed Valley</td><td>PEGI 7</td><td></td><td>Bedtime Digital Games</td><td>2023/03/09</td><td></td></tr>
-<tr><td>Filament</td><td></td><td></td><td>Beard Envy</td><td>2020/04/23</td><td></td></tr>
-<tr><td>Five Nights at Freddy's: Into the Pit</td><td>PEGI 16</td><td></td><td>Mega Cat Studios</td><td>2024/08/07</td><td></td></tr>
-<tr><td>Flight of the Amazon Queen</td><td></td><td></td><td>Interactive Binary Illusions, iPhSoft</td><td>1995/12/31</td><td></td></tr>
-<tr><td>FNaF World</td><td></td><td></td><td>ScottGames</td><td>2017/01/12</td><td>2018/08/09 18:10:08</td></tr>
-<tr><td>For Honor</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2017/02/13</td><td></td></tr>
-<tr><td>Forever Skies</td><td></td><td></td><td>Far From Home</td><td>2023/06/22</td><td>2023/07/14 19:36:04</td></tr>
-<tr><td>Fort Solis</td><td>PEGI 16</td><td></td><td>Fallen Leaf</td><td>2023/08/22</td><td>2025/11/26 17:39:52</td></tr>
-<tr><td>Fortnite</td><td>PEGI 12</td><td></td><td>Epic Games</td><td>2017/07/25</td><td></td></tr>
-<tr><td>Fortnite</td><td></td><td></td><td>Epic Games Inc.</td><td>2017/07/25</td><td>2025/11/26 20:26:30</td></tr>
-<tr><td>Fortnite Festival</td><td>PEGI 12</td><td></td><td>Epic Games, Harmonix Music Systems</td><td>2023/12/09</td><td></td></tr>
-<tr><td>Fortnite Reload</td><td>PEGI 12</td><td></td><td>Epic Games</td><td>2024/06/22</td><td></td></tr>
-<tr><td>FOUNDRY</td><td></td><td></td><td>Channel 3 Entertainment, MEDER Dynamics</td><td>2024/05/02</td><td>2025/10/18 22:33:02</td></tr>
-<tr><td>Freddy Fazbear's Pizzeria Simulator</td><td>PEGI 12</td><td></td><td>ScottGames</td><td>2017/12/04</td><td>2019/01/24 19:54:08</td></tr>
-<tr><td>Freshly Frosted</td><td>PEGI 3</td><td></td><td>The Quantum Astrophysicists Guild</td><td>2022/06/10</td><td></td></tr>
-<tr><td>Frostpunk</td><td>PEGI 16</td><td></td><td>11 bit studios</td><td>2018/04/24</td><td></td></tr>
-<tr><td>Fuse</td><td>PEGI 18</td><td></td><td>Insomniac Games</td><td>2013/05/28</td><td></td></tr>
-<tr><td>Galaxy Control: 3D Strategy</td><td></td><td></td><td></td><td>2016/08/10</td><td>2016/10/01 19:39:53</td></tr>
-<tr><td>Gamecraft</td><td></td><td></td><td>Freejam</td><td>2019/10/25</td><td>2021/02/08 16:27:25</td></tr>
-<tr><td>GameMaker: Studio</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Garage Flipper: Prologue</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Garry's Mod</td><td></td><td></td><td>Facepunch Studios</td><td>2004/12/24</td><td>2025/09/09 19:53:22</td></tr>
-<tr><td>Gas Station Simulator</td><td>PEGI 16, PEGI 3</td><td></td><td>Drago Entertainment</td><td>2021/09/15</td><td>2023/11/02 18:42:30</td></tr>
-<tr><td>Gas Station Simulator: Prologue - Early Days</td><td></td><td></td><td></td><td></td><td>2021/07/05 10:38:42</td></tr>
-<tr><td>Generation Zero</td><td>PEGI 12</td><td></td><td>Systemic Reaction</td><td>2019/03/26</td><td>2020/12/31 12:46:02</td></tr>
-<tr><td>Generator Rex : Agent of Providence</td><td></td><td></td><td></td><td>2012</td><td>2025/03/18 19:57:12</td></tr>
-<tr><td>Ghostbusters Remastered</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Ghostbusters: Spirits Unleashed</td><td>PEGI 12</td><td></td><td>Illfonic</td><td>2022/10/18</td><td></td></tr>
-<tr><td>Ghostbusters: Spirits Unleashed Ecto Edition</td><td></td><td></td><td></td><td></td><td>2025/01/21 22:18:33</td></tr>
-<tr><td>Ghostrunner 2</td><td>PEGI 18</td><td></td><td>One More Level</td><td>2023/10/26</td><td></td></tr>
-<tr><td>Ghostwire Tokyo</td><td>PEGI 12</td><td></td><td>Tango Gameworks</td><td>2022/03/24</td><td></td></tr>
-<tr><td>Glitched Out</td><td></td><td></td><td>SHB Games</td><td>2024/12/13</td><td></td></tr>
-<tr><td>Glove Skin</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Go Ace It</td><td></td><td></td><td></td><td>2022/05/28</td><td></td></tr>
-<tr><td>GOAT OF DUTY</td><td></td><td></td><td>34BigThings srl</td><td>2019/07/10</td><td></td></tr>
-<tr><td>Goat Simulator 3</td><td>PEGI 12</td><td></td><td>Coffee Stain Studios</td><td>2022/11/16</td><td>2024/12/20 19:04:11</td></tr>
-<tr><td>Goat Simulator 3: Windows Edition</td><td></td><td></td><td>Coffee Stain North AB</td><td>2023/12/07</td><td></td></tr>
-<tr><td>Godfall</td><td>PEGI 16</td><td></td><td>Counterplay Games</td><td>2020/11/12</td><td></td></tr>
-<tr><td>Godlike Burger</td><td>PEGI 16</td><td></td><td>Liquid Pug LLC</td><td>2022/04/21</td><td></td></tr>
-<tr><td>Gold Rush: The Game</td><td></td><td></td><td>Code Horizon</td><td>2017/10/13</td><td>2022/09/26 19:28:08</td></tr>
-<tr><td>Golf With Your Friends</td><td>PEGI 7</td><td></td><td>Blacklight Interactive</td><td>2016/01/29</td><td></td></tr>
-<tr><td>Golfie</td><td></td><td></td><td>Triheart Studio</td><td>2023/01/19</td><td></td></tr>
-<tr><td>GoNNER</td><td>PEGI 7</td><td></td><td>Art in Heart</td><td>2016/10/12</td><td></td></tr>
-<tr><td>Gotham Knights</td><td>PEGI 16</td><td></td><td>Warner Bros. Games Montreal</td><td>2022/10/21</td><td>2023/10/30 21:08:12</td></tr>
-<tr><td>Grand Theft Auto V</td><td></td><td></td><td></td><td>2022/06/15</td><td></td></tr>
-<tr><td>Grand Theft Auto V Enhanced</td><td></td><td></td><td>Rockstar North</td><td>2025/03/04</td><td></td></tr>
-<tr><td>Gravitas</td><td></td><td></td><td>Galaxy Shark Studios</td><td>2019/08/23</td><td>2019/12/02 14:49:19</td></tr>
-<tr><td>GRID 2</td><td>PEGI 3</td><td></td><td>Codemasters Southam</td><td>2013/05/27</td><td>2019/07/05 08:13:08</td></tr>
-<tr><td>Guns and Robots</td><td></td><td></td><td></td><td>2014/08/04</td><td>2014/08/19 10:22:24</td></tr>
-<tr><td>GWENT: The Witcher Card Game</td><td>PEGI 16</td><td></td><td>CD Projekt RED</td><td>2018/10/23</td><td></td></tr>
-<tr><td>Half-Life</td><td>PEGI 16</td><td></td><td>Valve</td><td>1998/11/19</td><td>2023/01/10 18:27:34</td></tr>
-<tr><td>Half-Life 2</td><td>PEGI 16</td><td></td><td>Valve</td><td>2004/11/16</td><td>2020/03/26 17:27:35</td></tr>
-<tr><td>Half-Life 2: Deathmatch</td><td></td><td></td><td>Valve</td><td>2004/11/30</td><td></td></tr>
-<tr><td>Half-Life 2: Episode One</td><td>PEGI 16</td><td></td><td>Valve</td><td>2006/06/01</td><td></td></tr>
-<tr><td>Half-Life 2: Episode Two</td><td>PEGI 16</td><td></td><td>Valve</td><td>2007/10/09</td><td></td></tr>
-<tr><td>Half-Life 2: Lost Coast</td><td></td><td></td><td>Valve</td><td>2005/10/27</td><td></td></tr>
-<tr><td>Half-Life Deathmatch: Source</td><td></td><td></td><td>Valve</td><td>2006/05/01</td><td></td></tr>
-<tr><td>Half-Life: Absolute Zero</td><td></td><td></td><td></td><td>2017/04/17</td><td>2020/09/30 18:59:43</td></tr>
-<tr><td>Half-Life: Blue Shift</td><td>PEGI 16</td><td></td><td>Gearbox Software</td><td>2001/06/12</td><td></td></tr>
-<tr><td>Half-Life: Opposing Force</td><td>PEGI 16</td><td></td><td>Gearbox Software</td><td>1999/11/10</td><td></td></tr>
-<tr><td>Half-Life: Source</td><td></td><td></td><td>Valve</td><td>2004/06/01</td><td></td></tr>
-<tr><td>Hardspace: Shipbreaker</td><td></td><td></td><td>Blackbird Interactive</td><td>2022/05/24</td><td></td></tr>
-<tr><td>HD Wallpaper</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Headsnatchers</td><td>PEGI 7</td><td></td><td>IguanaBee</td><td>2018/07/24</td><td></td></tr>
-<tr><td>Hell Let Loose</td><td>PEGI 16</td><td></td><td>Team17</td><td>2019/06/06</td><td></td></tr>
-<tr><td>HELLION</td><td></td><td></td><td>Zero Gravity</td><td>2018/10/21</td><td></td></tr>
-<tr><td>Hello Neighbor Alpha 4</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Hello Neighbor Alpha Version</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>High Entropy: Challenges</td><td></td><td></td><td>binarynonsense</td><td>2020/09/01</td><td>2022/03/13 18:12:30</td></tr>
-<tr><td>High On Life</td><td>PEGI 18</td><td></td><td>Squanch Games</td><td>2022/12/13</td><td>2025/07/16 20:50:06</td></tr>
-<tr><td>HITMAN</td><td>PEGI 18</td><td></td><td>IO Interactive</td><td>2016/03/11</td><td></td></tr>
-<tr><td>HITMAN 1 Complete First Season</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>HITMAN 1 GOTY Upgrade</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>HITMAN 3</td><td>PEGI 18</td><td></td><td>IO Interactive</td><td>2021/01/20</td><td></td></tr>
-<tr><td>HITMAN 3 Free Starter Pack</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>HITMAN World of Assassination</td><td>PEGI 18</td><td></td><td>IO Interactive</td><td>2021/01/20</td><td></td></tr>
-<tr><td>Hitman: Absolution</td><td>PEGI 18</td><td></td><td>IO Interactive</td><td>2012/11/19</td><td></td></tr>
-<tr><td>Hob</td><td>PEGI 12</td><td></td><td>Runic Games</td><td>2017/09/26</td><td></td></tr>
-<tr><td>Honkai Impact 3rd</td><td>PEGI 12</td><td></td><td>HoYoverse, miHoYo</td><td>2016/10/14</td><td></td></tr>
-<tr><td>Horizon Chase Turbo</td><td>PEGI 3</td><td></td><td>Aquiris Game Studio</td><td>2018/05/15</td><td></td></tr>
-<tr><td>Horizon Chase Turbo</td><td>PEGI 3</td><td></td><td>Aquiris Game Studio</td><td>2018/05/15</td><td></td></tr>
-<tr><td>Hotel Renovator</td><td>PEGI 3</td><td></td><td>Two Horizons</td><td>2023/03/07</td><td>2025/11/15 09:31:52</td></tr>
-<tr><td>House Builder</td><td>PEGI 3</td><td></td><td>FreeMind</td><td>2021/11/11</td><td>2024/08/31 10:29:27</td></tr>
-<tr><td>House of Golf 2</td><td>PEGI 3</td><td></td><td>Starlight Games</td><td>2024/08/16</td><td></td></tr>
-<tr><td>Hue</td><td>PEGI 3</td><td></td><td>Fiddlesticks</td><td>2016/08/30</td><td></td></tr>
-<tr><td>Human Fall Flat</td><td>PEGI 3</td><td></td><td>No Brakes Games</td><td>2016/07/22</td><td>2021/09/09 14:40:25</td></tr>
-<tr><td>HUMANKIND</td><td>PEGI 12</td><td></td><td>Amplitude Studios</td><td>2021/08/17</td><td></td></tr>
-<tr><td>Hydroneer</td><td></td><td></td><td>Foulball Hangover</td><td>2020/05/08</td><td>2025/09/26 17:32:28</td></tr>
-<tr><td>HYENAS - Closed Beta</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Hyper Scape</td><td>PEGI 12</td><td></td><td>Ubisoft Montreal</td><td>2020/08/11</td><td></td></tr>
-<tr><td>Icarus</td><td></td><td></td><td>RocketWerkz</td><td>2021/12/04</td><td>2025/01/31 19:05:14</td></tr>
-<tr><td>Immortals Fenyx Rising</td><td>PEGI 12</td><td></td><td>Ubisoft Québec</td><td>2020/12/02</td><td></td></tr>
-<tr><td>In Sound Mind</td><td>PEGI 12</td><td></td><td>We Create Stuff</td><td>2021/09/28</td><td></td></tr>
-<tr><td>INDUSTRIA</td><td>PEGI 12</td><td></td><td>Bleakmill</td><td>2021/09/30</td><td></td></tr>
-<tr><td>Infinifactory</td><td>PEGI 12</td><td></td><td>Zachtronics</td><td>2015/06/30</td><td></td></tr>
-<tr><td>Influent</td><td></td><td></td><td>Three Flip Studios</td><td>2014/02/04</td><td></td></tr>
-<tr><td>Injustice: Gods Among Us Ultimate Edition</td><td>PEGI 16</td><td></td><td>High Voltage Software</td><td>2013/11/12</td><td></td></tr>
-<tr><td>InnerSpace</td><td>PEGI 3</td><td></td><td>PolyKnight Games</td><td>2018/01/16</td><td></td></tr>
-<tr><td>Insurmountable</td><td>PEGI 7</td><td></td><td>ByteRockers' Games</td><td>2021/04/29</td><td></td></tr>
-<tr><td>Internet Cafe Simulator</td><td></td><td></td><td>Cheesecake, Cocopo</td><td>2019/10/25</td><td></td></tr>
-<tr><td>Interplanetary</td><td></td><td></td><td>Team Jolly Roger</td><td>2015/04/02</td><td></td></tr>
-<tr><td>Interplanetary: Enhanced Edition</td><td></td><td></td><td>Team Jolly Roger</td><td>2017/08/02</td><td>2019/01/19 21:10:44</td></tr>
-<tr><td>Into The Breach</td><td>PEGI 12</td><td></td><td>Subset Games</td><td>2018/02/27</td><td></td></tr>
-<tr><td>Invincible Presents: Atom Eve</td><td>PEGI 18</td><td></td><td>Terrible Posture Games</td><td>2023/11/14</td><td></td></tr>
-<tr><td>Ironcast</td><td>PEGI 12</td><td></td><td>Dreadbit</td><td>2015/03/26</td><td></td></tr>
-<tr><td>Journey To The Savage Planet</td><td>PEGI 12</td><td></td><td>Typhoon Studios</td><td>2020/01/28</td><td></td></tr>
-<tr><td>Journey To The Savage Planet: Employee Of The Month</td><td></td><td></td><td>Raccoon Logic</td><td>2024/07/03</td><td>2024/08/20 18:04:38</td></tr>
-<tr><td>JUNKPUNK</td><td></td><td></td><td></td><td>2021/11/12</td><td>2023/11/18 21:19:28</td></tr>
-<tr><td>Jurassic World Evolution</td><td>PEGI 16</td><td></td><td>Frontier Developments</td><td>2018/06/11</td><td></td></tr>
-<tr><td>Jurassic World Evolution</td><td>PEGI 16</td><td></td><td>Frontier Developments</td><td>2018/06/11</td><td>2021/06/15 19:57:49</td></tr>
-<tr><td>Just Cause</td><td>PEGI 16</td><td></td><td>Avalanche Studios</td><td>2006/09/22</td><td></td></tr>
-<tr><td>Just Cause 2</td><td>PEGI 18</td><td></td><td>Avalanche Studios</td><td>2010/03/23</td><td></td></tr>
-<tr><td>Just Cause 3</td><td>PEGI 18</td><td></td><td>Avalanche Studios</td><td>2015/11/30</td><td>2024/11/21 21:34:06</td></tr>
-<tr><td>Just Cause 4</td><td>PEGI 18</td><td></td><td>Avalanche Studios</td><td>2018/12/04</td><td></td></tr>
-<tr><td>Just Cause 4</td><td>PEGI 18</td><td></td><td>Avalanche Studios</td><td>2018/12/04</td><td>2023/12/03 12:43:53</td></tr>
-<tr><td>Kabounce</td><td>PEGI 3</td><td></td><td>Stitch Heads Entertainment</td><td>2018/05/29</td><td>2019/12/07 21:44:58</td></tr>
-<tr><td>Killing Floor 2</td><td>PEGI 18</td><td></td><td>Tripwire Interactive</td><td>2016/11/18</td><td></td></tr>
-<tr><td>KillingFloor2Beta</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Kingdom Come Deliverance</td><td>PEGI 18</td><td></td><td>Warhorse Studios</td><td>2018/02/13</td><td></td></tr>
-<tr><td>Knight Squad 2 Trials</td><td></td><td></td><td></td><td></td><td>2021/04/17 19:54:32</td></tr>
-<tr><td>Lake</td><td>PEGI 16</td><td></td><td>Gamious</td><td>2021/09/01</td><td></td></tr>
-<tr><td>Landlord's Super</td><td></td><td></td><td>Minskworks</td><td>2020/04/30</td><td>2022/05/01 14:50:38</td></tr>
-<tr><td>Lara Croft and the Temple of Osiris</td><td>PEGI 12</td><td></td><td>Crystal Dynamics</td><td>2014/12/08</td><td>2020/10/05 14:40:21</td></tr>
-<tr><td>Layers of Fear</td><td>PEGI 16</td><td></td><td>Anshar Studios, Bloober Team</td><td>2023/06/15</td><td></td></tr>
-<tr><td>Layers of Fear 2</td><td></td><td></td><td></td><td>2023/06/15</td><td></td></tr>
-<tr><td>Left 4 Dead</td><td>PEGI 18</td><td></td><td>Certain Affinity, Turtle Rock Studios, Valve</td><td>2008/11/17</td><td></td></tr>
-<tr><td>Left 4 Dead 2</td><td>PEGI 18</td><td></td><td>Turtle Rock Studios, Valve</td><td>2009/11/17</td><td></td></tr>
-<tr><td>Legend of Keepers: Prologue</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>LEGO Batman 2 DC Super Heroes</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2012/06/19</td><td></td></tr>
-<tr><td>LEGO Batman 2: DC Super Heroes</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2012/06/19</td><td>2025/11/26 21:26:31</td></tr>
-<tr><td>LEGO Batman 3 Beyond Gotham</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2014/11/11</td><td></td></tr>
-<tr><td>LEGO Batman 3: Beyond Gotham</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2014/11/11</td><td>2025/11/26 17:42:17</td></tr>
-<tr><td>LEGO Batman The Videogame</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2008/09/23</td><td></td></tr>
-<tr><td>LEGO Batman: The Videogame</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2008/09/23</td><td>2025/11/22 21:25:58</td></tr>
-<tr><td>LEGO Builder's Journey</td><td>PEGI 3</td><td></td><td>Light Brick Studio</td><td>2019/12/20</td><td></td></tr>
-<tr><td>LEGO City Undercover</td><td>PEGI 7</td><td></td><td>TT Fusion</td><td>2013/03/17</td><td>2024/02/11 20:55:54</td></tr>
-<tr><td>LEGO DC Super-Villains</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2018/10/16</td><td>2021/01/28 20:43:41</td></tr>
-<tr><td>LEGO Fortnite</td><td>PEGI 7</td><td></td><td>Epic Games</td><td>2023/12/07</td><td></td></tr>
-<tr><td>LEGO Harry Potter: Years 1-4</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2010/06/25</td><td></td></tr>
-<tr><td>LEGO Harry Potter: Years 5-7</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2011/11/11</td><td></td></tr>
-<tr><td>LEGO Indiana Jones 2: The Adventure Continues</td><td>PEGI 7</td><td></td><td>Feral Interactive, Traveller's Tales</td><td>2009/11/17</td><td>2023/08/31 19:45:06</td></tr>
-<tr><td>LEGO Jurassic World</td><td>PEGI 7</td><td></td><td>TT Games</td><td>2015/06/11</td><td>2023/11/05 12:15:27</td></tr>
-<tr><td>LEGO MARVEL Super Heroes</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2013/09/30</td><td>2023/09/03 19:54:57</td></tr>
-<tr><td>LEGO MARVEL Super Heroes 2</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2017/11/14</td><td>2017/11/21 17:18:08</td></tr>
-<tr><td>LEGO MARVEL's Avengers</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2016/01/26</td><td>2020/02/07 21:38:07</td></tr>
-<tr><td>LEGO Pirates of the Caribbean The Video Game</td><td>PEGI 7</td><td></td><td>TransGaming Inc., Traveller's Tales</td><td>2011/05/10</td><td>2025/11/24 22:11:42</td></tr>
-<tr><td>LEGO STAR WARS: The Force Awakens</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2016/06/27</td><td>2022/07/17 17:14:48</td></tr>
-<tr><td>LEGO Star Wars: The Skywalker Saga</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2022/04/05</td><td></td></tr>
-<tr><td>LEGO Star Wars: The Skywalker Saga</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2022/04/05</td><td></td></tr>
-<tr><td>LEGO Star Wars: The Skywalker Saga</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2022/04/05</td><td>2025/01/07 21:52:01</td></tr>
-<tr><td>LEGO The Hobbit</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2014/04/08</td><td>2023/06/23 21:52:26</td></tr>
-<tr><td>LEGO The Incredibles</td><td>PEGI 7</td><td></td><td>Feral Interactive, Traveller's Tales, TT Games</td><td>2018/06/15</td><td>2025/09/08 19:39:28</td></tr>
-<tr><td>LEGO The Lord of the Rings</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2012/10/30</td><td>2023/07/04 20:01:46</td></tr>
-<tr><td>LEGO Worlds</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2017/03/07</td><td>2021/12/31 21:59:02</td></tr>
-<tr><td>LEGOⓇ Indiana Jones: The Original Adventures</td><td>PEGI 7</td><td></td><td>Robosoft Technologies, Traveller's Tales</td><td>2008/06/02</td><td>2023/12/17 17:32:34</td></tr>
-<tr><td>Life is Strange</td><td>PEGI 16</td><td></td><td>DON'T NOD</td><td>2015/01/29</td><td></td></tr>
-<tr><td>Life is Strange 2</td><td>PEGI 18</td><td></td><td>DON'T NOD, Feral Interactive</td><td>2018/09/26</td><td>2024/10/26 13:36:07</td></tr>
-<tr><td>Life is Strange Remastered</td><td></td><td></td><td>Deck Nine, DON'T NOD</td><td>2022/02/01</td><td></td></tr>
-<tr><td>Life is Strange: Before the Storm Remastered</td><td></td><td></td><td>Deck Nine, DON'T NOD</td><td>2022/02/01</td><td>2024/10/26 13:56:41</td></tr>
-<tr><td>Life is Strange: True Colors</td><td>PEGI 16</td><td></td><td>Deck Nine</td><td>2021/09/10</td><td>2023/06/09 20:12:43</td></tr>
-<tr><td>Lifeless Planet: Premier Edition</td><td>PEGI 12</td><td></td><td>Stage 2 Studios</td><td>2014/06/06</td><td></td></tr>
-<tr><td>Lightyear Frontier (Game Preview)</td><td>PEGI 7</td><td></td><td>FRAME BREAK, Amplifier Studios</td><td>2024/03/19</td><td>2024/03/24 20:54:44</td></tr>
-<tr><td>Little Nightmares</td><td>PEGI 16</td><td></td><td>Tarsier Studios</td><td>2017/04/28</td><td></td></tr>
-<tr><td>Little Nightmares Enhanced Edition</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Lost Daughter</td><td></td><td></td><td>Alper Gonen</td><td>2019/07/09</td><td></td></tr>
-<tr><td>Lust for Darkness</td><td>PEGI 18</td><td></td><td>Movie Games Lunarium</td><td>2018/06/12</td><td>2025/01/14 17:50:44</td></tr>
-<tr><td>Mable & The Wood</td><td>PEGI 7</td><td></td><td>Triplevision Games</td><td>2019/08/23</td><td></td></tr>
-<tr><td>Mafia</td><td>PEGI 18</td><td></td><td>Illusion Softworks</td><td>2002/08/29</td><td></td></tr>
-<tr><td>Mafia: Definitive Edition</td><td>PEGI 18</td><td></td><td>Hangar 13</td><td>2020/09/24</td><td></td></tr>
-<tr><td>Maid of Sker</td><td>PEGI 18</td><td></td><td>Wales Interactive</td><td>2020/07/28</td><td></td></tr>
-<tr><td>Main Assembly</td><td></td><td></td><td>Bad Yolk Games</td><td>2020/06/11</td><td>2024/03/19 19:46:39</td></tr>
-<tr><td>Maneater</td><td>PEGI 18</td><td></td><td>Blindside Interactive, Tripwire Interactive</td><td>2020/05/22</td><td></td></tr>
-<tr><td>Manual Samuel - Anniversary Edition</td><td>PEGI 16</td><td></td><td>Perfectly Paranormal</td><td>2016/10/11</td><td></td></tr>
-<tr><td>Map Pack</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Marbles on Stream</td><td>PEGI 3</td><td></td><td>Pixel by Pixel Studios</td><td>2018/03/28</td><td></td></tr>
-<tr><td>Marvel Rivals</td><td>PEGI 12</td><td></td><td>NetEase Games</td><td>2024/12/06</td><td></td></tr>
-<tr><td>Marvel's Guardians of the Galaxy</td><td>PEGI 16</td><td></td><td>Eidos Montréal</td><td>2021/10/26</td><td></td></tr>
-<tr><td>Marvel's Guardians of the Galaxy: Social-Lord Outfit</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Marvel's Midnight Suns</td><td>PEGI 12</td><td></td><td>Firaxis Games</td><td>2022/12/02</td><td></td></tr>
-<tr><td>Metro 2033</td><td></td><td></td><td>Kefir!</td><td>2012/08/10</td><td></td></tr>
-<tr><td>Metro 2033 Redux</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2014/08/26</td><td></td></tr>
-<tr><td>Metro 2033 Redux</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2014/08/25</td><td></td></tr>
-<tr><td>Metro Exodus</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2019/02/15</td><td></td></tr>
-<tr><td>Metro Exodus Enhanced Edition</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2019/02/15</td><td></td></tr>
-<tr><td>Metro Last Light Redux</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2014/08/26</td><td></td></tr>
-<tr><td>Metro: Last Light Complete Edition</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2013/06/14</td><td></td></tr>
-<tr><td>Metro: Last Light Redux</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2014/08/26</td><td></td></tr>
-<tr><td>Metro: Last Light Redux</td><td>PEGI 18</td><td></td><td>4A Games</td><td>2013/05/14</td><td></td></tr>
-<tr><td>Minecraft</td><td>PEGI 7</td><td></td><td>Mojang Studios</td><td>2011/11/18</td><td>2024/04/04 16:45:28</td></tr>
-<tr><td>Minecraft Dungeons for Windows</td><td></td><td></td><td>Mojang Studios / Double Eleven Limited</td><td>2020/05/26</td><td>2024/04/20 10:37:09</td></tr>
-<tr><td>Minecraft for Windows</td><td></td><td></td><td>Mojang/Microsoft Studios</td><td>2015/07/14</td><td>2023/10/26 09:09:51</td></tr>
-<tr><td>Minecraft Launcher</td><td></td><td></td><td>Mojang/Microsoft Studios</td><td>2021/11/02</td><td>2024/04/04 16:41:57</td></tr>
-<tr><td>Minecraft Preview for Windows</td><td></td><td></td><td>Mojang/Microsoft Studios</td><td>2022/02/09</td><td>2025/04/05 10:47:33</td></tr>
-<tr><td>Mirror's Edge</td><td>PEGI 16</td><td></td><td>EA Digital Illusions CE, EA Mobile, IronMonkey Studios</td><td>2008/11/11</td><td>2020/11/28 22:19:01</td></tr>
-<tr><td>Mirror's Edge Catalyst</td><td>PEGI 16</td><td></td><td>EA Digital Illusions CE</td><td>2016/06/07</td><td>2020/12/04 15:07:30</td></tr>
-<tr><td>Moonbase Alpha</td><td></td><td></td><td>Army Game Studio, Virtual Heroes</td><td>2010/07/06</td><td>2015/06/30 13:51:33</td></tr>
-<tr><td>Moonlighter</td><td>PEGI 7</td><td></td><td>Digital Sun Games</td><td>2018/05/29</td><td></td></tr>
-<tr><td>Mortal Shell</td><td>PEGI 16</td><td></td><td>Cold Symmetry</td><td>2020/08/18</td><td></td></tr>
-<tr><td>Mortal Shell Tech Beta</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>MudRunner</td><td>PEGI 3</td><td></td><td>Saber Interactive</td><td>2017/10/31</td><td></td></tr>
-<tr><td>MURDERED: SOUL SUSPECT</td><td>PEGI 16</td><td></td><td>Airtight Games</td><td>2014/06/03</td><td>2023/04/30 21:38:03</td></tr>
-<tr><td>Mutant Year Zero Road to Eden</td><td>PEGI 16</td><td></td><td>The Bearded Ladies</td><td>2018/12/04</td><td></td></tr>
-<tr><td>Mutazione</td><td>PEGI 7</td><td></td><td>Die Gute Fabrik</td><td>2019/09/19</td><td></td></tr>
-<tr><td>My Time at Portia</td><td>PEGI 7</td><td></td><td>Pathea Games</td><td>2019/01/15</td><td></td></tr>
-<tr><td>Neon Abyss</td><td>PEGI 16</td><td></td><td>Veewo Games</td><td>2020/07/13</td><td></td></tr>
-<tr><td>Nephise Begins</td><td></td><td></td><td></td><td>2017/04/24</td><td></td></tr>
-<tr><td>New Tales from the Borderlands</td><td>PEGI 18</td><td></td><td>Gearbox Software</td><td>2022/10/20</td><td></td></tr>
-<tr><td>New World</td><td>PEGI 16</td><td></td><td>Amazon Game Studios</td><td>2021/09/28</td><td></td></tr>
-<tr><td>Nex Machina</td><td>PEGI 12</td><td></td><td>Housemarque</td><td>2017/06/20</td><td></td></tr>
-<tr><td>Night in the Woods</td><td>PEGI 12</td><td></td><td>Infinite Fall</td><td>2017/02/21</td><td></td></tr>
-<tr><td>No More Room in Hell</td><td></td><td></td><td>Lever Games</td><td>2013/09/04</td><td></td></tr>
-<tr><td>No Straight Roads: Encore Edition</td><td></td><td></td><td></td><td>2021/10/21</td><td></td></tr>
+<tr><td>>observer_</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>112 Operator</td><td>PEGI 16</td><td>Jutsu Games</td><td>2020/04/23</td><td>2025/02/04 12:20:31</td><td>Steam</td></tr>
+<tr><td>20 Minutes Till Dawn</td><td>PEGI 7</td><td>flanne</td><td>2022/06/08</td><td></td><td>Epic</td></tr>
+<tr><td>20XX</td><td></td><td>InfernoPlus</td><td>2020/05/15</td><td></td><td>Epic</td></tr>
+<tr><td>3 out of 10, EP 1: "Welcome To Shovelworks"</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>3 out of 10, EP 2: "Foundation 101"</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>3 out of 10, EP 3: "Pivot Like A Champion"</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>3 out of 10, EP 4: "Thank You For Being An Asset"</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>3 out of 10, EP 5: "The Rig Is Up!"</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>3 out of 10: Season Two</td><td></td><td>Terrible Posture Games</td><td>2021/04/08</td><td></td><td>Epic</td></tr>
+<tr><td>911 Operator</td><td>PEGI 12, PEGI 7</td><td>Jutsu Games</td><td>2017/02/24</td><td></td><td>Epic</td></tr>
+<tr><td>911 Operator</td><td>PEGI 12</td><td>Jutsu Games</td><td>2017/02/24</td><td></td><td>Steam</td></tr>
+<tr><td>A House of Many Doors</td><td></td><td>Pixel Trickery</td><td>2017/02/03</td><td></td><td>Steam</td></tr>
+<tr><td>A Plague Tale: Innocence</td><td>PEGI 18</td><td>Asobo Studio</td><td>2019/05/14</td><td></td><td>Epic</td></tr>
+<tr><td>A Plague Tale: Innocence</td><td>PEGI 18</td><td>Asobo Studio</td><td>2019/05/14</td><td>2022/09/14 19:33:13</td><td>Steam</td></tr>
+<tr><td>ABZU</td><td>PEGI 7</td><td>Giant Squid</td><td>2016/08/02</td><td></td><td>Epic</td></tr>
+<tr><td>Aegis Defenders</td><td>PEGI 7</td><td>GUTS Department</td><td>2018/02/08</td><td></td><td>Steam</td></tr>
+<tr><td>Agony</td><td></td><td>Madmind Studio</td><td>2018/05/29</td><td></td><td>GOG</td></tr>
+<tr><td>Agony UNRATED</td><td></td><td>Madmind Studio</td><td>2018/10/30</td><td></td><td>GOG</td></tr>
+<tr><td>Akalabeth: World of Doom</td><td></td><td>Richard Garriott</td><td>1979/06/30</td><td></td><td>GOG</td></tr>
+<tr><td>Alan Wake Remastered</td><td>PEGI 16</td><td>Remedy Entertainment</td><td>2021/10/05</td><td></td><td>Epic</td></tr>
+<tr><td>Alder's Blood Prologue</td><td></td><td>Shockwork Games</td><td>2020/02/12</td><td></td><td>GOG</td></tr>
+<tr><td>Alien: Isolation</td><td></td><td>The Creative Assembly</td><td>2021/12/16</td><td></td><td>Epic</td></tr>
+<tr><td>Amnesia:  The Dark Descent</td><td>PEGI 16</td><td>Frictional Games</td><td>2010/09/08</td><td></td><td>Epic</td></tr>
+<tr><td>Amnesia: A Machine for Pigs</td><td></td><td>The Chinese Room</td><td>2013/09/10</td><td></td><td>Epic</td></tr>
+<tr><td>Amnesia: Rebirth</td><td>PEGI 18</td><td>Frictional Games</td><td>2020/10/20</td><td>2023/10/03 20:10:53</td><td>Steam</td></tr>
+<tr><td>Amnesia: The Bunker</td><td>PEGI 16</td><td>Frictional Games</td><td>2023/06/06</td><td></td><td>Epic</td></tr>
+<tr><td>Among the Sleep - Enhanced Edition</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Among Us</td><td>PEGI 7</td><td>Innersloth</td><td>2018/06/15</td><td></td><td>Epic</td></tr>
+<tr><td>Among Us</td><td>PEGI 7</td><td>Innersloth</td><td>2018/06/15</td><td>2021/05/13 20:54:02</td><td>Steam</td></tr>
+<tr><td>Ancestors Legacy</td><td>PEGI 18</td><td>Destructive Creations</td><td>2018/05/22</td><td></td><td>Steam</td></tr>
+<tr><td>Ancestors: The Humankind Odyssey </td><td>PEGI 16</td><td>Panache Digital Games</td><td>2019/08/27</td><td>2021/03/01 18:06:35</td><td>Steam</td></tr>
+<tr><td>Angry Video Game Nerd II: ASSimilation</td><td></td><td>FreakZone Games</td><td>2016/03/29</td><td></td><td>Steam</td></tr>
+<tr><td>Anno 1404 - History Edition</td><td>PEGI 7</td><td>Ubisoft Blue Byte</td><td>2020/06/25</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Anno 1800</td><td>PEGI 12</td><td>Ubisoft Blue Byte</td><td>2019/04/16</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Aperture Tag: The Paint Gun Testing Initiative</td><td></td><td>Aperture Tag Team</td><td>2014/07/15</td><td>2025/05/21 19:03:03</td><td>Steam</td></tr>
+<tr><td>Are You Smarter Than A 5th Grader</td><td>PEGI 3</td><td>Black Lantern Studios</td><td>2015/08/31</td><td></td><td>Epic</td></tr>
+<tr><td>Arid</td><td></td><td>Sad Viscacha Studio</td><td>2021/05/26</td><td></td><td>Steam</td></tr>
+<tr><td>ARK Crystal Isles</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>ARK ModKit (UE4)</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>ARK Ragnarok</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>ARK The Center</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>ARK: Survival Evolved</td><td>PEGI 16</td><td>Studio Wildcard</td><td>2015/06/02</td><td></td><td>Epic</td></tr>
+<tr><td>ARK: Survival Evolved</td><td>PEGI 16</td><td>Studio Wildcard</td><td>2015/06/02</td><td></td><td>Steam</td></tr>
+<tr><td>ARK: Survival Of The Fittest</td><td></td><td>Efecto Studios, Instinct Games, Studio Wildcard, Virtual Basement LLC</td><td>2016/03/15</td><td></td><td>Steam</td></tr>
+<tr><td>Assassin’s Creed Chronicles India</td><td>PEGI 16</td><td>Climax Studios</td><td>2016/01/12</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin’s Creed Chronicles Russia</td><td>PEGI 16</td><td>Climax Studios</td><td>2016/02/09</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin's Creed Chronicles China</td><td>PEGI 16</td><td>Climax Studios</td><td>2015/04/21</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin's Creed II</td><td>PEGI 18</td><td>Ubisoft Montreal, Virtuos</td><td>2016/11/15</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin's Creed Mirage</td><td>PEGI 18</td><td>Ubisoft Bordeaux</td><td>2023/10/05</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin's Creed Odyssey</td><td>PEGI 18</td><td>Ubisoft Québec</td><td>2018/10/05</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin's Creed Origins</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2017/10/26</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassins Creed Syndicate</td><td>PEGI 18</td><td>Ubisoft Québec</td><td>2015/10/23</td><td></td><td>Epic</td></tr>
+<tr><td>Assassin's Creed Syndicate</td><td>PEGI 18</td><td>Ubisoft Québec</td><td>2015/10/23</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Assassin's Creed Valhalla</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2020/11/10</td><td></td><td>Steam</td></tr>
+<tr><td>Assassin's Creed Valhalla</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2020/11/10</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Astrometica: Prologue</td><td></td><td></td><td></td><td>2025/03/15 18:44:50</td><td>Steam</td></tr>
+<tr><td>Atomfall</td><td>PEGI 18</td><td>Rebellion</td><td>2025/03/27</td><td>2025/07/18 23:36:03</td><td>Xbox</td></tr>
+<tr><td>Autobahn Police Simulator</td><td></td><td>Z-Software</td><td>2015/08/26</td><td>2020/04/15 19:35:38</td><td>Steam</td></tr>
+<tr><td>Aven Colony</td><td>PEGI 12</td><td>Mothership Entertainment</td><td>2017/07/25</td><td></td><td>Epic</td></tr>
+<tr><td>Aztez</td><td></td><td>Team Colorblind</td><td>2017/08/01</td><td></td><td>Epic</td></tr>
+<tr><td>Back to the Future: The Game</td><td>PEGI 16</td><td>Telltale Games</td><td>2011</td><td></td><td></td></tr>
+<tr><td>Batman Arkham Asylum Game of the Year Edition</td><td>PEGI 12</td><td>Rocksteady Studios</td><td>2010/03/26</td><td></td><td>Epic</td></tr>
+<tr><td>Batman Arkham City - Game of the Year Edition</td><td>PEGI 16</td><td>Rocksteady Studios</td><td>2012/05/29</td><td></td><td>Epic</td></tr>
+<tr><td>Batman Arkham Knight</td><td>PEGI 18</td><td>Rocksteady Studios</td><td>2015/06/23</td><td></td><td>Epic</td></tr>
+<tr><td>Batman: Arkham Asylum GOTY Edition</td><td>PEGI 12</td><td>Rocksteady Studios</td><td>2010/03/26</td><td></td><td>Steam</td></tr>
+<tr><td>Batman: Arkham City GOTY</td><td>PEGI 16</td><td>Rocksteady Studios</td><td>2012/05/29</td><td></td><td>Steam</td></tr>
+<tr><td>Batman: Arkham Knight</td><td>PEGI 18</td><td>Rocksteady Studios</td><td>2015/06/23</td><td>2023/11/10 20:12:22</td><td>Steam</td></tr>
+<tr><td>Batman: Arkham Origins</td><td>PEGI 16</td><td>Splash Damage, Warner Bros. Interactive Entertainment, WB Games Montréal</td><td>2013/10/16</td><td>2022/12/25 16:30:07</td><td>Steam</td></tr>
+<tr><td>Battlerite</td><td></td><td>Stunlock Studios</td><td>2017/11/08</td><td></td><td>Steam</td></tr>
+<tr><td>Battlerite Public Test</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Beer Factory - Prologue</td><td></td><td></td><td></td><td>2023/03/22 17:46:43</td><td>Steam</td></tr>
+<tr><td>Beer Factory Playtest</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Ben 10</td><td>PEGI 7</td><td>Torus Games</td><td>2017/11/10</td><td>2020/10/22 16:05:37</td><td>Steam</td></tr>
+<tr><td>Ben 10 Omniverse</td><td>PEGI 12</td><td>Vicious Cycle Software</td><td>2014</td><td></td><td></td></tr>
+<tr><td>Ben 10 Omniverse 2</td><td>PEGI 7</td><td>High Voltage Software</td><td>2013</td><td></td><td></td></tr>
+<tr><td>Ben 10: Galactic Racing</td><td></td><td>Monkey Bar Games</td><td>2011</td><td></td><td></td></tr>
+<tr><td>Bendy and the Ink Machine</td><td>PEGI 12</td><td>Joey Drew Studios, TheMeatly Games, Ltd.</td><td>2017/02/10</td><td></td><td>Epic</td></tr>
+<tr><td>Beneath a Steel Sky (1994)</td><td></td><td>Revolution Software</td><td>1994/03/01</td><td></td><td>GOG</td></tr>
+<tr><td>Beyond Blue</td><td>PEGI 7</td><td>E-Line Media</td><td>2020/04/17</td><td></td><td>Epic</td></tr>
+<tr><td>Bio Menace</td><td></td><td>Apogee Software</td><td>1993/08/03</td><td></td><td>GOG</td></tr>
+<tr><td>BioShock</td><td>PEGI 18</td><td>2K Australia, 2K Boston</td><td>2007/08/21</td><td></td><td>Steam</td></tr>
+<tr><td>BioShock 2</td><td>PEGI 18</td><td>2K Australia, 2K China, Digital Extremes</td><td>2010/02/09</td><td>2022/05/01 14:04:28</td><td>Steam</td></tr>
+<tr><td>BioShock 2 Remastered</td><td>PEGI 18</td><td>2K Australia, 2K China, Digital Extremes, Feral Interactive</td><td>2016/09/14</td><td></td><td>Epic</td></tr>
+<tr><td>BioShock 2 Remastered</td><td>PEGI 18</td><td>2K Australia, 2K China, Digital Extremes, Feral Interactive</td><td>2016/09/14</td><td>2022/06/14 10:35:30</td><td>Steam</td></tr>
+<tr><td>BioShock Infinite</td><td>PEGI 18</td><td>Irrational Games</td><td>2013/02/26</td><td>2022/06/25 20:24:29</td><td>Steam</td></tr>
+<tr><td>BioShock Infinite: Complete Edition</td><td>PEGI 18</td><td>Irrational Games</td><td>2014/11/04</td><td></td><td>Epic</td></tr>
+<tr><td>BioShock Remastered</td><td>PEGI 18</td><td>2K Australia, 2K Boston, Feral Interactive</td><td>2016/09/14</td><td></td><td>Epic</td></tr>
+<tr><td>BioShock Remastered</td><td>PEGI 18</td><td>2K Australia, 2K Boston, Feral Interactive</td><td>2016/09/14</td><td>2022/05/31 21:14:48</td><td>Steam</td></tr>
+<tr><td>Black Desert</td><td>PEGI 16</td><td>Pearl Abyss</td><td>2015/12/31</td><td></td><td>Steam</td></tr>
+<tr><td>Black Desert (Retired)</td><td>PEGI 16</td><td>Pearl Abyss</td><td>2015/12/31</td><td></td><td>Steam</td></tr>
+<tr><td>Black Mesa</td><td></td><td>Crowbar Collective</td><td>2015/05/05</td><td>2023/06/19 17:07:01</td><td>Steam</td></tr>
+<tr><td>Blair Witch</td><td>PEGI 16</td><td>Bloober Team</td><td>2019/08/30</td><td></td><td>Epic</td></tr>
+<tr><td>Blair Witch</td><td>PEGI 16</td><td>Bloober Team</td><td>2019/08/30</td><td>2023/10/21 16:39:42</td><td>Steam</td></tr>
+<tr><td>Blasphemous</td><td>PEGI 16</td><td>The Game Kitchen</td><td>2019/09/10</td><td></td><td>Steam</td></tr>
+<tr><td>Blender</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Borderlands 2</td><td>PEGI 18</td><td>Gearbox Software</td><td>2012/09/18</td><td></td><td>Epic</td></tr>
+<tr><td>Borderlands 2</td><td>PEGI 18</td><td>Gearbox Software</td><td>2012/09/18</td><td></td><td>Steam</td></tr>
+<tr><td>Borderlands 3</td><td>PEGI 18</td><td>Gearbox Software</td><td>2019/09/13</td><td></td><td>Epic</td></tr>
+<tr><td>Borderlands GOTY</td><td>PEGI 18</td><td>Feral Interactive, Gearbox Software</td><td>2009/10/20</td><td></td><td>Steam</td></tr>
+<tr><td>Borderlands GOTY Enhanced</td><td></td><td>Blind Squirrel Games, Gearbox Software</td><td>2019/04/03</td><td>2024/02/27 18:22:05</td><td>Steam</td></tr>
+<tr><td>Borderlands: The Pre-Sequel</td><td>PEGI 18</td><td>2K Australia, Gearbox Software</td><td>2014/10/14</td><td></td><td>Epic</td></tr>
+<tr><td>Brick-Force</td><td>PEGI 12</td><td></td><td>2012/07/12</td><td>2015/06/06 08:50:02</td><td>Steam</td></tr>
+<tr><td>Bridge Constructor: The Walking Dead</td><td>PEGI 16</td><td>ClockStone Studios</td><td>2020/11/19</td><td></td><td>Epic</td></tr>
+<tr><td>Brothers: A Tale of Two Sons</td><td>PEGI 16</td><td>Starbreeze Studios</td><td>2013/08/07</td><td></td><td>Amazon</td></tr>
+<tr><td>Builders of Egypt Playtest</td><td></td><td></td><td></td><td>2023/08/11 20:23:03</td><td>Steam</td></tr>
+<tr><td>Builders of Egypt: Prologue</td><td></td><td></td><td></td><td></td><td>GOG</td></tr>
+<tr><td>Builders of Egypt: Prologue</td><td></td><td></td><td></td><td>2020/03/26 17:24:42</td><td>Steam</td></tr>
+<tr><td>Bus Simulator 21 Next Stop</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Bus Simulator 21: Next Stop</td><td></td><td></td><td></td><td></td><td>Amazon</td></tr>
+<tr><td>Cakey's Twisted Bakery</td><td></td><td>TinyMindz</td><td>2024/07/05</td><td></td><td>Steam</td></tr>
+<tr><td>Call of Cthulhu</td><td>PEGI 18</td><td>Cyanide Studio</td><td>2018/10/29</td><td>2025/01/17 19:04:17</td><td>Steam</td></tr>
+<tr><td>Call of the Sea</td><td>PEGI 7</td><td>Out of the Blue Games</td><td>2020/12/08</td><td></td><td>Epic</td></tr>
+<tr><td>Call of the Wild: The Angler</td><td>PEGI 7</td><td>Expansive Worlds</td><td>2022/08/31</td><td></td><td>Epic</td></tr>
+<tr><td>Captain America : Super Soldier</td><td></td><td>Next Level Games</td><td>2011</td><td></td><td></td></tr>
+<tr><td>Car Detailing Simulator</td><td>PEGI 3, PEGI 7</td><td>Game Formatic, Games Incubator</td><td>2022/04/13</td><td>2025/11/07 17:35:43</td><td>Steam</td></tr>
+<tr><td>Car Detailing Simulator: Prologue</td><td></td><td></td><td></td><td>2024/01/15 21:53:54</td><td>Steam</td></tr>
+<tr><td>Car Mechanic Simulator 2014</td><td>PEGI 3</td><td>PlayWay, Red Dot Games</td><td>2014/01/24</td><td></td><td>Steam</td></tr>
+<tr><td>Car Mechanic Simulator 2015</td><td>PEGI 3</td><td>Red Dot Games</td><td>2015/03/04</td><td>2022/10/19 18:35:29</td><td>Steam</td></tr>
+<tr><td>Car Mechanic Simulator 2018</td><td>PEGI 3</td><td>Red Dot Games</td><td>2017/07/21</td><td></td><td>Epic</td></tr>
+<tr><td>Carcassonne</td><td>PEGI 3</td><td>Frima Studio</td><td>2017/11/29</td><td></td><td>Epic</td></tr>
+<tr><td>CAYNE</td><td></td><td>The Brotherhood Games</td><td>2017/01/24</td><td></td><td>GOG</td></tr>
+<tr><td>Cepheus Protocol</td><td>PEGI 18</td><td>Halcyon Winds</td><td>2020/05/15</td><td></td><td>Steam</td></tr>
+<tr><td>Cepheus Protocol Experimental Branch</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Child of Light</td><td>PEGI 7</td><td>Ubisoft Montreal</td><td>2014/04/29</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Cities Skylines</td><td>PEGI 3</td><td>Colossal Order</td><td>2015/03/10</td><td></td><td>Epic</td></tr>
+<tr><td>Class of '09</td><td></td><td>SBN3</td><td>2021/06/10</td><td>2025/09/06 19:42:53</td><td>Steam</td></tr>
+<tr><td>Close to the Sun</td><td>PEGI 18</td><td>Storm in a Teacup</td><td>2019/05/02</td><td></td><td>Epic</td></tr>
+<tr><td>Cognition Method: Initiation</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Come with Me</td><td></td><td>Xin Ye</td><td>2021/05/14</td><td>2021/06/19 16:26:27</td><td>Steam</td></tr>
+<tr><td>Company of Heroes 2</td><td>PEGI 18</td><td>Feral Interactive, Relic Entertainment</td><td>2013/06/25</td><td></td><td>Steam</td></tr>
+<tr><td>Construction Simulator</td><td>PEGI 3</td><td>weltenbauer. Software Entwicklung GmbH</td><td>2022/09/20</td><td>2023/01/27 19:59:11</td><td>Steam</td></tr>
+<tr><td>Contraband Police</td><td></td><td>Crazy Rocks</td><td>2023/03/08</td><td></td><td></td></tr>
+<tr><td>Control</td><td></td><td></td><td>2022/12/31</td><td></td><td>Epic</td></tr>
+<tr><td>Cook, Serve, Delicious! 3?!</td><td>PEGI 7</td><td>Vertigo Gaming</td><td>2020/01/30</td><td></td><td>Epic</td></tr>
+<tr><td>Cooking Simulator</td><td>PEGI 3</td><td>Big Cheese Studio</td><td>2019/06/06</td><td></td><td></td></tr>
+<tr><td>Cooking Simulator</td><td>PEGI 3</td><td>Big Cheese Studio</td><td>2019/06/06</td><td>2025/10/26 20:09:37</td><td>Steam</td></tr>
+<tr><td>Core</td><td></td><td></td><td>2020/03/16</td><td></td><td>Epic</td></tr>
+<tr><td>Corma</td><td></td><td></td><td></td><td>2020/08/03 21:17:17</td><td>Steam</td></tr>
+<tr><td>Counter-Strike</td><td>PEGI 16</td><td>Valve</td><td>2000/11/09</td><td></td><td>Steam</td></tr>
+<tr><td>Counter-Strike 2</td><td>PEGI 18</td><td>Hidden Path Entertainment, Valve</td><td>2012/08/21</td><td></td><td>Steam</td></tr>
+<tr><td>Counter-Strike: Condition Zero</td><td>PEGI 16</td><td>Gearbox Software, Ritual Entertainment, Turtle Rock Studios, Valve</td><td>2004/03/23</td><td></td><td>Steam</td></tr>
+<tr><td>Counter-Strike: Condition Zero Deleted Scenes</td><td>PEGI 16</td><td>Valve</td><td>2004/03/23</td><td></td><td>Steam</td></tr>
+<tr><td>Counter-Strike: Source</td><td>PEGI 16</td><td>Hidden Path Entertainment, Valve</td><td>2004/11/01</td><td></td><td>Steam</td></tr>
+<tr><td>Crash Drive 3</td><td>PEGI 7</td><td>M2H</td><td>2021/07/08</td><td></td><td>Steam</td></tr>
+<tr><td>Crayta</td><td>PEGI 12</td><td>Unit 2 Games</td><td>2020/07/01</td><td></td><td>Epic</td></tr>
+<tr><td>CreativeDestruction</td><td></td><td>NetEase Games</td><td>2018/08/03</td><td>2020/01/17 22:01:35</td><td>Steam</td></tr>
+<tr><td>Creativerse</td><td></td><td>Playful Corporation</td><td>2017/05/08</td><td></td><td>Steam</td></tr>
+<tr><td>Creature in the Well</td><td>PEGI 7</td><td>Flight School Studio</td><td>2019/09/06</td><td></td><td>Epic</td></tr>
+<tr><td>Crime Scene Cleaner</td><td></td><td>President Studio</td><td>2024/08/14</td><td>2025/11/16 09:03:50</td><td>Steam</td></tr>
+<tr><td>Crime Scene Cleaner</td><td>PEGI 12</td><td>President Studio S.A.</td><td>2025/04/17</td><td>2025/04/19 08:16:55</td><td>Xbox</td></tr>
+<tr><td>Crossout</td><td></td><td>Targem Games</td><td>2017/05/30</td><td>2020/02/05 19:30:14</td><td>Steam</td></tr>
+<tr><td>Crumble</td><td>PEGI 3</td><td>BRUTE FORCE</td><td>2020/12/04</td><td></td><td>Steam</td></tr>
+<tr><td>Cry of Fear</td><td></td><td>Team Psykskallar</td><td>2013/04/25</td><td></td><td>Steam</td></tr>
+<tr><td>Crypto Mining Simulator</td><td></td><td>Stanislaw Dev</td><td>2021/04/24</td><td>2023/01/10 19:16:42</td><td>Steam</td></tr>
+<tr><td>Ctrl CV</td><td></td><td>ZPink</td><td>2018/05/18</td><td>2018/09/14 21:28:13</td><td>Steam</td></tr>
+<tr><td>Cubic Castles</td><td></td><td>Cosmic Cow LLC</td><td>2014/07/03</td><td></td><td>Steam</td></tr>
+<tr><td>Cursed to Golf</td><td>PEGI 3</td><td>Chuhai Labs</td><td>2022/08/18</td><td></td><td>Epic</td></tr>
+<tr><td>Dark Future: Blood Red States</td><td></td><td></td><td>2018/05/16</td><td></td><td>Steam</td></tr>
+<tr><td>Dark Sector</td><td>PEGI 18</td><td>Digital Extremes, Noviy Disk</td><td>2008/03/25</td><td></td><td>Steam</td></tr>
+<tr><td>Darkest Dungeon</td><td>PEGI 12</td><td>Red Hook Studios</td><td>2015/12/31</td><td></td><td>Epic</td></tr>
+<tr><td>Darksiders II Deathinitive Edition</td><td>PEGI 16</td><td>Vigil Games</td><td>2012/08/14</td><td></td><td>Epic</td></tr>
+<tr><td>Darksiders Warmastered Edition</td><td>PEGI 18</td><td>Kaiko</td><td>2016/11/22</td><td></td><td>Epic</td></tr>
+<tr><td>Darkwood</td><td>PEGI 18</td><td>Acid Wizard Studio</td><td>2017/08/17</td><td></td><td>Epic</td></tr>
+<tr><td>Dead by Daylight</td><td>PEGI 18</td><td>Behaviour Interactive</td><td>2016/06/14</td><td></td><td>Epic</td></tr>
+<tr><td>Dead Island Riptide Definitive Edition</td><td>PEGI 18</td><td>Techland</td><td>2016/05/31</td><td></td><td>Steam</td></tr>
+<tr><td>Deadlock</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Death Coming</td><td>PEGI 16</td><td>NEXT Studio</td><td>2017/11/06</td><td></td><td>Epic</td></tr>
+<tr><td>Death Stranding</td><td>PEGI 18</td><td>Kojima Productions</td><td>2019/11/08</td><td></td><td>Epic</td></tr>
+<tr><td>Death Stranding Content</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>DEATH STRANDING DIGITAL SOUNDTRACK</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>DEATH STRANDING DIRECTOR'S CUT</td><td>PEGI 18</td><td>Kojima Productions</td><td>2021/09/24</td><td>2023/05/01 11:55:11</td><td>Steam</td></tr>
+<tr><td>DEATHLOOP</td><td>PEGI 18</td><td>Arkane Studios</td><td>2021/09/14</td><td></td><td>Epic</td></tr>
+<tr><td>Death's Door</td><td>PEGI 12</td><td>Acid Nerve</td><td>2021/07/20</td><td></td><td>Epic</td></tr>
+<tr><td>Deep Rock Galactic</td><td>PEGI 16</td><td>Ghost Ship Games</td><td>2018/02/28</td><td>2025/10/03 18:06:45</td><td>Steam</td></tr>
+<tr><td>Deep Rock Galactic</td><td>PEGI 16</td><td>Ghost Ship Games</td><td>2020/05/13</td><td>2024/08/06 21:12:53</td><td>Xbox</td></tr>
+<tr><td>Degrees</td><td></td><td></td><td>2018/05/18</td><td></td><td>Steam</td></tr>
+<tr><td>Deiland</td><td>PEGI 7</td><td>Chibig</td><td>2018/03/01</td><td></td><td>Steam</td></tr>
+<tr><td>Deliver Us Mars</td><td>PEGI 12</td><td>KeokeN Interactive</td><td>2023/02/02</td><td></td><td>Epic</td></tr>
+<tr><td>Demonicon</td><td></td><td>Noumena Studios</td><td>2013/10/25</td><td></td><td>Steam</td></tr>
+<tr><td>Deponia: The Complete Journey</td><td>PEGI 12</td><td>Daedalic Entertainment</td><td>2014/06/02</td><td></td><td>Steam</td></tr>
+<tr><td>Desert Child</td><td>PEGI 16</td><td>Oscar Brittain</td><td>2018/12/11</td><td></td><td>Steam</td></tr>
+<tr><td>Desolate</td><td></td><td>Nearga</td><td>2019/01/17</td><td>2021/09/12 22:39:10</td><td>Steam</td></tr>
+<tr><td>Destiny 2</td><td>PEGI 16</td><td>Bungie</td><td>2017/09/06</td><td></td><td>Epic</td></tr>
+<tr><td>Desynced</td><td></td><td>Stage Games</td><td>2023/08/15</td><td>2024/06/23 21:30:18</td><td>Steam</td></tr>
+<tr><td>Deus Ex - Mankind Divided</td><td>PEGI 18</td><td>Eidos Montréal, Square Enix</td><td>2016/08/23</td><td></td><td>Epic</td></tr>
+<tr><td>Deus Ex: Game of the Year Edition</td><td></td><td>Ion Storm</td><td>2000/06/22</td><td>2023/11/28 16:42:07</td><td>Steam</td></tr>
+<tr><td>Deus Ex: Human Revolution - Director's Cut</td><td>PEGI 18</td><td>Eidos Montréal, Eidos US, GRIP Entertainment</td><td>2013/10/22</td><td>2023/11/28 17:28:16</td><td>Steam</td></tr>
+<tr><td>Deus Ex: Invisible War</td><td></td><td>Ion Storm</td><td>2003/12/02</td><td></td><td>Steam</td></tr>
+<tr><td>Deus Ex: Mankind Divided</td><td>PEGI 18</td><td>Eidos Montréal, Square Enix</td><td>2016/08/23</td><td></td><td>Steam</td></tr>
+<tr><td>Deus Ex: The Fall</td><td>PEGI 18</td><td>nFusion Interactive LLC</td><td>2013/07/10</td><td></td><td>Steam</td></tr>
+<tr><td>Devolverland Expo</td><td></td><td>Flying Wild Hog</td><td>2020/07/11</td><td>2020/09/28 20:27:18</td><td>Steam</td></tr>
+<tr><td>Disco Elysium</td><td></td><td>ZA/UM</td><td>2019/10/15</td><td></td><td>Steam</td></tr>
+<tr><td>Discord Bot Maker</td><td></td><td></td><td></td><td>2024/03/24 14:20:32</td><td>Steam</td></tr>
+<tr><td>Discovery Tour by Assassin's Creed: Ancient Egypt</td><td>PEGI 12</td><td>Ubisoft Montreal</td><td>2018/02/20</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Discovery Tour: Ancient Greece by Ubisoft</td><td></td><td>Ubisoft Montreal</td><td>2019/09/10</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Dishonored - Definitive Edition</td><td>PEGI 18</td><td>Arkane Studios</td><td>2013/10/08</td><td></td><td>Epic</td></tr>
+<tr><td>Dishonored: Death of the Outsider</td><td>PEGI 18</td><td>Arkane Studios</td><td>2017/09/14</td><td></td><td>Epic</td></tr>
+<tr><td>Divide by Sheep</td><td></td><td>Denis Novikov, Victor Solodilov</td><td>2015/07/02</td><td></td><td>Steam</td></tr>
+<tr><td>Doctor Who: The Adventure Games</td><td></td><td>Sumo Digital</td><td>2011/10/31</td><td>2022/11/05 21:30:02</td><td>Steam</td></tr>
+<tr><td>Doctor Who: The Eternity Clock</td><td>PEGI 12</td><td>Supermassive Games</td><td>2012/05/23</td><td>2020/04/30 21:15:59</td><td>Steam</td></tr>
+<tr><td>Doctor Who: The Lonely Assassins</td><td>PEGI 12</td><td>Kaigan Games</td><td>2021/03/19</td><td>2024/10/27 17:10:40</td><td>Steam</td></tr>
+<tr><td>Don't Starve Together</td><td>PEGI 12</td><td>Klei Entertainment</td><td>2016/04/21</td><td></td><td>Steam</td></tr>
+<tr><td>DOOM 64</td><td>PEGI 16</td><td>Midway Studios San Diego</td><td>2020/03/20</td><td></td><td>Epic</td></tr>
+<tr><td>Doomdark's Revenge</td><td>PEGI 7</td><td>Mike Singleton</td><td>2014/02/05</td><td></td><td>GOG</td></tr>
+<tr><td>Drawful 2</td><td>PEGI 12</td><td>Jackbox Games, Inc.</td><td>2016/06/21</td><td></td><td>Epic</td></tr>
+<tr><td>Drawful 2</td><td>PEGI 12</td><td>Jackbox Games, Inc.</td><td>2016/06/21</td><td></td><td>Steam</td></tr>
+<tr><td>DREDGE</td><td>PEGI 12</td><td>Black Salt Games</td><td>2023/03/30</td><td></td><td>Epic</td></tr>
+<tr><td>Drifter's Tales</td><td></td><td></td><td>2022/07/09</td><td></td><td>Steam</td></tr>
+<tr><td>Drug Dealer Simulator: Free Sample</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Dying Light</td><td>PEGI 18</td><td>Techland</td><td>2015/01/26</td><td>2022/10/26 20:14:04</td><td>Steam</td></tr>
+<tr><td>Eastern Exorcist</td><td>PEGI 12</td><td>Wildfire Game</td><td>2021/07/08</td><td></td><td>Epic</td></tr>
+<tr><td>Electrician Simulator</td><td>PEGI 3</td><td>Take IT Studio!</td><td>2022/09/21</td><td></td><td>Epic</td></tr>
+<tr><td>Electrician Simulator</td><td>PEGI 3</td><td>Take IT Studio!</td><td>2022/09/21</td><td>2024/06/22 13:41:31</td><td>Steam</td></tr>
+<tr><td>Electro Ride Prologue</td><td></td><td></td><td></td><td>2020/06/15 15:43:29</td><td>Steam</td></tr>
+<tr><td>Electronics Store Simulator Playtest</td><td></td><td></td><td></td><td>2025/11/14 19:36:46</td><td>Steam</td></tr>
+<tr><td>Elite Dangerous</td><td>PEGI 7</td><td>Frontier Developments</td><td>2014/12/16</td><td></td><td>Epic</td></tr>
+<tr><td>Empyrion - Galactic Survival</td><td></td><td>Eleon Game Studios</td><td>2020/08/05</td><td></td><td>Epic</td></tr>
+<tr><td>Encased</td><td></td><td>Dark Crystal Games</td><td>2021/09/07</td><td></td><td>Epic</td></tr>
+<tr><td>Endzone - A World Apart</td><td></td><td>Gentlymad Studios</td><td>2020/04/02</td><td>2022/02/08 20:05:01</td><td>Steam</td></tr>
+<tr><td>Escape Academy</td><td>PEGI 7</td><td>Coin Crew Games</td><td>2022/07/13</td><td></td><td>Epic</td></tr>
+<tr><td>Eschalon: Book I</td><td></td><td>Basilisk Games</td><td>2007/11/19</td><td></td><td>GOG</td></tr>
+<tr><td>EVE Online</td><td>PEGI 12</td><td>CCP Games</td><td>2003/05/06</td><td></td><td>Steam</td></tr>
+<tr><td>Everything</td><td>PEGI 3</td><td>David OReilly</td><td>2017/03/21</td><td></td><td>Epic</td></tr>
+<tr><td>F.E.A.R.</td><td>PEGI 18</td><td>Monolith Productions</td><td>2005/10/17</td><td>2024/10/25 21:27:19</td><td>Steam</td></tr>
+<tr><td>F.E.A.R. 2: Project Origin</td><td>PEGI 18</td><td>Monolith Productions</td><td>2009/02/10</td><td></td><td>Steam</td></tr>
+<tr><td>F.E.A.R. 3</td><td>PEGI 18</td><td>Day 1 Studios</td><td>2011/06/21</td><td></td><td>Steam</td></tr>
+<tr><td>F.E.A.R.: Extraction Point</td><td>PEGI 18</td><td>TimeGate Studios</td><td>2006/10/24</td><td></td><td>Steam</td></tr>
+<tr><td>F.E.A.R.: Perseus Mandate</td><td>PEGI 18</td><td>TimeGate Studios</td><td>2007/11/06</td><td></td><td>Steam</td></tr>
+<tr><td>F1 2018</td><td>PEGI 3</td><td>Codemasters</td><td>2018/08/24</td><td></td><td>Steam</td></tr>
+<tr><td>Faeria</td><td>PEGI 7</td><td>Abrakam</td><td>2017/03/08</td><td></td><td>Epic</td></tr>
+<tr><td>Fall Guys</td><td>PEGI 3</td><td>Mediatonic</td><td>2020/08/04</td><td></td><td>Epic</td></tr>
+<tr><td>Fall Guys</td><td>PEGI 3</td><td>Mediatonic</td><td>2020/08/04</td><td>2020/09/06 19:10:07</td><td>Steam</td></tr>
+<tr><td>Fallout 2</td><td>PEGI 16</td><td>Black Isle Studios</td><td>1998/10/29</td><td></td><td>GOG</td></tr>
+<tr><td>Fallout 2: A Post Nuclear Role Playing Game</td><td>PEGI 16</td><td>Black Isle Studios, The Omni Group</td><td>1998/10/29</td><td></td><td>Epic</td></tr>
+<tr><td>Fallout 3: Game of the Year Edition</td><td>PEGI 18</td><td>Bethesda Game Studios</td><td>2009/10/13</td><td></td><td>Epic</td></tr>
+<tr><td>Fallout 4</td><td>PEGI 18</td><td>Bethesda Game Studios</td><td>2015/11/09</td><td>2024/05/12 20:04:56</td><td>Steam</td></tr>
+<tr><td>Fallout New Vegas: Courier's Stash</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fallout New Vegas: Dead Money</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fallout New Vegas: Gun Runners’ Arsenal</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fallout New Vegas: Honest Hearts</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fallout New Vegas: Lonesome Road</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fallout New Vegas: Old World Blues</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fallout Tactics</td><td>PEGI 16</td><td>Micro Forté</td><td>2001/03/15</td><td></td><td>GOG</td></tr>
+<tr><td>Fallout Tactics: Brotherhood of Steel</td><td>PEGI 16</td><td>Micro Forté</td><td>2001/03/15</td><td></td><td>Epic</td></tr>
+<tr><td>Fallout: A Post Nuclear Role Playing Game</td><td>PEGI 16</td><td>Black Isle Studios, The Omni Group</td><td>1997/09/30</td><td></td><td>Epic</td></tr>
+<tr><td>Fallout: New Vegas</td><td>PEGI 18</td><td>Obsidian Entertainment</td><td>2010/10/19</td><td></td><td>Epic</td></tr>
+<tr><td>Far Cry 2</td><td>PEGI 16</td><td>Ubisoft Montreal</td><td>2008/10/21</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Far Cry 3</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2012/11/28</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Far Cry 3 Deluxe Edition</td><td></td><td>Ubisoft Montreal</td><td>2013/12/31</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Far Cry 4</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2014/11/18</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Far Cry 5</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2018/03/26</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Far Cry 6</td><td>PEGI 18</td><td>Ubisoft Toronto</td><td>2021/10/07</td><td>2025/03/15 18:43:49</td><td>Steam</td></tr>
+<tr><td>Far Cry 6</td><td>PEGI 18</td><td>Ubisoft Toronto</td><td>2021/10/07</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Far Cry New Dawn</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2019/02/15</td><td></td><td></td></tr>
+<tr><td>Far Cry New Dawn</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2019/02/15</td><td>2024/04/10 19:54:31</td><td>Steam</td></tr>
+<tr><td>Far Cry New Dawn</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2019/02/15</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Farmer's Dynasty</td><td>PEGI 3</td><td>Toplitz Productions</td><td>2019/11/07</td><td></td><td>Steam</td></tr>
+<tr><td>Farming Simulator 19</td><td>PEGI 3</td><td>Giants Software</td><td>2018/11/19</td><td></td><td>Epic</td></tr>
+<tr><td>Farming Simulator 22</td><td>PEGI 3</td><td>Giants Software</td><td>2021/11/22</td><td></td><td>Epic</td></tr>
+<tr><td>Faster Than Light</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Fearless Fantasy</td><td></td><td>Enter Skies</td><td>2014/05/15</td><td></td><td>Steam</td></tr>
+<tr><td>Figment</td><td>PEGI 12</td><td>Bedtime Digital Games</td><td>2017/09/22</td><td></td><td>Epic</td></tr>
+<tr><td>Figment 2: Creed Valley</td><td>PEGI 7</td><td>Bedtime Digital Games</td><td>2023/03/09</td><td></td><td>Epic</td></tr>
+<tr><td>Filament</td><td></td><td>Beard Envy</td><td>2020/04/23</td><td></td><td>Epic</td></tr>
+<tr><td>Five Nights at Freddy's: Into the Pit</td><td>PEGI 16</td><td>Mega Cat Studios</td><td>2024/08/07</td><td></td><td>Epic</td></tr>
+<tr><td>Flight of the Amazon Queen</td><td></td><td>Interactive Binary Illusions, iPhSoft</td><td>1995/12/31</td><td></td><td>GOG</td></tr>
+<tr><td>FNaF World</td><td></td><td>ScottGames</td><td>2017/01/12</td><td>2018/08/09 18:10:08</td><td>Steam</td></tr>
+<tr><td>For Honor</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2017/02/13</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Forever Skies</td><td></td><td>Far From Home</td><td>2023/06/22</td><td>2023/07/14 19:36:04</td><td>Steam</td></tr>
+<tr><td>Fort Solis</td><td>PEGI 16</td><td>Fallen Leaf</td><td>2023/08/22</td><td>2025/11/26 17:39:52</td><td>GOG</td></tr>
+<tr><td>Fortnite</td><td>PEGI 12</td><td>Epic Games</td><td>2017/07/25</td><td></td><td>Epic</td></tr>
+<tr><td>Fortnite</td><td></td><td>Epic Games Inc.</td><td>2017/07/25</td><td>2025/11/26 20:26:30</td><td>Xbox</td></tr>
+<tr><td>Fortnite Festival</td><td>PEGI 12</td><td>Epic Games, Harmonix Music Systems</td><td>2023/12/09</td><td></td><td>Epic</td></tr>
+<tr><td>Fortnite Reload</td><td>PEGI 12</td><td>Epic Games</td><td>2024/06/22</td><td></td><td>Epic</td></tr>
+<tr><td>FOUNDRY</td><td></td><td>Channel 3 Entertainment, MEDER Dynamics</td><td>2024/05/02</td><td>2025/10/18 22:33:02</td><td>Steam</td></tr>
+<tr><td>Freddy Fazbear's Pizzeria Simulator</td><td>PEGI 12</td><td>ScottGames</td><td>2017/12/04</td><td>2019/01/24 19:54:08</td><td>Steam</td></tr>
+<tr><td>Freshly Frosted</td><td>PEGI 3</td><td>The Quantum Astrophysicists Guild</td><td>2022/06/10</td><td></td><td>Epic</td></tr>
+<tr><td>Frostpunk</td><td>PEGI 16</td><td>11 bit studios</td><td>2018/04/24</td><td></td><td>Epic</td></tr>
+<tr><td>Fuse</td><td>PEGI 18</td><td>Insomniac Games</td><td>2013/05/28</td><td></td><td>Steam</td></tr>
+<tr><td>Galaxy Control: 3D Strategy</td><td></td><td></td><td>2016/08/10</td><td>2016/10/01 19:39:53</td><td>Steam</td></tr>
+<tr><td>Gamecraft</td><td></td><td>Freejam</td><td>2019/10/25</td><td>2021/02/08 16:27:25</td><td>Steam</td></tr>
+<tr><td>GameMaker: Studio</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Garage Flipper: Prologue</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Garry's Mod</td><td></td><td>Facepunch Studios</td><td>2004/12/24</td><td>2025/09/09 19:53:22</td><td>Steam</td></tr>
+<tr><td>Gas Station Simulator</td><td>PEGI 16, PEGI 3</td><td>Drago Entertainment</td><td>2021/09/15</td><td>2023/11/02 18:42:30</td><td>Steam</td></tr>
+<tr><td>Gas Station Simulator: Prologue - Early Days</td><td></td><td></td><td></td><td>2021/07/05 10:38:42</td><td>Steam</td></tr>
+<tr><td>Generation Zero</td><td>PEGI 12</td><td>Systemic Reaction</td><td>2019/03/26</td><td>2020/12/31 12:46:02</td><td>Steam</td></tr>
+<tr><td>Generator Rex : Agent of Providence</td><td></td><td></td><td>2012</td><td>2025/03/18 19:57:12</td><td></td></tr>
+<tr><td>Ghostbusters Remastered</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Ghostbusters: Spirits Unleashed</td><td>PEGI 12</td><td>Illfonic</td><td>2022/10/18</td><td></td><td>Epic</td></tr>
+<tr><td>Ghostbusters: Spirits Unleashed Ecto Edition</td><td></td><td></td><td></td><td>2025/01/21 22:18:33</td><td>Steam</td></tr>
+<tr><td>Ghostrunner 2</td><td>PEGI 18</td><td>One More Level</td><td>2023/10/26</td><td></td><td>Epic</td></tr>
+<tr><td>Ghostwire Tokyo</td><td>PEGI 12</td><td>Tango Gameworks</td><td>2022/03/24</td><td></td><td>Epic</td></tr>
+<tr><td>Glitched Out</td><td></td><td>SHB Games</td><td>2024/12/13</td><td></td><td>Steam</td></tr>
+<tr><td>Glove Skin</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Go Ace It</td><td></td><td></td><td>2022/05/28</td><td></td><td>Steam</td></tr>
+<tr><td>GOAT OF DUTY</td><td></td><td>34BigThings srl</td><td>2019/07/10</td><td></td><td>Steam</td></tr>
+<tr><td>Goat Simulator 3</td><td>PEGI 12</td><td>Coffee Stain Studios</td><td>2022/11/16</td><td>2024/12/20 19:04:11</td><td>Steam</td></tr>
+<tr><td>Goat Simulator 3: Windows Edition</td><td></td><td>Coffee Stain North AB</td><td>2023/12/07</td><td></td><td>Xbox</td></tr>
+<tr><td>Godfall</td><td>PEGI 16</td><td>Counterplay Games</td><td>2020/11/12</td><td></td><td>Epic</td></tr>
+<tr><td>Godlike Burger</td><td>PEGI 16</td><td>Liquid Pug LLC</td><td>2022/04/21</td><td></td><td>Epic</td></tr>
+<tr><td>Gold Rush: The Game</td><td></td><td>Code Horizon</td><td>2017/10/13</td><td>2022/09/26 19:28:08</td><td>Steam</td></tr>
+<tr><td>Golf With Your Friends</td><td>PEGI 7</td><td>Blacklight Interactive</td><td>2016/01/29</td><td></td><td>GOG</td></tr>
+<tr><td>Golfie</td><td></td><td>Triheart Studio</td><td>2023/01/19</td><td></td><td>Amazon</td></tr>
+<tr><td>GoNNER</td><td>PEGI 7</td><td>Art in Heart</td><td>2016/10/12</td><td></td><td>Epic</td></tr>
+<tr><td>Gotham Knights</td><td>PEGI 16</td><td>Warner Bros. Games Montreal</td><td>2022/10/21</td><td>2023/10/30 21:08:12</td><td>Xbox</td></tr>
+<tr><td>Grand Theft Auto V</td><td></td><td></td><td>2022/06/15</td><td></td><td>Epic</td></tr>
+<tr><td>Grand Theft Auto V Enhanced</td><td></td><td>Rockstar North</td><td>2025/03/04</td><td></td><td>Epic</td></tr>
+<tr><td>Gravitas</td><td></td><td>Galaxy Shark Studios</td><td>2019/08/23</td><td>2019/12/02 14:49:19</td><td>Steam</td></tr>
+<tr><td>GRID 2</td><td>PEGI 3</td><td>Codemasters Southam</td><td>2013/05/27</td><td>2019/07/05 08:13:08</td><td>Steam</td></tr>
+<tr><td>Guns and Robots</td><td></td><td></td><td>2014/08/04</td><td>2014/08/19 10:22:24</td><td>Steam</td></tr>
+<tr><td>GWENT: The Witcher Card Game</td><td>PEGI 16</td><td>CD Projekt RED</td><td>2018/10/23</td><td></td><td>GOG</td></tr>
+<tr><td>Half-Life</td><td>PEGI 16</td><td>Valve</td><td>1998/11/19</td><td>2023/01/10 18:27:34</td><td>Steam</td></tr>
+<tr><td>Half-Life 2</td><td>PEGI 16</td><td>Valve</td><td>2004/11/16</td><td>2020/03/26 17:27:35</td><td>Steam</td></tr>
+<tr><td>Half-Life 2: Deathmatch</td><td></td><td>Valve</td><td>2004/11/30</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life 2: Episode One</td><td>PEGI 16</td><td>Valve</td><td>2006/06/01</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life 2: Episode Two</td><td>PEGI 16</td><td>Valve</td><td>2007/10/09</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life 2: Lost Coast</td><td></td><td>Valve</td><td>2005/10/27</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life Deathmatch: Source</td><td></td><td>Valve</td><td>2006/05/01</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life: Absolute Zero</td><td></td><td></td><td>2017/04/17</td><td>2020/09/30 18:59:43</td><td>Steam</td></tr>
+<tr><td>Half-Life: Blue Shift</td><td>PEGI 16</td><td>Gearbox Software</td><td>2001/06/12</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life: Opposing Force</td><td>PEGI 16</td><td>Gearbox Software</td><td>1999/11/10</td><td></td><td>Steam</td></tr>
+<tr><td>Half-Life: Source</td><td></td><td>Valve</td><td>2004/06/01</td><td></td><td>Steam</td></tr>
+<tr><td>Hardspace: Shipbreaker</td><td></td><td>Blackbird Interactive</td><td>2022/05/24</td><td></td><td>Epic</td></tr>
+<tr><td>HD Wallpaper</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Headsnatchers</td><td>PEGI 7</td><td>IguanaBee</td><td>2018/07/24</td><td></td><td>Steam</td></tr>
+<tr><td>Hell Let Loose</td><td>PEGI 16</td><td>Team17</td><td>2019/06/06</td><td></td><td>Epic</td></tr>
+<tr><td>HELLION</td><td></td><td>Zero Gravity</td><td>2018/10/21</td><td></td><td>Steam</td></tr>
+<tr><td>Hello Neighbor Alpha 4</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Hello Neighbor Alpha Version</td><td></td><td></td><td></td><td></td><td>GOG</td></tr>
+<tr><td>High Entropy: Challenges</td><td></td><td>binarynonsense</td><td>2020/09/01</td><td>2022/03/13 18:12:30</td><td>Steam</td></tr>
+<tr><td>High On Life</td><td>PEGI 18</td><td>Squanch Games</td><td>2022/12/13</td><td>2025/07/16 20:50:06</td><td>Steam</td></tr>
+<tr><td>HITMAN</td><td>PEGI 18</td><td>IO Interactive</td><td>2016/03/11</td><td></td><td>Epic</td></tr>
+<tr><td>HITMAN 1 Complete First Season</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>HITMAN 1 GOTY Upgrade</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>HITMAN 3</td><td>PEGI 18</td><td>IO Interactive</td><td>2021/01/20</td><td></td><td>Epic</td></tr>
+<tr><td>HITMAN 3 Free Starter Pack</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>HITMAN World of Assassination</td><td>PEGI 18</td><td>IO Interactive</td><td>2021/01/20</td><td></td><td>Steam</td></tr>
+<tr><td>Hitman: Absolution</td><td>PEGI 18</td><td>IO Interactive</td><td>2012/11/19</td><td></td><td>GOG</td></tr>
+<tr><td>Hob</td><td>PEGI 12</td><td>Runic Games</td><td>2017/09/26</td><td></td><td>Epic</td></tr>
+<tr><td>Honkai Impact 3rd</td><td>PEGI 12</td><td>HoYoverse, miHoYo</td><td>2016/10/14</td><td></td><td>Epic</td></tr>
+<tr><td>Horizon Chase Turbo</td><td>PEGI 3</td><td>Aquiris Game Studio</td><td>2018/05/15</td><td></td><td>Epic</td></tr>
+<tr><td>Horizon Chase Turbo</td><td>PEGI 3</td><td>Aquiris Game Studio</td><td>2018/05/15</td><td></td><td>Steam</td></tr>
+<tr><td>Hotel Renovator</td><td>PEGI 3</td><td>Two Horizons</td><td>2023/03/07</td><td>2025/11/15 09:31:52</td><td>Steam</td></tr>
+<tr><td>House Builder</td><td>PEGI 3</td><td>FreeMind</td><td>2021/11/11</td><td>2024/08/31 10:29:27</td><td>Steam</td></tr>
+<tr><td>House of Golf 2</td><td>PEGI 3</td><td>Starlight Games</td><td>2024/08/16</td><td></td><td>Epic</td></tr>
+<tr><td>Hue</td><td>PEGI 3</td><td>Fiddlesticks</td><td>2016/08/30</td><td></td><td>Epic</td></tr>
+<tr><td>Human Fall Flat</td><td>PEGI 3</td><td>No Brakes Games</td><td>2016/07/22</td><td>2021/09/09 14:40:25</td><td>Steam</td></tr>
+<tr><td>HUMANKIND</td><td>PEGI 12</td><td>Amplitude Studios</td><td>2021/08/17</td><td></td><td>Epic</td></tr>
+<tr><td>Hydroneer</td><td></td><td>Foulball Hangover</td><td>2020/05/08</td><td>2025/09/26 17:32:28</td><td>Steam</td></tr>
+<tr><td>HYENAS - Closed Beta</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Hyper Scape</td><td>PEGI 12</td><td>Ubisoft Montreal</td><td>2020/08/11</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Icarus</td><td></td><td>RocketWerkz</td><td>2021/12/04</td><td>2025/01/31 19:05:14</td><td>Steam</td></tr>
+<tr><td>Immortals Fenyx Rising</td><td>PEGI 12</td><td>Ubisoft Québec</td><td>2020/12/02</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>In Sound Mind</td><td>PEGI 12</td><td>We Create Stuff</td><td>2021/09/28</td><td></td><td>Epic</td></tr>
+<tr><td>INDUSTRIA</td><td>PEGI 12</td><td>Bleakmill</td><td>2021/09/30</td><td></td><td>Epic</td></tr>
+<tr><td>Infinifactory</td><td>PEGI 12</td><td>Zachtronics</td><td>2015/06/30</td><td></td><td>Epic</td></tr>
+<tr><td>Influent</td><td></td><td>Three Flip Studios</td><td>2014/02/04</td><td></td><td>Steam</td></tr>
+<tr><td>Injustice: Gods Among Us Ultimate Edition</td><td>PEGI 16</td><td>High Voltage Software</td><td>2013/11/12</td><td></td><td>Steam</td></tr>
+<tr><td>InnerSpace</td><td>PEGI 3</td><td>PolyKnight Games</td><td>2018/01/16</td><td></td><td>Epic</td></tr>
+<tr><td>Insurmountable</td><td>PEGI 7</td><td>ByteRockers' Games</td><td>2021/04/29</td><td></td><td>Epic</td></tr>
+<tr><td>Internet Cafe Simulator</td><td></td><td>Cheesecake, Cocopo</td><td>2019/10/25</td><td></td><td>Steam</td></tr>
+<tr><td>Interplanetary</td><td></td><td>Team Jolly Roger</td><td>2015/04/02</td><td></td><td>Steam</td></tr>
+<tr><td>Interplanetary: Enhanced Edition</td><td></td><td>Team Jolly Roger</td><td>2017/08/02</td><td>2019/01/19 21:10:44</td><td>Steam</td></tr>
+<tr><td>Into The Breach</td><td>PEGI 12</td><td>Subset Games</td><td>2018/02/27</td><td></td><td>Epic</td></tr>
+<tr><td>Invincible Presents: Atom Eve</td><td>PEGI 18</td><td>Terrible Posture Games</td><td>2023/11/14</td><td></td><td>Epic</td></tr>
+<tr><td>Ironcast</td><td>PEGI 12</td><td>Dreadbit</td><td>2015/03/26</td><td></td><td>Epic</td></tr>
+<tr><td>Journey To The Savage Planet</td><td>PEGI 12</td><td>Typhoon Studios</td><td>2020/01/28</td><td></td><td>Epic</td></tr>
+<tr><td>Journey To The Savage Planet: Employee Of The Month</td><td></td><td>Raccoon Logic</td><td>2024/07/03</td><td>2024/08/20 18:04:38</td><td>Xbox</td></tr>
+<tr><td>JUNKPUNK</td><td></td><td></td><td>2021/11/12</td><td>2023/11/18 21:19:28</td><td>Steam</td></tr>
+<tr><td>Jurassic World Evolution</td><td>PEGI 16</td><td>Frontier Developments</td><td>2018/06/11</td><td></td><td>Epic</td></tr>
+<tr><td>Jurassic World Evolution</td><td>PEGI 16</td><td>Frontier Developments</td><td>2018/06/11</td><td>2021/06/15 19:57:49</td><td>Steam</td></tr>
+<tr><td>Just Cause</td><td>PEGI 16</td><td>Avalanche Studios</td><td>2006/09/22</td><td></td><td>Steam</td></tr>
+<tr><td>Just Cause 2</td><td>PEGI 18</td><td>Avalanche Studios</td><td>2010/03/23</td><td></td><td>Steam</td></tr>
+<tr><td>Just Cause 3</td><td>PEGI 18</td><td>Avalanche Studios</td><td>2015/11/30</td><td>2024/11/21 21:34:06</td><td>Steam</td></tr>
+<tr><td>Just Cause 4</td><td>PEGI 18</td><td>Avalanche Studios</td><td>2018/12/04</td><td></td><td>Epic</td></tr>
+<tr><td>Just Cause 4</td><td>PEGI 18</td><td>Avalanche Studios</td><td>2018/12/04</td><td>2023/12/03 12:43:53</td><td>Steam</td></tr>
+<tr><td>Kabounce</td><td>PEGI 3</td><td>Stitch Heads Entertainment</td><td>2018/05/29</td><td>2019/12/07 21:44:58</td><td>Steam</td></tr>
+<tr><td>Killing Floor 2</td><td>PEGI 18</td><td>Tripwire Interactive</td><td>2016/11/18</td><td></td><td>Epic</td></tr>
+<tr><td>KillingFloor2Beta</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Kingdom Come Deliverance</td><td>PEGI 18</td><td>Warhorse Studios</td><td>2018/02/13</td><td></td><td>Epic</td></tr>
+<tr><td>Knight Squad 2 Trials</td><td></td><td></td><td></td><td>2021/04/17 19:54:32</td><td>Steam</td></tr>
+<tr><td>Lake</td><td>PEGI 16</td><td>Gamious</td><td>2021/09/01</td><td></td><td>Amazon</td></tr>
+<tr><td>Landlord's Super</td><td></td><td>Minskworks</td><td>2020/04/30</td><td>2022/05/01 14:50:38</td><td>Steam</td></tr>
+<tr><td>Lara Croft and the Temple of Osiris</td><td>PEGI 12</td><td>Crystal Dynamics</td><td>2014/12/08</td><td>2020/10/05 14:40:21</td><td>Steam</td></tr>
+<tr><td>Layers of Fear</td><td>PEGI 16</td><td>Anshar Studios, Bloober Team</td><td>2023/06/15</td><td></td><td>Epic</td></tr>
+<tr><td>Layers of Fear 2</td><td></td><td></td><td>2023/06/15</td><td></td><td>Epic</td></tr>
+<tr><td>Left 4 Dead</td><td>PEGI 18</td><td>Certain Affinity, Turtle Rock Studios, Valve</td><td>2008/11/17</td><td></td><td>Steam</td></tr>
+<tr><td>Left 4 Dead 2</td><td>PEGI 18</td><td>Turtle Rock Studios, Valve</td><td>2009/11/17</td><td></td><td>Steam</td></tr>
+<tr><td>Legend of Keepers: Prologue</td><td></td><td></td><td></td><td></td><td>GOG</td></tr>
+<tr><td>LEGO Batman 2 DC Super Heroes</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2012/06/19</td><td></td><td>Epic</td></tr>
+<tr><td>LEGO Batman 2: DC Super Heroes</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2012/06/19</td><td>2025/11/26 21:26:31</td><td>Steam</td></tr>
+<tr><td>LEGO Batman 3 Beyond Gotham</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2014/11/11</td><td></td><td>Epic</td></tr>
+<tr><td>LEGO Batman 3: Beyond Gotham</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2014/11/11</td><td>2025/11/26 17:42:17</td><td>Steam</td></tr>
+<tr><td>LEGO Batman The Videogame</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2008/09/23</td><td></td><td>Epic</td></tr>
+<tr><td>LEGO Batman: The Videogame</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2008/09/23</td><td>2025/11/22 21:25:58</td><td>Steam</td></tr>
+<tr><td>LEGO Builder's Journey</td><td>PEGI 3</td><td>Light Brick Studio</td><td>2019/12/20</td><td></td><td>Epic</td></tr>
+<tr><td>LEGO City Undercover</td><td>PEGI 7</td><td>TT Fusion</td><td>2013/03/17</td><td>2024/02/11 20:55:54</td><td>Steam</td></tr>
+<tr><td>LEGO DC Super-Villains</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2018/10/16</td><td>2021/01/28 20:43:41</td><td>Steam</td></tr>
+<tr><td>LEGO Fortnite</td><td>PEGI 7</td><td>Epic Games</td><td>2023/12/07</td><td></td><td>Epic</td></tr>
+<tr><td>LEGO Harry Potter: Years 1-4</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2010/06/25</td><td></td><td>Steam</td></tr>
+<tr><td>LEGO Harry Potter: Years 5-7</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2011/11/11</td><td></td><td>Steam</td></tr>
+<tr><td>LEGO Indiana Jones 2: The Adventure Continues</td><td>PEGI 7</td><td>Feral Interactive, Traveller's Tales</td><td>2009/11/17</td><td>2023/08/31 19:45:06</td><td>Steam</td></tr>
+<tr><td>LEGO Jurassic World</td><td>PEGI 7</td><td>TT Games</td><td>2015/06/11</td><td>2023/11/05 12:15:27</td><td>Steam</td></tr>
+<tr><td>LEGO MARVEL Super Heroes</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2013/09/30</td><td>2023/09/03 19:54:57</td><td>Steam</td></tr>
+<tr><td>LEGO MARVEL Super Heroes 2</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2017/11/14</td><td>2017/11/21 17:18:08</td><td>Steam</td></tr>
+<tr><td>LEGO MARVEL's Avengers</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2016/01/26</td><td>2020/02/07 21:38:07</td><td>Steam</td></tr>
+<tr><td>LEGO Pirates of the Caribbean The Video Game</td><td>PEGI 7</td><td>TransGaming Inc., Traveller's Tales</td><td>2011/05/10</td><td>2025/11/24 22:11:42</td><td>Steam</td></tr>
+<tr><td>LEGO STAR WARS: The Force Awakens</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2016/06/27</td><td>2022/07/17 17:14:48</td><td>Steam</td></tr>
+<tr><td>LEGO Star Wars: The Skywalker Saga</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2022/04/05</td><td></td><td>Epic</td></tr>
+<tr><td>LEGO Star Wars: The Skywalker Saga</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2022/04/05</td><td></td><td></td></tr>
+<tr><td>LEGO Star Wars: The Skywalker Saga</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2022/04/05</td><td>2025/01/07 21:52:01</td><td>Steam</td></tr>
+<tr><td>LEGO The Hobbit</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2014/04/08</td><td>2023/06/23 21:52:26</td><td>Steam</td></tr>
+<tr><td>LEGO The Incredibles</td><td>PEGI 7</td><td>Feral Interactive, Traveller's Tales, TT Games</td><td>2018/06/15</td><td>2025/09/08 19:39:28</td><td>Steam</td></tr>
+<tr><td>LEGO The Lord of the Rings</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2012/10/30</td><td>2023/07/04 20:01:46</td><td>Steam</td></tr>
+<tr><td>LEGO Worlds</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2017/03/07</td><td>2021/12/31 21:59:02</td><td>Steam</td></tr>
+<tr><td>LEGOⓇ Indiana Jones: The Original Adventures</td><td>PEGI 7</td><td>Robosoft Technologies, Traveller's Tales</td><td>2008/06/02</td><td>2023/12/17 17:32:34</td><td>Steam</td></tr>
+<tr><td>Life is Strange</td><td>PEGI 16</td><td>DON'T NOD</td><td>2015/01/29</td><td></td><td>Steam</td></tr>
+<tr><td>Life is Strange 2</td><td>PEGI 18</td><td>DON'T NOD, Feral Interactive</td><td>2018/09/26</td><td>2024/10/26 13:36:07</td><td>Steam</td></tr>
+<tr><td>Life is Strange Remastered</td><td></td><td>Deck Nine, DON'T NOD</td><td>2022/02/01</td><td></td><td>Steam</td></tr>
+<tr><td>Life is Strange: Before the Storm Remastered</td><td></td><td>Deck Nine, DON'T NOD</td><td>2022/02/01</td><td>2024/10/26 13:56:41</td><td>Steam</td></tr>
+<tr><td>Life is Strange: True Colors</td><td>PEGI 16</td><td>Deck Nine</td><td>2021/09/10</td><td>2023/06/09 20:12:43</td><td>Steam</td></tr>
+<tr><td>Lifeless Planet: Premier Edition</td><td>PEGI 12</td><td>Stage 2 Studios</td><td>2014/06/06</td><td></td><td>Epic</td></tr>
+<tr><td>Lightyear Frontier (Game Preview)</td><td>PEGI 7</td><td>FRAME BREAK, Amplifier Studios</td><td>2024/03/19</td><td>2024/03/24 20:54:44</td><td>Xbox</td></tr>
+<tr><td>Little Nightmares</td><td>PEGI 16</td><td>Tarsier Studios</td><td>2017/04/28</td><td></td><td>Steam</td></tr>
+<tr><td>Little Nightmares Enhanced Edition</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Lost Daughter</td><td></td><td>Alper Gonen</td><td>2019/07/09</td><td></td><td>Steam</td></tr>
+<tr><td>Lust for Darkness</td><td>PEGI 18</td><td>Movie Games Lunarium</td><td>2018/06/12</td><td>2025/01/14 17:50:44</td><td>Steam</td></tr>
+<tr><td>Mable & The Wood</td><td>PEGI 7</td><td>Triplevision Games</td><td>2019/08/23</td><td></td><td>GOG</td></tr>
+<tr><td>Mafia</td><td>PEGI 18</td><td>Illusion Softworks</td><td>2002/08/29</td><td></td><td>Steam</td></tr>
+<tr><td>Mafia: Definitive Edition</td><td>PEGI 18</td><td>Hangar 13</td><td>2020/09/24</td><td></td><td>GOG</td></tr>
+<tr><td>Maid of Sker</td><td>PEGI 18</td><td>Wales Interactive</td><td>2020/07/28</td><td></td><td>Epic</td></tr>
+<tr><td>Main Assembly</td><td></td><td>Bad Yolk Games</td><td>2020/06/11</td><td>2024/03/19 19:46:39</td><td>Steam</td></tr>
+<tr><td>Maneater</td><td>PEGI 18</td><td>Blindside Interactive, Tripwire Interactive</td><td>2020/05/22</td><td></td><td>Epic</td></tr>
+<tr><td>Manual Samuel - Anniversary Edition</td><td>PEGI 16</td><td>Perfectly Paranormal</td><td>2016/10/11</td><td></td><td>Steam</td></tr>
+<tr><td>Map Pack</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Marbles on Stream</td><td>PEGI 3</td><td>Pixel by Pixel Studios</td><td>2018/03/28</td><td></td><td>Steam</td></tr>
+<tr><td>Marvel Rivals</td><td>PEGI 12</td><td>NetEase Games</td><td>2024/12/06</td><td></td><td>Epic</td></tr>
+<tr><td>Marvel's Guardians of the Galaxy</td><td>PEGI 16</td><td>Eidos Montréal</td><td>2021/10/26</td><td></td><td>Epic</td></tr>
+<tr><td>Marvel's Guardians of the Galaxy: Social-Lord Outfit</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Marvel's Midnight Suns</td><td>PEGI 12</td><td>Firaxis Games</td><td>2022/12/02</td><td></td><td>Epic</td></tr>
+<tr><td>Metro 2033</td><td></td><td>Kefir!</td><td>2012/08/10</td><td></td><td>Steam</td></tr>
+<tr><td>Metro 2033 Redux</td><td>PEGI 18</td><td>4A Games</td><td>2014/08/26</td><td></td><td>Epic</td></tr>
+<tr><td>Metro 2033 Redux</td><td>PEGI 18</td><td>4A Games</td><td>2014/08/25</td><td></td><td>Steam</td></tr>
+<tr><td>Metro Exodus</td><td>PEGI 18</td><td>4A Games</td><td>2019/02/15</td><td></td><td>Steam</td></tr>
+<tr><td>Metro Exodus Enhanced Edition</td><td>PEGI 18</td><td>4A Games</td><td>2019/02/15</td><td></td><td>Steam</td></tr>
+<tr><td>Metro Last Light Redux</td><td>PEGI 18</td><td>4A Games</td><td>2014/08/26</td><td></td><td>Epic</td></tr>
+<tr><td>Metro: Last Light Complete Edition</td><td>PEGI 18</td><td>4A Games</td><td>2013/06/14</td><td></td><td>Steam</td></tr>
+<tr><td>Metro: Last Light Redux</td><td>PEGI 18</td><td>4A Games</td><td>2014/08/26</td><td></td><td>GOG</td></tr>
+<tr><td>Metro: Last Light Redux</td><td>PEGI 18</td><td>4A Games</td><td>2013/05/14</td><td></td><td>Steam</td></tr>
+<tr><td>Minecraft</td><td>PEGI 7</td><td>Mojang Studios</td><td>2011/11/18</td><td>2024/04/04 16:45:28</td><td></td></tr>
+<tr><td>Minecraft Dungeons for Windows</td><td></td><td>Mojang Studios / Double Eleven Limited</td><td>2020/05/26</td><td>2024/04/20 10:37:09</td><td>Xbox</td></tr>
+<tr><td>Minecraft for Windows</td><td></td><td>Mojang/Microsoft Studios</td><td>2015/07/14</td><td>2023/10/26 09:09:51</td><td>Xbox</td></tr>
+<tr><td>Minecraft Launcher</td><td></td><td>Mojang/Microsoft Studios</td><td>2021/11/02</td><td>2024/04/04 16:41:57</td><td>Xbox</td></tr>
+<tr><td>Minecraft Preview for Windows</td><td></td><td>Mojang/Microsoft Studios</td><td>2022/02/09</td><td>2025/04/05 10:47:33</td><td>Xbox</td></tr>
+<tr><td>Mirror's Edge</td><td>PEGI 16</td><td>EA Digital Illusions CE, EA Mobile, IronMonkey Studios</td><td>2008/11/11</td><td>2020/11/28 22:19:01</td><td>Steam</td></tr>
+<tr><td>Mirror's Edge Catalyst</td><td>PEGI 16</td><td>EA Digital Illusions CE</td><td>2016/06/07</td><td>2020/12/04 15:07:30</td><td>Steam</td></tr>
+<tr><td>Moonbase Alpha</td><td></td><td>Army Game Studio, Virtual Heroes</td><td>2010/07/06</td><td>2015/06/30 13:51:33</td><td>Steam</td></tr>
+<tr><td>Moonlighter</td><td>PEGI 7</td><td>Digital Sun Games</td><td>2018/05/29</td><td></td><td>Epic</td></tr>
+<tr><td>Mortal Shell</td><td>PEGI 16</td><td>Cold Symmetry</td><td>2020/08/18</td><td></td><td>Epic</td></tr>
+<tr><td>Mortal Shell Tech Beta</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>MudRunner</td><td>PEGI 3</td><td>Saber Interactive</td><td>2017/10/31</td><td></td><td>Epic</td></tr>
+<tr><td>MURDERED: SOUL SUSPECT</td><td>PEGI 16</td><td>Airtight Games</td><td>2014/06/03</td><td>2023/04/30 21:38:03</td><td>Steam</td></tr>
+<tr><td>Mutant Year Zero Road to Eden</td><td>PEGI 16</td><td>The Bearded Ladies</td><td>2018/12/04</td><td></td><td>Epic</td></tr>
+<tr><td>Mutazione</td><td>PEGI 7</td><td>Die Gute Fabrik</td><td>2019/09/19</td><td></td><td>Epic</td></tr>
+<tr><td>My Time at Portia</td><td>PEGI 7</td><td>Pathea Games</td><td>2019/01/15</td><td></td><td>Epic</td></tr>
+<tr><td>Neon Abyss</td><td>PEGI 16</td><td>Veewo Games</td><td>2020/07/13</td><td></td><td>Epic</td></tr>
+<tr><td>Nephise Begins</td><td></td><td></td><td>2017/04/24</td><td></td><td>Steam</td></tr>
+<tr><td>New Tales from the Borderlands</td><td>PEGI 18</td><td>Gearbox Software</td><td>2022/10/20</td><td></td><td>Epic</td></tr>
+<tr><td>New World</td><td>PEGI 16</td><td>Amazon Game Studios</td><td>2021/09/28</td><td></td><td>Steam</td></tr>
+<tr><td>Nex Machina</td><td>PEGI 12</td><td>Housemarque</td><td>2017/06/20</td><td></td><td>Steam</td></tr>
+<tr><td>Night in the Woods</td><td>PEGI 12</td><td>Infinite Fall</td><td>2017/02/21</td><td></td><td>Epic</td></tr>
+<tr><td>No More Room in Hell</td><td></td><td>Lever Games</td><td>2013/09/04</td><td></td><td>Steam</td></tr>
+<tr><td>No Straight Roads: Encore Edition</td><td></td><td></td><td>2021/10/21</td><td></td><td>Epic</td></tr>
 <tr><td>Now Testing 407</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Obduction</td><td>PEGI 12</td><td></td><td>Cyan Worlds</td><td>2016/08/24</td><td></td></tr>
-<tr><td>Occupy Mars: Prologue</td><td></td><td></td><td></td><td>2020/08/20</td><td>2020/09/06 18:39:08</td></tr>
-<tr><td>Ocean World: Eden Crafters Prologue</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Offworld Trading Company</td><td>PEGI 3</td><td></td><td>mohawk games</td><td>2016/04/28</td><td></td></tr>
-<tr><td>One Finger Death Punch</td><td></td><td></td><td>Silver Dollar Games</td><td>2013/09/01</td><td></td></tr>
-<tr><td>Operation Tango</td><td>PEGI 12, PEGI 7</td><td></td><td>Clever Plays Studio</td><td>2021/06/01</td><td>2024/12/22 19:13:22</td></tr>
-<tr><td>Operation: Tango - Demo</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Orwell: Ignorance is Strength</td><td>PEGI 16</td><td></td><td>Osmotic Studios</td><td>2018/02/22</td><td></td></tr>
-<tr><td>Overcooked</td><td>PEGI 3</td><td></td><td>Ghost Town Games</td><td>2016/11/15</td><td></td></tr>
-<tr><td>Overload - Playable Teaser</td><td></td><td></td><td>Revival Productions, LLC</td><td>2016/03/07</td><td></td></tr>
-<tr><td>Oxenfree</td><td>PEGI 12</td><td></td><td>Night School Studio</td><td>2016/01/14</td><td></td></tr>
-<tr><td>Palia</td><td>PEGI 12</td><td></td><td>Singularity 6</td><td>2023/12/14</td><td></td></tr>
-<tr><td>Party Maker Farm Fest</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Path of Giants</td><td>PEGI 3</td><td></td><td>Journey Bound Games Inc.</td><td>2019/08/27</td><td>2021/01/09 17:07:27</td></tr>
-<tr><td>PAYDAY 2</td><td>PEGI 18</td><td></td><td>Overkill Software</td><td>2013/08/13</td><td></td></tr>
-<tr><td>PC Building Simulator 2 Beta</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Phantom Doctrine</td><td>PEGI 18</td><td></td><td>CreativeForge Games</td><td>2018/08/14</td><td></td></tr>
-<tr><td>Pharaoh + Cleopatra</td><td></td><td></td><td></td><td>2001/12/31</td><td>2022/12/20 21:26:19</td></tr>
-<tr><td>Pharaoh: A New Era</td><td></td><td></td><td>Triskell Interactive</td><td>2023/02/15</td><td></td></tr>
-<tr><td>Phasmophobia</td><td></td><td></td><td>Kinetic Games</td><td>2020/09/18</td><td>2024/04/15 19:15:25</td></tr>
-<tr><td>Phineas and Ferb: Across the 2nd Dimension</td><td></td><td></td><td></td><td>2011</td><td>2025/03/18 19:33:08</td></tr>
-<tr><td>Pine</td><td>PEGI 12</td><td></td><td>Twirlbound</td><td>2019/10/10</td><td></td></tr>
-<tr><td>Pink Heaven</td><td></td><td></td><td>Studio Pixel</td><td>2015/11/03</td><td></td></tr>
-<tr><td>Pink Hour</td><td></td><td></td><td>Studio Pixel</td><td>2015/10/28</td><td></td></tr>
-<tr><td>PLANET ALPHA</td><td>PEGI 12</td><td></td><td>Planet Alpha ApS</td><td>2018/09/04</td><td>2021/02/21 17:22:25</td></tr>
-<tr><td>Plasticity</td><td></td><td></td><td>USC Games</td><td>2019/05/24</td><td>2020/03/21 18:21:22</td></tr>
-<tr><td>PlateUp!</td><td>PEGI 3</td><td></td><td>It’s happening</td><td>2022/08/04</td><td></td></tr>
-<tr><td>Playcraft</td><td></td><td></td><td>Bebop Games</td><td>2019/10/23</td><td></td></tr>
-<tr><td>Polyball</td><td></td><td></td><td>Studio Monolith</td><td>2015/06/04</td><td>2020/05/01 15:25:56</td></tr>
-<tr><td>Portal</td><td>PEGI 12</td><td></td><td>Valve</td><td>2007/10/10</td><td>2023/09/01 18:38:20</td></tr>
-<tr><td>Portal 2</td><td>PEGI 12</td><td></td><td>Valve</td><td>2011/04/18</td><td>2024/11/14 19:40:56</td></tr>
-<tr><td>Portal 2 - The Final Hours</td><td></td><td></td><td></td><td></td><td>2020/07/13 18:13:40</td></tr>
-<tr><td>Portal Reloaded</td><td></td><td></td><td>PORTANIS</td><td>2021/04/19</td><td>2024/10/29 18:50:06</td></tr>
-<tr><td>Portal Stories: Mel</td><td></td><td></td><td>Prism Game Studios Ltd.</td><td>2015/07/25</td><td>2023/06/16 19:59:52</td></tr>
-<tr><td>Portal with RTX</td><td></td><td></td><td></td><td>2022/12/08</td><td>2023/09/04 19:56:57</td></tr>
-<tr><td>Portal: Revolution</td><td></td><td></td><td>Second Face Software</td><td>2024/01/06</td><td>2024/11/09 18:23:20</td></tr>
-<tr><td>POSTAL 2</td><td></td><td></td><td>Running With Scissors</td><td>2003/04/14</td><td></td></tr>
-<tr><td>POSTAL: Classic and Uncut</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>PowerWash Adventure</td><td></td><td></td><td></td><td></td><td>2024/03/17 08:36:29</td></tr>
-<tr><td>PowerWash Simulator</td><td>PEGI 3</td><td></td><td>FuturLab</td><td>2021/05/19</td><td>2025/10/26 13:26:11</td></tr>
-<tr><td>Predator Hunting Grounds</td><td>PEGI 18</td><td></td><td>Illfonic</td><td>2020/04/24</td><td></td></tr>
-<tr><td>PREY</td><td>PEGI 18</td><td></td><td>Arkane Studios</td><td>2017/05/04</td><td></td></tr>
-<tr><td>Prime World</td><td></td><td></td><td>Nival Interactive</td><td>2014/03/28</td><td>2014/08/18 09:59:49</td></tr>
-<tr><td>Prison Architect</td><td>PEGI 16</td><td></td><td>Introversion Software</td><td>2015/10/06</td><td></td></tr>
-<tr><td>Puzzle Pack 1</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Puzzle Pack 2</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Q.U.B.E. 10th Anniversary</td><td>PEGI 3</td><td></td><td>Toxic Games</td><td>2022/09/14</td><td></td></tr>
-<tr><td>Q.U.B.E. 2</td><td>PEGI 12</td><td></td><td>Toxic Games</td><td>2018/03/13</td><td></td></tr>
-<tr><td>Q.U.B.E. 2 Soundtrack</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Q.U.B.E: Director's Cut</td><td>PEGI 12</td><td></td><td>Toxic Games</td><td>2014/05/21</td><td></td></tr>
-<tr><td>Quake Live</td><td></td><td></td><td>id Software</td><td>2010/08/06</td><td>2015/09/27 01:05:30</td></tr>
-<tr><td>RAGE 2</td><td>PEGI 18</td><td></td><td>Avalanche Studios, id Software</td><td>2019/05/13</td><td></td></tr>
-<tr><td>Railway Empire</td><td>PEGI 3</td><td></td><td>Gaming Minds Studios</td><td>2018/01/26</td><td></td></tr>
-<tr><td>RAYMAN LEGENDS</td><td>PEGI 7</td><td></td><td>Ubisoft Montpellier</td><td>2013/08/30</td><td></td></tr>
-<tr><td>Relicta</td><td>PEGI 16</td><td></td><td>Mighty Polygon</td><td>2020/08/03</td><td></td></tr>
-<tr><td>Relicta</td><td>PEGI 16</td><td></td><td>Mighty Polygon</td><td>2020/08/03</td><td>2023/03/02 18:14:12</td></tr>
-<tr><td>Remember Me</td><td>PEGI 16</td><td></td><td>DON'T NOD</td><td>2013/06/03</td><td>2023/06/10 13:28:44</td></tr>
-<tr><td>Remnant: From the Ashes</td><td>PEGI 16</td><td></td><td>Gunfire Games</td><td>2019/08/20</td><td></td></tr>
-<tr><td>Remothered: Tormented Fathers</td><td>PEGI 18</td><td></td><td>Stormind Games</td><td>2018/01/30</td><td></td></tr>
-<tr><td>Renowned Explorers: International Society</td><td></td><td></td><td>Abbey Games</td><td>2015/09/02</td><td></td></tr>
-<tr><td>Return.</td><td></td><td></td><td>Breadmeat</td><td>2018/08/03</td><td></td></tr>
-<tr><td>Revenge of the Savage Planet PC</td><td></td><td></td><td>Raccoon Logic Studios Inc.</td><td>9998/12/30</td><td>2025/05/11 20:10:45</td></tr>
-<tr><td>Riders Republic</td><td>PEGI 12</td><td></td><td>Ubisoft Annecy</td><td>2021/10/28</td><td></td></tr>
-<tr><td>RiME</td><td>PEGI 7</td><td></td><td>Tequila Works</td><td>2017/05/26</td><td></td></tr>
-<tr><td>Rise of the Tomb Raider</td><td>PEGI 18</td><td></td><td>Crystal Dynamics</td><td>2015/11/10</td><td>2022/08/24 21:11:48</td></tr>
-<tr><td>Rise of the Tomb Raider: 20 Year Celebration</td><td>PEGI 18</td><td></td><td>Crystal Dynamics</td><td>2016/10/11</td><td></td></tr>
-<tr><td>Roblox</td><td></td><td></td><td></td><td>2016/01/21</td><td></td></tr>
-<tr><td>Robocraft</td><td></td><td></td><td>Freejam Games</td><td>2017/08/24</td><td>2021/07/13 22:05:33</td></tr>
-<tr><td>Rocket League</td><td>PEGI 3</td><td></td><td>Psyonix</td><td>2015/07/06</td><td></td></tr>
-<tr><td>RollerCoaster Tycoon 3: Complete Edition</td><td>PEGI 3</td><td></td><td>Frontier Developments</td><td>2020/09/24</td><td></td></tr>
-<tr><td>Rust</td><td></td><td></td><td>Facepunch Studios</td><td>2018/02/08</td><td>2021/05/30 21:35:32</td></tr>
-<tr><td>Rust - Staging Branch</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>s&box</td><td></td><td></td><td>Facepunch Studios</td><td>2024/07/26</td><td></td></tr>
-<tr><td>Saints Row</td><td>PEGI 18</td><td></td><td>Volition</td><td>2022/08/23</td><td></td></tr>
-<tr><td>Saints Row</td><td>PEGI 18</td><td></td><td>Volition</td><td>2022/08/23</td><td>2024/05/01 20:26:32</td></tr>
-<tr><td>Saints Row IV Re-Elected</td><td>PEGI 18</td><td></td><td>Volition</td><td>2015/01/20</td><td></td></tr>
-<tr><td>Saints Row IV: Re-Elected</td><td></td><td></td><td>Deep Silver</td><td>2014/05/09</td><td></td></tr>
-<tr><td>Saints Row The Third Remastered</td><td>PEGI 18</td><td></td><td>Volition</td><td>2020/05/22</td><td></td></tr>
-<tr><td>Saints Row: Gat out of Hell</td><td>PEGI 16</td><td></td><td>High Voltage Software, Volition</td><td>2015/01/20</td><td></td></tr>
-<tr><td>Sang-Froid: Tales of Werewolves</td><td></td><td></td><td>Artifice Studio</td><td>2013/04/05</td><td></td></tr>
-<tr><td>Sanitarium</td><td></td><td></td><td>DreamForge Intertainment</td><td>1998/04/28</td><td></td></tr>
-<tr><td>Satisfactory</td><td></td><td></td><td>Coffee Stain Studios</td><td>2019/03/19</td><td>2025/01/25 11:53:04</td></tr>
-<tr><td>Satisfactory Early Access</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Satisfactory Experimental</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Saturnalia</td><td>PEGI 16</td><td></td><td>Santa Ragione</td><td>2022/10/27</td><td></td></tr>
-<tr><td>Scarf</td><td>PEGI 7</td><td></td><td>Uprising Studios</td><td>2021/12/23</td><td></td></tr>
-<tr><td>Scavengers</td><td></td><td></td><td>Midwinter Entertainment</td><td>2021/05/01</td><td></td></tr>
-<tr><td>SCP: Secret Laboratory</td><td></td><td></td><td>Northwood Studios</td><td>2017/12/28</td><td>2019/02/10 18:48:33</td></tr>
-<tr><td>SCP022</td><td></td><td></td><td></td><td>2019/02/02</td><td></td></tr>
-<tr><td>Scrap Mechanic</td><td></td><td></td><td>Axolot Games</td><td>2016/01/20</td><td>2021/03/12 15:38:58</td></tr>
-<tr><td>Sea of Thieves: 2024 Edition</td><td></td><td></td><td>Rare Ltd</td><td>2018/03/20</td><td>2024/01/06 21:54:15</td></tr>
-<tr><td>Second Extinction</td><td>PEGI 18</td><td></td><td>Systemic Reaction</td><td>2020/10/13</td><td></td></tr>
-<tr><td>Secret Neighbor Beta</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Sector's Edge</td><td></td><td></td><td></td><td>2020/10/30</td><td></td></tr>
-<tr><td>Selaco</td><td></td><td></td><td>Altered Orbit Studios</td><td>2024/05/31</td><td>2024/09/30 19:47:53</td></tr>
-<tr><td>SELECTIONS OF TITAN ART BOOK</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Severed Steel</td><td>PEGI 16</td><td></td><td>Greylock Studio</td><td>2021/09/17</td><td></td></tr>
-<tr><td>Shadow of the Tomb Raider</td><td>PEGI 18</td><td></td><td>Crystal Dynamics, Eidos Montréal</td><td>2018/09/14</td><td>2021/06/18 10:54:30</td></tr>
-<tr><td>Shadow of the Tomb Raider: Definitive Edition</td><td>PEGI 18</td><td></td><td>Crystal Dynamics, Eidos Montréal</td><td>2019/11/19</td><td></td></tr>
-<tr><td>Shadow Warrior Classic Complete</td><td></td><td></td><td>3D Realms</td><td>2012/11/15</td><td></td></tr>
-<tr><td>Shenmue 3</td><td>PEGI 16</td><td></td><td>Ys Net</td><td>2019/11/19</td><td></td></tr>
-<tr><td>Sherlock Holmes Crimes and Punishments</td><td>PEGI 16</td><td></td><td>Frogwares</td><td>2014/09/29</td><td></td></tr>
-<tr><td>Shores Unknown</td><td></td><td></td><td>Vallynne</td><td>2021/02/17</td><td></td></tr>
-<tr><td>Sid Meier's Civilization VI</td><td>PEGI 12</td><td></td><td>Firaxis Games</td><td>2016/10/20</td><td></td></tr>
-<tr><td>Sid Meier's Civilization VI</td><td>PEGI 12</td><td></td><td>Firaxis Games</td><td>2016/10/20</td><td>2021/07/25 12:09:45</td></tr>
-<tr><td>Sigils of Elohim</td><td></td><td></td><td>Croteam</td><td>2014/10/13</td><td></td></tr>
-<tr><td>Silence of the Sleep</td><td></td><td></td><td>Jesse Makkonen</td><td>2014/09/03</td><td>2019/03/29 16:02:31</td></tr>
-<tr><td>Simply Chess</td><td></td><td></td><td>BlueLine Games</td><td>2015/08/05</td><td></td></tr>
-<tr><td>SIMULACRA</td><td>PEGI 16</td><td></td><td>Kaigan Games</td><td>2017/10/26</td><td>2024/10/27 11:02:18</td></tr>
-<tr><td>SIMULACRA 2</td><td>PEGI 12</td><td></td><td>Kaigan Games</td><td>2019/12/11</td><td></td></tr>
-<tr><td>SIMULACRA 3</td><td>PEGI 12</td><td></td><td>Kaigan Games</td><td>2022/10/25</td><td>2024/10/27 17:17:39</td></tr>
-<tr><td>SIMULACRA: Pipe Dreams</td><td></td><td></td><td>Kaigan Games</td><td>2018/10/25</td><td></td></tr>
-<tr><td>Simulakros</td><td></td><td></td><td>Sirio Games</td><td>2024/10/10</td><td></td></tr>
-<tr><td>Slime Rancher</td><td>PEGI 3</td><td></td><td>Monomi Games</td><td>2016/01/14</td><td></td></tr>
-<tr><td>Slime Rancher</td><td>PEGI 3</td><td></td><td>Monomi Games</td><td>2016/01/14</td><td>2024/02/11 10:29:05</td></tr>
-<tr><td>Slime Rancher 2</td><td></td><td></td><td>Monomi Park</td><td>2025/09/23</td><td>2025/10/01 20:10:47</td></tr>
-<tr><td>Sludge Life</td><td>PEGI 18</td><td></td><td>doseone, Terri Vellmann</td><td>2020/05/28</td><td></td></tr>
-<tr><td>SOMA</td><td>PEGI 16</td><td></td><td>Frictional Games</td><td>2015/09/21</td><td></td></tr>
-<tr><td>South Park: The Fractured But Whole</td><td>PEGI 18</td><td></td><td>Ubisoft San Francisco</td><td>2017/10/17</td><td></td></tr>
-<tr><td>Space Engineers</td><td>PEGI 12</td><td></td><td>Keen Software House</td><td>2019/02/28</td><td>2023/03/24 20:47:30</td></tr>
-<tr><td>Spiral Knights</td><td></td><td></td><td>Grey Havens</td><td>2011/04/04</td><td>2018/07/09 20:07:08</td></tr>
-<tr><td>Spooky's Jump Scare Mansion</td><td></td><td></td><td>Lag Studios</td><td>2014/10/24</td><td></td></tr>
-<tr><td>Spray Paint Simulator</td><td></td><td></td><td>North Star Video Games</td><td>2025/05/29</td><td>2025/06/01 16:53:01</td></tr>
-<tr><td>STAR WARS Jedi: Fallen Order </td><td>PEGI 16</td><td></td><td>Respawn Entertainment</td><td>2019/11/15</td><td>2025/01/16 18:43:41</td></tr>
-<tr><td>STAR WARS Jedi: Survivor</td><td>PEGI 12</td><td></td><td>Respawn Entertainment</td><td>2023/04/28</td><td></td></tr>
-<tr><td>STAR WARS Knights of the Old Republic</td><td>PEGI 12</td><td></td><td>BioWare</td><td>2003/07/15</td><td></td></tr>
-<tr><td>STAR WARS Knights of the Old Republic II: The Sith Lords</td><td>PEGI 12</td><td></td><td>Obsidian Entertainment</td><td>2004/12/06</td><td></td></tr>
-<tr><td>Star Wars: Knights of the Old Republic</td><td>PEGI 12</td><td></td><td>BioWare</td><td>2003/07/15</td><td></td></tr>
-<tr><td>Star Wars: The Force Unleashed</td><td>PEGI 12</td><td></td><td></td><td>2022/04/20</td><td></td></tr>
-<tr><td>STAR WARS: The Force Unleashed Ultimate Sith Edition</td><td>PEGI 16</td><td></td><td>LucasArts</td><td>2009/11/03</td><td></td></tr>
-<tr><td>STAR WARS: The Old Republic</td><td>PEGI 16</td><td></td><td>BioWare Austin</td><td>2011/12/20</td><td></td></tr>
-<tr><td>Stargunner</td><td></td><td></td><td>Apogee Software</td><td>1996/11/19</td><td></td></tr>
-<tr><td>STASIS : BONE TOTEM</td><td>PEGI 16</td><td></td><td>The Brotherhood Games</td><td>2023/05/31</td><td></td></tr>
-<tr><td>State of Decay: Year-One</td><td>PEGI 18</td><td></td><td>Undead Labs</td><td>2015/04/27</td><td>2022/10/27 16:51:40</td></tr>
-<tr><td>Steel Seed Demo</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Steep</td><td>PEGI 12</td><td></td><td>Ubisoft Annecy</td><td>2016/12/01</td><td></td></tr>
-<tr><td>STEEP</td><td>PEGI 12</td><td></td><td>Ubisoft Annecy</td><td>2016/12/01</td><td></td></tr>
-<tr><td>Stick it to the Man</td><td>PEGI 12</td><td></td><td>Zoink Games</td><td>2013/11/19</td><td></td></tr>
-<tr><td>Stranded Deep</td><td>PEGI 16</td><td></td><td>Beam Team Games</td><td>2015/01/23</td><td></td></tr>
-<tr><td>Stream Racer</td><td></td><td></td><td>LUVI GAMES</td><td>2020/06/19</td><td></td></tr>
-<tr><td>Streamer Life Simulator</td><td>PEGI 18</td><td></td><td></td><td>2020/08/21</td><td></td></tr>
-<tr><td>Subliminal Demo</td><td></td><td></td><td></td><td></td><td>2025/10/31 22:39:03</td></tr>
-<tr><td>Submerged Hidden Depths</td><td>PEGI 7</td><td></td><td>Uppercut Games</td><td>2020/12/03</td><td></td></tr>
-<tr><td>Subnautica</td><td>PEGI 7</td><td></td><td>Unknown Worlds Entertainment</td><td>2014/12/16</td><td></td></tr>
-<tr><td>Subnautica: Below Zero</td><td>PEGI 12</td><td></td><td>Unknown Worlds Entertainment</td><td>2019/01/30</td><td>2022/09/15 21:31:33</td></tr>
-<tr><td>Subterrain</td><td></td><td></td><td>PixelLore</td><td>2016/01/21</td><td></td></tr>
-<tr><td>Summer of '58</td><td></td><td></td><td>EMIKA_GAMES</td><td>2021/07/21</td><td></td></tr>
-<tr><td>Sundered Eldritch Edition</td><td>PEGI 12</td><td></td><td>Thunder Lotus Games</td><td>2018/12/19</td><td></td></tr>
-<tr><td>Super Meat Boy</td><td>PEGI 12</td><td></td><td>Team Meat</td><td>2010/10/20</td><td></td></tr>
-<tr><td>Super Street: The Game</td><td></td><td></td><td>Rebel Games, Team6 Game Studios</td><td>2018/09/11</td><td></td></tr>
-<tr><td>SUPERHOT</td><td>PEGI 12</td><td></td><td>SUPERHOT Team</td><td>2016/02/25</td><td></td></tr>
-<tr><td>Supermarket Together</td><td></td><td></td><td>DeadDevsTellNoLies</td><td>2024/08/09</td><td>2025/01/31 19:02:18</td></tr>
-<tr><td>Survival Machine Demo</td><td></td><td></td><td></td><td></td><td>2025/03/14 22:17:53</td></tr>
-<tr><td>Surviving Mars</td><td>PEGI 7</td><td></td><td>Haemimont Games</td><td>2018/03/15</td><td></td></tr>
-<tr><td>Surviving Mars</td><td>PEGI 7</td><td></td><td>Haemimont Games</td><td>2018/03/15</td><td>2022/05/24 23:56:14</td></tr>
-<tr><td>Surviving the Aftermath</td><td>PEGI 7</td><td></td><td>Iceflake Studios</td><td>2020/10/22</td><td></td></tr>
-<tr><td>Syberia</td><td>PEGI 7</td><td></td><td>Anuman Interactive, Microids</td><td>2002/08/09</td><td></td></tr>
-<tr><td>Syberia 2</td><td>PEGI 3</td><td></td><td>MC2-Microïds, Microids</td><td>2004/03/30</td><td></td></tr>
-<tr><td>SYMMETRY</td><td>PEGI 12</td><td></td><td>IMGN.PRO</td><td>2018/02/20</td><td></td></tr>
-<tr><td>Tacoma</td><td>PEGI 16</td><td></td><td>Fullbright</td><td>2017/08/02</td><td></td></tr>
-<tr><td>Tales from Candlekeep: Tomb of Annihilation</td><td></td><td></td><td>BKOM Studios</td><td>2017/10/11</td><td></td></tr>
-<tr><td>Tales from the Borderlands</td><td>PEGI 18</td><td></td><td>Telltale Games</td><td>2014/11/25</td><td></td></tr>
-<tr><td>Tandem A Tale of Shadows</td><td>PEGI 12, PEGI 7</td><td></td><td>Monochrome Paris</td><td>2021/09/25</td><td></td></tr>
-<tr><td>Tank Mechanic Simulator</td><td>PEGI 3</td><td></td><td>DeGenerals</td><td>2020/02/20</td><td></td></tr>
-<tr><td>Tank Mechanic Simulator</td><td>PEGI 3</td><td></td><td>DeGenerals</td><td>2020/02/20</td><td>2024/08/06 17:52:42</td></tr>
-<tr><td>Team Fortress 2</td><td>PEGI 16</td><td></td><td>Valve</td><td>2007/10/09</td><td>2020/06/15 20:56:49</td></tr>
-<tr><td>Team Fortress Classic</td><td>PEGI 16</td><td></td><td>Valve</td><td>1999/04/07</td><td></td></tr>
-<tr><td>Techtonica</td><td>PEGI 3</td><td></td><td>Fire Hose Games</td><td>2023/07/18</td><td>2025/02/12 17:11:57</td></tr>
-<tr><td>Techtonica (Game Preview)</td><td>PEGI 3</td><td></td><td>Fire Hose Games</td><td>2023/07/18</td><td>2023/11/06 21:33:50</td></tr>
-<tr><td>Teenagent</td><td></td><td></td><td>Metropolis Software</td><td>1994/02/26</td><td></td></tr>
-<tr><td>Tell Me Why</td><td>PEGI 16</td><td></td><td>DON'T NOD</td><td>2020/08/27</td><td>2023/09/03 20:38:30</td></tr>
-<tr><td>Terraformers</td><td>PEGI 3</td><td></td><td>Asteroid Lab</td><td>2022/04/21</td><td></td></tr>
-<tr><td>Terraforming Mars</td><td>PEGI 3</td><td></td><td>LUCKYHAMMERS Entertainment Inc.</td><td>2018/10/17</td><td></td></tr>
-<tr><td>Terraria</td><td>PEGI 12</td><td></td><td>Re-Logic</td><td>2011/05/16</td><td>2018/11/01 23:28:04</td></tr>
-<tr><td>TerraTech</td><td>PEGI 7</td><td></td><td>Payload Studios</td><td>2018/08/10</td><td></td></tr>
-<tr><td>The Academy: The First Riddle</td><td></td><td></td><td>Pine Studio</td><td>2020/06/19</td><td></td></tr>
-<tr><td>The Awesome Adventures of Captain Spirit</td><td></td><td></td><td>DON'T NOD</td><td>2018/06/25</td><td></td></tr>
-<tr><td>The Bridge</td><td>PEGI 3</td><td></td><td>The Quantum Astrophysicists Guild, Ty Taylor & Mario Castañeda</td><td>2013/02/22</td><td></td></tr>
-<tr><td>The Callisto Protocol</td><td>PEGI 18</td><td></td><td>Striking Distance Studios</td><td>2022/12/02</td><td></td></tr>
-<tr><td>The Callisto Protocol</td><td>PEGI 18</td><td></td><td>Striking Distance Studios</td><td>2022/12/02</td><td>2024/11/01 18:20:21</td></tr>
-<tr><td>The Collage Atlas</td><td></td><td></td><td>John Evelyn</td><td>2020/10/16</td><td></td></tr>
-<tr><td>The Cube Factory</td><td></td><td></td><td></td><td>2021/05/14</td><td>2021/06/24 20:13:53</td></tr>
-<tr><td>The Elder Scrolls II: Daggerfall</td><td>PEGI 16</td><td></td><td>Bethesda Softworks</td><td>1996/08/31</td><td></td></tr>
-<tr><td>The Elder Scrolls IV: Oblivion - Game of the Year Edition Deluxe</td><td></td><td></td><td>Bethesda Game Studios</td><td>2009/06/16</td><td></td></tr>
-<tr><td>The Entropy Centre</td><td>PEGI 7</td><td></td><td>Stubby Games</td><td>2022/11/03</td><td>2025/01/06 20:51:39</td></tr>
-<tr><td>The Escapists</td><td>PEGI 7</td><td></td><td>Mouldy Toof Studios</td><td>2015/02/13</td><td></td></tr>
-<tr><td>The Escapists 2</td><td>PEGI 7</td><td></td><td>Mouldy Toof Studios</td><td>2017/08/22</td><td></td></tr>
-<tr><td>The Eternal Cylinder</td><td>PEGI 12</td><td></td><td>ACE Team</td><td>2021/09/30</td><td></td></tr>
-<tr><td>The Evil Within</td><td>PEGI 18</td><td></td><td>Tango Gameworks</td><td>2014/10/14</td><td></td></tr>
-<tr><td>The Evil Within 2</td><td>PEGI 18</td><td></td><td>Tango Gameworks</td><td>2017/10/12</td><td></td></tr>
-<tr><td>The Falconeer</td><td>PEGI 12</td><td></td><td>Tomas Sala</td><td>2020/11/10</td><td></td></tr>
-<tr><td>The Fall</td><td></td><td></td><td></td><td>2023/03/01</td><td></td></tr>
-<tr><td>The Forgotten City</td><td>PEGI 16</td><td></td><td>Modern Storyteller</td><td>2021/07/28</td><td></td></tr>
-<tr><td>The Gunk</td><td>PEGI 12</td><td></td><td>Image & Form</td><td>2021/12/16</td><td></td></tr>
-<tr><td>The Gunk</td><td>PEGI 12</td><td></td><td>Image & Form</td><td>2021/12/16</td><td>2024/12/12 16:46:51</td></tr>
-<tr><td>The Jackbox Megapicker</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>The Jackbox Party Pack</td><td>PEGI 12</td><td></td><td>Jackbox Games, Inc.</td><td>2014/11/18</td><td></td></tr>
-<tr><td>The Jackbox Party Pack 7</td><td>PEGI 12</td><td></td><td>Jackbox Games, Inc.</td><td>2020/10/15</td><td>2021/06/18 19:57:48</td></tr>
-<tr><td>The LEGO Movie - Videogame</td><td>PEGI 7</td><td></td><td>TT Fusion, TT Games</td><td>2014/02/04</td><td>2024/08/20 18:09:34</td></tr>
-<tr><td>The LEGO Movie 2 - Videogame</td><td>PEGI 7</td><td></td><td>Feral Interactive, TT Games</td><td>2019/02/26</td><td>2024/07/03 12:59:20</td></tr>
-<tr><td>The LEGO NINJAGO Movie Video Game</td><td>PEGI 7</td><td></td><td>Traveller's Tales</td><td>2017/09/22</td><td></td></tr>
-<tr><td>The Lion's Song</td><td>PEGI 12</td><td></td><td>Mi'pu'mi Games</td><td>2016/07/07</td><td></td></tr>
-<tr><td>The Long Dark</td><td>PEGI 16</td><td></td><td>Hinterland Studio Inc.</td><td>2017/08/01</td><td></td></tr>
-<tr><td>The Lord of The Rings Return to Moria</td><td>PEGI 12</td><td></td><td>Free Range Games</td><td>2023/10/24</td><td></td></tr>
-<tr><td>The Operator</td><td>PEGI 16</td><td></td><td>Bastienre4</td><td>2024/07/22</td><td></td></tr>
-<tr><td>The Operator</td><td></td><td></td><td>Bastienre4</td><td>2024/07/22</td><td>2024/10/27 17:30:20</td></tr>
-<tr><td>The Outer Worlds</td><td>PEGI 18</td><td></td><td>Obsidian Entertainment</td><td>2019/10/25</td><td></td></tr>
-<tr><td>The Outer Worlds: Spacer's Choice Edition</td><td>PEGI 18</td><td></td><td></td><td>2023/03/07</td><td></td></tr>
-<tr><td>The Planet Crafter</td><td></td><td></td><td>Miju Games</td><td>2024/04/10</td><td>2025/11/25 14:52:23</td></tr>
-<tr><td>The Search</td><td></td><td></td><td>Jason Godbey</td><td>2017/04/13</td><td></td></tr>
-<tr><td>The Spectrum Retreat</td><td>PEGI 12</td><td></td><td>Dan Smith Studios</td><td>2018/07/10</td><td></td></tr>
-<tr><td>The Stanley Parable</td><td></td><td></td><td>Galactic Cafe</td><td>2013/10/17</td><td></td></tr>
-<tr><td>The Talos Principle</td><td>PEGI 7</td><td></td><td>Croteam</td><td>2014/12/11</td><td></td></tr>
-<tr><td>The Talos Principle</td><td>PEGI 7</td><td></td><td>Croteam</td><td>2014/12/11</td><td>2025/05/21 16:52:27</td></tr>
-<tr><td>The Talos Principle 2</td><td>PEGI 12</td><td></td><td>Croteam</td><td>2023/11/02</td><td>2023/11/17 16:15:56</td></tr>
-<tr><td>The Talos Principle 2</td><td>PEGI 12</td><td></td><td>Croteam</td><td>2023/11/02</td><td>2024/07/19 20:03:16</td></tr>
-<tr><td>The Talos Principle: Gold Edition</td><td></td><td></td><td>Croteam</td><td>2015/07/23</td><td></td></tr>
-<tr><td>The Talos Principle: Reawakened</td><td>PEGI 12</td><td></td><td>Croteam</td><td>2025/04/10</td><td>2025/05/23 21:23:43</td></tr>
-<tr><td>The Talos Principle: Reawakened Demo</td><td></td><td></td><td></td><td></td><td>2025/03/15 19:08:45</td></tr>
-<tr><td>The Uncertain: Last Quiet Day</td><td>PEGI 7</td><td></td><td></td><td>2016/09/22</td><td>2020/05/14 13:21:08</td></tr>
-<tr><td>The USB Stick Found in the Grass</td><td></td><td></td><td></td><td>2021/01/29</td><td>2022/03/21 15:00:38</td></tr>
-<tr><td>The Vanishing of Ethan Carter</td><td>PEGI 18</td><td></td><td>The Astronauts</td><td>2014/09/25</td><td></td></tr>
-<tr><td>The Vanishing of Ethan Carter Redux</td><td></td><td></td><td>The Astronauts</td><td>2015/09/11</td><td></td></tr>
-<tr><td>The Witcher Goodies Collection</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>The Witcher: Enhanced Edition</td><td>PEGI 18</td><td></td><td>CD Projekt RED</td><td>2008/09/16</td><td></td></tr>
-<tr><td>The Witness</td><td>PEGI 3</td><td></td><td>Thekla, Inc</td><td>2016/01/26</td><td></td></tr>
-<tr><td>theHunter: Call of the Wild</td><td>PEGI 16</td><td></td><td>Expansive Worlds</td><td>2017/02/16</td><td></td></tr>
-<tr><td>There Is No Game : Wrong Dimension</td><td>PEGI 7</td><td></td><td>Draw Me A Pixel</td><td>2020/08/06</td><td></td></tr>
-<tr><td>There is no game: Jam Edition 2015</td><td></td><td></td><td>Draw Me A Pixel</td><td>2019/05/27</td><td>2025/04/30 18:34:59</td></tr>
-<tr><td>Thief</td><td>PEGI 16</td><td></td><td>Eidos Montréal</td><td>2014/02/25</td><td></td></tr>
-<tr><td>Thief Simulator</td><td>PEGI 7</td><td></td><td>Noble Muffins</td><td>2018/11/09</td><td>2025/02/10 17:51:53</td></tr>
-<tr><td>Thief Simulator 2</td><td></td><td></td><td>mrCiastku</td><td>2023/10/04</td><td>2023/10/05 20:26:46</td></tr>
-<tr><td>Thief Simulator 2: Prologue</td><td></td><td></td><td></td><td></td><td>2023/05/14 12:56:32</td></tr>
-<tr><td>Thimbleweed Park</td><td>PEGI 12</td><td></td><td>Terrible Toybox</td><td>2017/03/30</td><td></td></tr>
-<tr><td>This War of Mine</td><td>PEGI 18</td><td></td><td>11 bit studios</td><td>2014/11/14</td><td></td></tr>
-<tr><td>Ticket To Ride: Classic Edition</td><td>PEGI 3</td><td></td><td>Days of Wonder, Next Level Games</td><td>2008/06/25</td><td></td></tr>
-<tr><td>Tiny Tina's Wonderlands</td><td>PEGI 16</td><td></td><td>Gearbox Software</td><td>2022/03/25</td><td></td></tr>
-<tr><td>Tom Clancy’s The Division 2 - PPS</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Tom Clancy's Ghost Recon</td><td></td><td></td><td>Next Level Games</td><td>2010/11/16</td><td></td></tr>
-<tr><td>Tom Clancy's Ghost Recon Breakpoint</td><td></td><td></td><td>Ubisoft Paris</td><td>2019/10/04</td><td></td></tr>
-<tr><td>Tom Clancy's Ghost Recon Wildlands</td><td>PEGI 18</td><td></td><td>Ubisoft Paris</td><td>2017/03/06</td><td></td></tr>
-<tr><td>Tom Clancy's Rainbow Six Extraction</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2022/01/20</td><td></td></tr>
-<tr><td>Tom Clancy's Rainbow Six Siege</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2015/12/01</td><td></td></tr>
-<tr><td>Tom Clancy's The Division</td><td>PEGI 18</td><td></td><td>Massive Entertainment</td><td>2016/03/07</td><td></td></tr>
-<tr><td>Tom Clancy's The Division 2</td><td>PEGI 18</td><td></td><td>Massive Entertainment</td><td>2019/03/15</td><td></td></tr>
-<tr><td>Tomb Raider</td><td>PEGI 18</td><td></td><td>Crystal Dynamics, Feral Interactive</td><td>2013/03/04</td><td>2022/07/18 16:42:42</td></tr>
-<tr><td>Tomb Raider GAME OF THE YEAR EDITION</td><td>PEGI 18</td><td></td><td>Crystal Dynamics, Eidos Montréal, Nixxes</td><td>2014/01/28</td><td></td></tr>
-<tr><td>Tomb Raider I-III Remastered Starring Lara Croft</td><td>PEGI 18</td><td></td><td>Aspyr Media</td><td>2024/02/14</td><td></td></tr>
-<tr><td>Tomb Raider I-III Remastered Starring Lara Croft</td><td>PEGI 18</td><td></td><td>Aspyr Media</td><td>2024/02/14</td><td>2024/10/14 20:58:23</td></tr>
-<tr><td>Tomb Raider: Anniversary</td><td>PEGI 16</td><td></td><td>Buzz Monkey Software, Crystal Dynamics</td><td>2007/06/01</td><td></td></tr>
-<tr><td>Tormented Souls</td><td>PEGI 18</td><td></td><td>Abstract Digital works, Dual Effect</td><td>2021/08/27</td><td></td></tr>
-<tr><td>Total Annihilation: Commander Pack</td><td></td><td></td><td>Cavedog Entertainment</td><td>1998/11/13</td><td></td></tr>
-<tr><td>Total Chaos Demo</td><td></td><td></td><td></td><td></td><td>2025/11/26 21:38:55</td></tr>
-<tr><td>Totally Reliable Delivery Service</td><td>PEGI 3</td><td></td><td>We're Five Games</td><td>2020/04/01</td><td></td></tr>
-<tr><td>Trackmania</td><td>PEGI 3</td><td></td><td>Ubisoft Nadeo</td><td>2020/07/01</td><td></td></tr>
-<tr><td>Trackmania</td><td>PEGI 3</td><td></td><td>Ubisoft Nadeo</td><td>2020/07/01</td><td></td></tr>
-<tr><td>Train Mechanic Simulator 2017</td><td></td><td></td><td>Si7 Studio</td><td>2017/03/23</td><td>2020/04/08 11:07:48</td></tr>
-<tr><td>Train Valley 2</td><td>PEGI 3</td><td></td><td>Flazm</td><td>2019/04/15</td><td></td></tr>
-<tr><td>Transcender</td><td></td><td></td><td>Aldo Jeffrey</td><td>2020/09/30</td><td>2020/10/27 18:19:01</td></tr>
-<tr><td>Transpose</td><td></td><td></td><td>The Secret Location</td><td>2018/11/06</td><td></td></tr>
-<tr><td>Treasure Adventure Game</td><td></td><td></td><td>Robit Games</td><td>2011/11/26</td><td></td></tr>
-<tr><td>Tropico 5</td><td>PEGI 16</td><td></td><td>Haemimont Games</td><td>2014/05/23</td><td></td></tr>
-<tr><td>Trove</td><td>PEGI 7</td><td></td><td>Trion Worlds</td><td>2015/07/05</td><td>2019/09/09 12:26:52</td></tr>
-<tr><td>True Fear: Forsaken Souls Part 1</td><td>PEGI 12</td><td></td><td>Goblinz Studio, The Digital Lounge</td><td>2016/10/19</td><td></td></tr>
-<tr><td>True Fear: Forsaken Souls Part 2</td><td>PEGI 12</td><td></td><td>Goblinz Studio, The Digital Lounge</td><td>2018/11/02</td><td></td></tr>
-<tr><td>Twin Mirror</td><td>PEGI 16</td><td></td><td>DON'T NOD</td><td>2020/12/01</td><td>2023/06/11 10:53:24</td></tr>
-<tr><td>Two Point Hospital</td><td>PEGI 3</td><td></td><td>Two Point Studios</td><td>2018/08/29</td><td></td></tr>
-<tr><td>Tyrian 2000</td><td></td><td></td><td>Eclipse Software</td><td>1999/10/07</td><td></td></tr>
-<tr><td>Ultima IV: Quest of the Avatar</td><td></td><td></td><td>Origin Systems</td><td>1985/11/01</td><td></td></tr>
-<tr><td>Ultima Worlds of Adventure 2: Martian Dreams</td><td></td><td></td><td>Origin Systems</td><td>1991/09/30</td><td></td></tr>
-<tr><td>Ultimate Custom Night</td><td>PEGI 12</td><td></td><td>ScottGames</td><td>2018/06/27</td><td>2020/08/13 20:10:13</td></tr>
-<tr><td>Undead Horde</td><td>PEGI 12</td><td></td><td>10tons, 10tons Ltd.</td><td>2019/05/15</td><td></td></tr>
-<tr><td>Unfortunate Spacemen</td><td></td><td></td><td>Deep Field Games, Geoff 'Zag' Keene</td><td>2020/06/12</td><td>2020/11/16 18:57:27</td></tr>
-<tr><td>Until Then Demo</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Unturned</td><td>PEGI 16</td><td></td><td>Nelson Sexton, Smartly Dressed Games</td><td>2017/07/07</td><td>2024/03/19 20:46:45</td></tr>
-<tr><td>Vampire Survivors</td><td>PEGI 12</td><td></td><td>Poncle</td><td>2022/02/01</td><td></td></tr>
-<tr><td>Vampyr</td><td>PEGI 18</td><td></td><td>DON'T NOD, Dontnod Eleven</td><td>2018/06/04</td><td></td></tr>
-<tr><td>Volcanoids</td><td></td><td></td><td></td><td>2019/01/29</td><td>2024/05/20 17:06:35</td></tr>
-<tr><td>Walking Simulator 2020</td><td></td><td></td><td>Pugscape</td><td>2020/03/05</td><td>2020/03/22 17:36:50</td></tr>
-<tr><td>Waltz of the Wizard</td><td></td><td></td><td>Aldin Dynamics</td><td>2019/07/10</td><td>2025/11/26 20:14:48</td></tr>
-<tr><td>War Thunder</td><td>PEGI 12</td><td></td><td>Gaijin Entertainment</td><td>2013/01/28</td><td></td></tr>
-<tr><td>Warface</td><td>PEGI 16</td><td></td><td>Allods Team, Crytek Kiev</td><td>2013/10/21</td><td>2018/08/14 14:04:45</td></tr>
-<tr><td>Watch Dogs</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2014/05/26</td><td></td></tr>
-<tr><td>Watch Dogs 2</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2016/11/15</td><td></td></tr>
-<tr><td>Watch Dogs: Legion</td><td>PEGI 18</td><td></td><td>Ubisoft Toronto</td><td>2020/10/29</td><td></td></tr>
-<tr><td>Watch Dogs: Legion of the Dead</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Watch_Dogs</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2014/05/26</td><td></td></tr>
-<tr><td>WATCH_DOGS 2</td><td>PEGI 18</td><td></td><td>Ubisoft Montreal</td><td>2016/11/15</td><td></td></tr>
-<tr><td>Waterpark Simulator</td><td></td><td></td><td>CayPlay</td><td>2025/08/22</td><td>2025/11/16 09:26:59</td></tr>
-<tr><td>We Were Here</td><td>PEGI 7</td><td></td><td>Total Mayhem Games</td><td>2017/02/03</td><td>2024/11/09 18:19:19</td></tr>
-<tr><td>We Were Here Expeditions: The FriendShip</td><td>PEGI 3</td><td></td><td>Total Mayhem Games</td><td>2023/09/14</td><td></td></tr>
-<tr><td>We Were Here Expeditions: The FriendShip</td><td>PEGI 3</td><td></td><td>Total Mayhem Games</td><td>2023/09/14</td><td>2023/10/03 20:35:41</td></tr>
-<tr><td>We Were Here Together</td><td>PEGI 12</td><td></td><td>Total Mayhem Games</td><td>2019/10/10</td><td>2020/12/27 20:49:37</td></tr>
-<tr><td>We Were Here Too</td><td>PEGI 3</td><td></td><td>Total Mayhem Games</td><td>2018/02/02</td><td></td></tr>
-<tr><td>while True: learn()</td><td>PEGI 3</td><td></td><td>Luden.io</td><td>2019/01/17</td><td></td></tr>
-<tr><td>Wild West Saga</td><td></td><td></td><td>Tamasenco</td><td>2018/05/30</td><td>2019/02/02 07:58:25</td></tr>
-<tr><td>Windbound</td><td>PEGI 12</td><td></td><td>5 Lives Studios</td><td>2020/08/21</td><td></td></tr>
-<tr><td>Wipeout HD Fury</td><td>PEGI 3</td><td></td><td>SCE Studio Liverpool</td><td>2009</td><td></td></tr>
-<tr><td>Wolfenstein: The New Order</td><td>PEGI 18</td><td></td><td>MachineGames</td><td>2014/05/20</td><td></td></tr>
-<tr><td>World War Z</td><td>PEGI 18</td><td></td><td>Saber Interactive</td><td>2019/04/16</td><td></td></tr>
-<tr><td>Worlds of Ultima: The Savage Empire</td><td></td><td></td><td>Origin Systems</td><td>1990/12/31</td><td></td></tr>
-<tr><td>XCOM 2</td><td>PEGI 16</td><td></td><td>Firaxis Games</td><td>2016/02/04</td><td></td></tr>
-<tr><td>XDefiant - Server Test Session</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>X-Morph: Defense</td><td>PEGI 12</td><td></td><td>Exor Studios</td><td>2017/08/30</td><td></td></tr>
-<tr><td>You Have 10 Seconds</td><td></td><td></td><td></td><td>2016/08/02</td><td>2018/09/15 20:42:07</td></tr>
-<tr><td>You Have to Win the Game</td><td></td><td></td><td>Minor Key Games</td><td>2012/05/06</td><td>2015/06/04 17:55:08</td></tr>
-<tr><td>You Suck at Parking - Complete Edition</td><td>PEGI 3</td><td></td><td>Happy Volcano</td><td>2022/09/14</td><td>2025/11/07 16:25:23</td></tr>
-<tr><td>You Will Die Here Tonight</td><td></td><td></td><td>Spiral Bound Interactive</td><td>2023/10/31</td><td></td></tr>
+<tr><td>Obduction</td><td>PEGI 12</td><td>Cyan Worlds</td><td>2016/08/24</td><td></td><td>Epic</td></tr>
+<tr><td>Occupy Mars: Prologue</td><td></td><td></td><td>2020/08/20</td><td>2020/09/06 18:39:08</td><td>Steam</td></tr>
+<tr><td>Ocean World: Eden Crafters Prologue</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Offworld Trading Company</td><td>PEGI 3</td><td>mohawk games</td><td>2016/04/28</td><td></td><td>Epic</td></tr>
+<tr><td>One Finger Death Punch</td><td></td><td>Silver Dollar Games</td><td>2013/09/01</td><td></td><td>Steam</td></tr>
+<tr><td>Operation Tango</td><td>PEGI 12, PEGI 7</td><td>Clever Plays Studio</td><td>2021/06/01</td><td>2024/12/22 19:13:22</td><td>Steam</td></tr>
+<tr><td>Operation: Tango - Demo</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Orwell: Ignorance is Strength</td><td>PEGI 16</td><td>Osmotic Studios</td><td>2018/02/22</td><td></td><td>Steam</td></tr>
+<tr><td>Overcooked</td><td>PEGI 3</td><td>Ghost Town Games</td><td>2016/11/15</td><td></td><td>Epic</td></tr>
+<tr><td>Overload - Playable Teaser</td><td></td><td>Revival Productions, LLC</td><td>2016/03/07</td><td></td><td>GOG</td></tr>
+<tr><td>Oxenfree</td><td>PEGI 12</td><td>Night School Studio</td><td>2016/01/14</td><td></td><td>Epic</td></tr>
+<tr><td>Palia</td><td>PEGI 12</td><td>Singularity 6</td><td>2023/12/14</td><td></td><td>Steam</td></tr>
+<tr><td>Party Maker Farm Fest</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Path of Giants</td><td>PEGI 3</td><td>Journey Bound Games Inc.</td><td>2019/08/27</td><td>2021/01/09 17:07:27</td><td>Steam</td></tr>
+<tr><td>PAYDAY 2</td><td>PEGI 18</td><td>Overkill Software</td><td>2013/08/13</td><td></td><td>Epic</td></tr>
+<tr><td>PC Building Simulator 2 Beta</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Phantom Doctrine</td><td>PEGI 18</td><td>CreativeForge Games</td><td>2018/08/14</td><td></td><td>Steam</td></tr>
+<tr><td>Pharaoh + Cleopatra</td><td></td><td></td><td>2001/12/31</td><td>2022/12/20 21:26:19</td><td>Steam</td></tr>
+<tr><td>Pharaoh: A New Era</td><td></td><td>Triskell Interactive</td><td>2023/02/15</td><td></td><td>Steam</td></tr>
+<tr><td>Phasmophobia</td><td></td><td>Kinetic Games</td><td>2020/09/18</td><td>2024/04/15 19:15:25</td><td>Steam</td></tr>
+<tr><td>Phineas and Ferb: Across the 2nd Dimension</td><td></td><td></td><td>2011</td><td>2025/03/18 19:33:08</td><td></td></tr>
+<tr><td>Pine</td><td>PEGI 12</td><td>Twirlbound</td><td>2019/10/10</td><td></td><td>Epic</td></tr>
+<tr><td>Pink Heaven</td><td></td><td>Studio Pixel</td><td>2015/11/03</td><td></td><td>Steam</td></tr>
+<tr><td>Pink Hour</td><td></td><td>Studio Pixel</td><td>2015/10/28</td><td></td><td>Steam</td></tr>
+<tr><td>PLANET ALPHA</td><td>PEGI 12</td><td>Planet Alpha ApS</td><td>2018/09/04</td><td>2021/02/21 17:22:25</td><td>Steam</td></tr>
+<tr><td>Plasticity</td><td></td><td>USC Games</td><td>2019/05/24</td><td>2020/03/21 18:21:22</td><td>Steam</td></tr>
+<tr><td>PlateUp!</td><td>PEGI 3</td><td>It’s happening</td><td>2022/08/04</td><td></td><td>Epic</td></tr>
+<tr><td>Playcraft</td><td></td><td>Bebop Games</td><td>2019/10/23</td><td></td><td>Steam</td></tr>
+<tr><td>Polyball</td><td></td><td>Studio Monolith</td><td>2015/06/04</td><td>2020/05/01 15:25:56</td><td>Steam</td></tr>
+<tr><td>Portal</td><td>PEGI 12</td><td>Valve</td><td>2007/10/10</td><td>2023/09/01 18:38:20</td><td>Steam</td></tr>
+<tr><td>Portal 2</td><td>PEGI 12</td><td>Valve</td><td>2011/04/18</td><td>2024/11/14 19:40:56</td><td>Steam</td></tr>
+<tr><td>Portal 2 - The Final Hours</td><td></td><td></td><td></td><td>2020/07/13 18:13:40</td><td>Steam</td></tr>
+<tr><td>Portal Reloaded</td><td></td><td>PORTANIS</td><td>2021/04/19</td><td>2024/10/29 18:50:06</td><td>Steam</td></tr>
+<tr><td>Portal Stories: Mel</td><td></td><td>Prism Game Studios Ltd.</td><td>2015/07/25</td><td>2023/06/16 19:59:52</td><td>Steam</td></tr>
+<tr><td>Portal with RTX</td><td></td><td></td><td>2022/12/08</td><td>2023/09/04 19:56:57</td><td>Steam</td></tr>
+<tr><td>Portal: Revolution</td><td></td><td>Second Face Software</td><td>2024/01/06</td><td>2024/11/09 18:23:20</td><td>Steam</td></tr>
+<tr><td>POSTAL 2</td><td></td><td>Running With Scissors</td><td>2003/04/14</td><td></td><td>GOG</td></tr>
+<tr><td>POSTAL: Classic and Uncut</td><td></td><td></td><td></td><td></td><td>GOG</td></tr>
+<tr><td>PowerWash Adventure</td><td></td><td></td><td></td><td>2024/03/17 08:36:29</td><td>Steam</td></tr>
+<tr><td>PowerWash Simulator</td><td>PEGI 3</td><td>FuturLab</td><td>2021/05/19</td><td>2025/10/26 13:26:11</td><td>Steam</td></tr>
+<tr><td>Predator Hunting Grounds</td><td>PEGI 18</td><td>Illfonic</td><td>2020/04/24</td><td></td><td>Epic</td></tr>
+<tr><td>PREY</td><td>PEGI 18</td><td>Arkane Studios</td><td>2017/05/04</td><td></td><td>Epic</td></tr>
+<tr><td>Prime World</td><td></td><td>Nival Interactive</td><td>2014/03/28</td><td>2014/08/18 09:59:49</td><td>Steam</td></tr>
+<tr><td>Prison Architect</td><td>PEGI 16</td><td>Introversion Software</td><td>2015/10/06</td><td></td><td>Epic</td></tr>
+<tr><td>Puzzle Pack 1</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Puzzle Pack 2</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Q.U.B.E. 10th Anniversary</td><td>PEGI 3</td><td>Toxic Games</td><td>2022/09/14</td><td></td><td>Epic</td></tr>
+<tr><td>Q.U.B.E. 2</td><td>PEGI 12</td><td>Toxic Games</td><td>2018/03/13</td><td></td><td>Epic</td></tr>
+<tr><td>Q.U.B.E. 2 Soundtrack</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Q.U.B.E: Director's Cut</td><td>PEGI 12</td><td>Toxic Games</td><td>2014/05/21</td><td></td><td>Amazon</td></tr>
+<tr><td>Quake Live</td><td></td><td>id Software</td><td>2010/08/06</td><td>2015/09/27 01:05:30</td><td>Steam</td></tr>
+<tr><td>RAGE 2</td><td>PEGI 18</td><td>Avalanche Studios, id Software</td><td>2019/05/13</td><td></td><td>Epic</td></tr>
+<tr><td>Railway Empire</td><td>PEGI 3</td><td>Gaming Minds Studios</td><td>2018/01/26</td><td></td><td>Epic</td></tr>
+<tr><td>RAYMAN LEGENDS</td><td>PEGI 7</td><td>Ubisoft Montpellier</td><td>2013/08/30</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Relicta</td><td>PEGI 16</td><td>Mighty Polygon</td><td>2020/08/03</td><td></td><td>Epic</td></tr>
+<tr><td>Relicta</td><td>PEGI 16</td><td>Mighty Polygon</td><td>2020/08/03</td><td>2023/03/02 18:14:12</td><td>Steam</td></tr>
+<tr><td>Remember Me</td><td>PEGI 16</td><td>DON'T NOD</td><td>2013/06/03</td><td>2023/06/10 13:28:44</td><td>Steam</td></tr>
+<tr><td>Remnant: From the Ashes</td><td>PEGI 16</td><td>Gunfire Games</td><td>2019/08/20</td><td></td><td>Epic</td></tr>
+<tr><td>Remothered: Tormented Fathers</td><td>PEGI 18</td><td>Stormind Games</td><td>2018/01/30</td><td></td><td>Steam</td></tr>
+<tr><td>Renowned Explorers: International Society</td><td></td><td>Abbey Games</td><td>2015/09/02</td><td></td><td>Steam</td></tr>
+<tr><td>Return.</td><td></td><td>Breadmeat</td><td>2018/08/03</td><td></td><td>Steam</td></tr>
+<tr><td>Revenge of the Savage Planet PC</td><td></td><td>Raccoon Logic Studios Inc.</td><td>9998/12/30</td><td>2025/05/11 20:10:45</td><td>Xbox</td></tr>
+<tr><td>Riders Republic</td><td>PEGI 12</td><td>Ubisoft Annecy</td><td>2021/10/28</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>RiME</td><td>PEGI 7</td><td>Tequila Works</td><td>2017/05/26</td><td></td><td>Epic</td></tr>
+<tr><td>Rise of the Tomb Raider</td><td>PEGI 18</td><td>Crystal Dynamics</td><td>2015/11/10</td><td>2022/08/24 21:11:48</td><td>Steam</td></tr>
+<tr><td>Rise of the Tomb Raider: 20 Year Celebration</td><td>PEGI 18</td><td>Crystal Dynamics</td><td>2016/10/11</td><td></td><td>Epic</td></tr>
+<tr><td>Roblox</td><td></td><td></td><td>2016/01/21</td><td></td><td>Xbox</td></tr>
+<tr><td>Robocraft</td><td></td><td>Freejam Games</td><td>2017/08/24</td><td>2021/07/13 22:05:33</td><td>Steam</td></tr>
+<tr><td>Rocket League</td><td>PEGI 3</td><td>Psyonix</td><td>2015/07/06</td><td></td><td>Epic</td></tr>
+<tr><td>RollerCoaster Tycoon 3: Complete Edition</td><td>PEGI 3</td><td>Frontier Developments</td><td>2020/09/24</td><td></td><td>Epic</td></tr>
+<tr><td>Rust</td><td></td><td>Facepunch Studios</td><td>2018/02/08</td><td>2021/05/30 21:35:32</td><td>Steam</td></tr>
+<tr><td>Rust - Staging Branch</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>s&box</td><td></td><td>Facepunch Studios</td><td>2024/07/26</td><td></td><td>Steam</td></tr>
+<tr><td>Saints Row</td><td>PEGI 18</td><td>Volition</td><td>2022/08/23</td><td></td><td>Epic</td></tr>
+<tr><td>Saints Row</td><td>PEGI 18</td><td>Volition</td><td>2022/08/23</td><td>2024/05/01 20:26:32</td><td>Steam</td></tr>
+<tr><td>Saints Row IV Re-Elected</td><td>PEGI 18</td><td>Volition</td><td>2015/01/20</td><td></td><td>Epic</td></tr>
+<tr><td>Saints Row IV: Re-Elected</td><td></td><td>Deep Silver</td><td>2014/05/09</td><td></td><td>GOG</td></tr>
+<tr><td>Saints Row The Third Remastered</td><td>PEGI 18</td><td>Volition</td><td>2020/05/22</td><td></td><td>Epic</td></tr>
+<tr><td>Saints Row: Gat out of Hell</td><td>PEGI 16</td><td>High Voltage Software, Volition</td><td>2015/01/20</td><td></td><td>GOG</td></tr>
+<tr><td>Sang-Froid: Tales of Werewolves</td><td></td><td>Artifice Studio</td><td>2013/04/05</td><td></td><td>GOG</td></tr>
+<tr><td>Sanitarium</td><td></td><td>DreamForge Intertainment</td><td>1998/04/28</td><td></td><td>GOG</td></tr>
+<tr><td>Satisfactory</td><td></td><td>Coffee Stain Studios</td><td>2019/03/19</td><td>2025/01/25 11:53:04</td><td>Steam</td></tr>
+<tr><td>Satisfactory Early Access</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Satisfactory Experimental</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Saturnalia</td><td>PEGI 16</td><td>Santa Ragione</td><td>2022/10/27</td><td></td><td>Epic</td></tr>
+<tr><td>Scarf</td><td>PEGI 7</td><td>Uprising Studios</td><td>2021/12/23</td><td></td><td>Epic</td></tr>
+<tr><td>Scavengers</td><td></td><td>Midwinter Entertainment</td><td>2021/05/01</td><td></td><td>Epic</td></tr>
+<tr><td>SCP: Secret Laboratory</td><td></td><td>Northwood Studios</td><td>2017/12/28</td><td>2019/02/10 18:48:33</td><td>Steam</td></tr>
+<tr><td>SCP022</td><td></td><td></td><td>2019/02/02</td><td></td><td>Steam</td></tr>
+<tr><td>Scrap Mechanic</td><td></td><td>Axolot Games</td><td>2016/01/20</td><td>2021/03/12 15:38:58</td><td>Steam</td></tr>
+<tr><td>Sea of Thieves: 2024 Edition</td><td></td><td>Rare Ltd</td><td>2018/03/20</td><td>2024/01/06 21:54:15</td><td>Xbox</td></tr>
+<tr><td>Second Extinction</td><td>PEGI 18</td><td>Systemic Reaction</td><td>2020/10/13</td><td></td><td>Epic</td></tr>
+<tr><td>Secret Neighbor Beta</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Sector's Edge</td><td></td><td></td><td>2020/10/30</td><td></td><td>Steam</td></tr>
+<tr><td>Selaco</td><td></td><td>Altered Orbit Studios</td><td>2024/05/31</td><td>2024/09/30 19:47:53</td><td>Steam</td></tr>
+<tr><td>SELECTIONS OF TITAN ART BOOK</td><td></td><td></td><td></td><td></td><td>Epic</td></tr>
+<tr><td>Severed Steel</td><td>PEGI 16</td><td>Greylock Studio</td><td>2021/09/17</td><td></td><td>Epic</td></tr>
+<tr><td>Shadow of the Tomb Raider</td><td>PEGI 18</td><td>Crystal Dynamics, Eidos Montréal</td><td>2018/09/14</td><td>2021/06/18 10:54:30</td><td>Steam</td></tr>
+<tr><td>Shadow of the Tomb Raider: Definitive Edition</td><td>PEGI 18</td><td>Crystal Dynamics, Eidos Montréal</td><td>2019/11/19</td><td></td><td>Epic</td></tr>
+<tr><td>Shadow Warrior Classic Complete</td><td></td><td>3D Realms</td><td>2012/11/15</td><td></td><td>GOG</td></tr>
+<tr><td>Shenmue 3</td><td>PEGI 16</td><td>Ys Net</td><td>2019/11/19</td><td></td><td>Epic</td></tr>
+<tr><td>Sherlock Holmes Crimes and Punishments</td><td>PEGI 16</td><td>Frogwares</td><td>2014/09/29</td><td></td><td>Epic</td></tr>
+<tr><td>Shores Unknown</td><td></td><td>Vallynne</td><td>2021/02/17</td><td></td><td>Steam</td></tr>
+<tr><td>Sid Meier's Civilization VI</td><td>PEGI 12</td><td>Firaxis Games</td><td>2016/10/20</td><td></td><td>Epic</td></tr>
+<tr><td>Sid Meier's Civilization VI</td><td>PEGI 12</td><td>Firaxis Games</td><td>2016/10/20</td><td>2021/07/25 12:09:45</td><td>Steam</td></tr>
+<tr><td>Sigils of Elohim</td><td></td><td>Croteam</td><td>2014/10/13</td><td></td><td>Steam</td></tr>
+<tr><td>Silence of the Sleep</td><td></td><td>Jesse Makkonen</td><td>2014/09/03</td><td>2019/03/29 16:02:31</td><td>Steam</td></tr>
+<tr><td>Simply Chess</td><td></td><td>BlueLine Games</td><td>2015/08/05</td><td></td><td>Steam</td></tr>
+<tr><td>SIMULACRA</td><td>PEGI 16</td><td>Kaigan Games</td><td>2017/10/26</td><td>2024/10/27 11:02:18</td><td>Steam</td></tr>
+<tr><td>SIMULACRA 2</td><td>PEGI 12</td><td>Kaigan Games</td><td>2019/12/11</td><td></td><td>Steam</td></tr>
+<tr><td>SIMULACRA 3</td><td>PEGI 12</td><td>Kaigan Games</td><td>2022/10/25</td><td>2024/10/27 17:17:39</td><td>Steam</td></tr>
+<tr><td>SIMULACRA: Pipe Dreams</td><td></td><td>Kaigan Games</td><td>2018/10/25</td><td></td><td>Steam</td></tr>
+<tr><td>Simulakros</td><td></td><td>Sirio Games</td><td>2024/10/10</td><td></td><td>Amazon</td></tr>
+<tr><td>Slime Rancher</td><td>PEGI 3</td><td>Monomi Games</td><td>2016/01/14</td><td></td><td>Epic</td></tr>
+<tr><td>Slime Rancher</td><td>PEGI 3</td><td>Monomi Games</td><td>2016/01/14</td><td>2024/02/11 10:29:05</td><td>Steam</td></tr>
+<tr><td>Slime Rancher 2</td><td></td><td>Monomi Park</td><td>2025/09/23</td><td>2025/10/01 20:10:47</td><td>Steam</td></tr>
+<tr><td>Sludge Life</td><td>PEGI 18</td><td>doseone, Terri Vellmann</td><td>2020/05/28</td><td></td><td>Epic</td></tr>
+<tr><td>SOMA</td><td>PEGI 16</td><td>Frictional Games</td><td>2015/09/21</td><td></td><td>Epic</td></tr>
+<tr><td>South Park: The Fractured But Whole</td><td>PEGI 18</td><td>Ubisoft San Francisco</td><td>2017/10/17</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Space Engineers</td><td>PEGI 12</td><td>Keen Software House</td><td>2019/02/28</td><td>2023/03/24 20:47:30</td><td>Steam</td></tr>
+<tr><td>Spiral Knights</td><td></td><td>Grey Havens</td><td>2011/04/04</td><td>2018/07/09 20:07:08</td><td>Steam</td></tr>
+<tr><td>Spooky's Jump Scare Mansion</td><td></td><td>Lag Studios</td><td>2014/10/24</td><td></td><td>Steam</td></tr>
+<tr><td>Spray Paint Simulator</td><td></td><td>North Star Video Games</td><td>2025/05/29</td><td>2025/06/01 16:53:01</td><td>Xbox</td></tr>
+<tr><td>STAR WARS Jedi: Fallen Order </td><td>PEGI 16</td><td>Respawn Entertainment</td><td>2019/11/15</td><td>2025/01/16 18:43:41</td><td>Steam</td></tr>
+<tr><td>STAR WARS Jedi: Survivor</td><td>PEGI 12</td><td>Respawn Entertainment</td><td>2023/04/28</td><td></td><td>Steam</td></tr>
+<tr><td>STAR WARS Knights of the Old Republic</td><td>PEGI 12</td><td>BioWare</td><td>2003/07/15</td><td></td><td>Steam</td></tr>
+<tr><td>STAR WARS Knights of the Old Republic II: The Sith Lords</td><td>PEGI 12</td><td>Obsidian Entertainment</td><td>2004/12/06</td><td></td><td>Steam</td></tr>
+<tr><td>Star Wars: Knights of the Old Republic</td><td>PEGI 12</td><td>BioWare</td><td>2003/07/15</td><td></td><td>Amazon</td></tr>
+<tr><td>Star Wars: The Force Unleashed</td><td>PEGI 12</td><td></td><td>2022/04/20</td><td></td><td>Amazon</td></tr>
+<tr><td>STAR WARS: The Force Unleashed Ultimate Sith Edition</td><td>PEGI 16</td><td>LucasArts</td><td>2009/11/03</td><td></td><td>Steam</td></tr>
+<tr><td>STAR WARS: The Old Republic</td><td>PEGI 16</td><td>BioWare Austin</td><td>2011/12/20</td><td></td><td>Steam</td></tr>
+<tr><td>Stargunner</td><td></td><td>Apogee Software</td><td>1996/11/19</td><td></td><td>GOG</td></tr>
+<tr><td>STASIS : BONE TOTEM</td><td>PEGI 16</td><td>The Brotherhood Games</td><td>2023/05/31</td><td></td><td>Epic</td></tr>
+<tr><td>State of Decay: Year-One</td><td>PEGI 18</td><td>Undead Labs</td><td>2015/04/27</td><td>2022/10/27 16:51:40</td><td>Steam</td></tr>
+<tr><td>Steel Seed Demo</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Steep</td><td>PEGI 12</td><td>Ubisoft Annecy</td><td>2016/12/01</td><td></td><td>Epic</td></tr>
+<tr><td>STEEP</td><td>PEGI 12</td><td>Ubisoft Annecy</td><td>2016/12/01</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Stick it to the Man</td><td>PEGI 12</td><td>Zoink Games</td><td>2013/11/19</td><td></td><td>Epic</td></tr>
+<tr><td>Stranded Deep</td><td>PEGI 16</td><td>Beam Team Games</td><td>2015/01/23</td><td></td><td>Epic</td></tr>
+<tr><td>Stream Racer</td><td></td><td>LUVI GAMES</td><td>2020/06/19</td><td></td><td>Steam</td></tr>
+<tr><td>Streamer Life Simulator</td><td>PEGI 18</td><td></td><td>2020/08/21</td><td></td><td>Steam</td></tr>
+<tr><td>Subliminal Demo</td><td></td><td></td><td></td><td>2025/10/31 22:39:03</td><td>Steam</td></tr>
+<tr><td>Submerged Hidden Depths</td><td>PEGI 7</td><td>Uppercut Games</td><td>2020/12/03</td><td></td><td>Epic</td></tr>
+<tr><td>Subnautica</td><td>PEGI 7</td><td>Unknown Worlds Entertainment</td><td>2014/12/16</td><td></td><td>Epic</td></tr>
+<tr><td>Subnautica: Below Zero</td><td>PEGI 12</td><td>Unknown Worlds Entertainment</td><td>2019/01/30</td><td>2022/09/15 21:31:33</td><td>Steam</td></tr>
+<tr><td>Subterrain</td><td></td><td>PixelLore</td><td>2016/01/21</td><td></td><td>Steam</td></tr>
+<tr><td>Summer of '58</td><td></td><td>EMIKA_GAMES</td><td>2021/07/21</td><td></td><td>Steam</td></tr>
+<tr><td>Sundered Eldritch Edition</td><td>PEGI 12</td><td>Thunder Lotus Games</td><td>2018/12/19</td><td></td><td>Epic</td></tr>
+<tr><td>Super Meat Boy</td><td>PEGI 12</td><td>Team Meat</td><td>2010/10/20</td><td></td><td>Epic</td></tr>
+<tr><td>Super Street: The Game</td><td></td><td>Rebel Games, Team6 Game Studios</td><td>2018/09/11</td><td></td><td>Steam</td></tr>
+<tr><td>SUPERHOT</td><td>PEGI 12</td><td>SUPERHOT Team</td><td>2016/02/25</td><td></td><td>Epic</td></tr>
+<tr><td>Supermarket Together</td><td></td><td>DeadDevsTellNoLies</td><td>2024/08/09</td><td>2025/01/31 19:02:18</td><td>Steam</td></tr>
+<tr><td>Survival Machine Demo</td><td></td><td></td><td></td><td>2025/03/14 22:17:53</td><td>Steam</td></tr>
+<tr><td>Surviving Mars</td><td>PEGI 7</td><td>Haemimont Games</td><td>2018/03/15</td><td></td><td>Epic</td></tr>
+<tr><td>Surviving Mars</td><td>PEGI 7</td><td>Haemimont Games</td><td>2018/03/15</td><td>2022/05/24 23:56:14</td><td>Steam</td></tr>
+<tr><td>Surviving the Aftermath</td><td>PEGI 7</td><td>Iceflake Studios</td><td>2020/10/22</td><td></td><td>Epic</td></tr>
+<tr><td>Syberia</td><td>PEGI 7</td><td>Anuman Interactive, Microids</td><td>2002/08/09</td><td></td><td>Steam</td></tr>
+<tr><td>Syberia 2</td><td>PEGI 3</td><td>MC2-Microïds, Microids</td><td>2004/03/30</td><td></td><td>Steam</td></tr>
+<tr><td>SYMMETRY</td><td>PEGI 12</td><td>IMGN.PRO</td><td>2018/02/20</td><td></td><td>GOG</td></tr>
+<tr><td>Tacoma</td><td>PEGI 16</td><td>Fullbright</td><td>2017/08/02</td><td></td><td>Epic</td></tr>
+<tr><td>Tales from Candlekeep: Tomb of Annihilation</td><td></td><td>BKOM Studios</td><td>2017/10/11</td><td></td><td>Steam</td></tr>
+<tr><td>Tales from the Borderlands</td><td>PEGI 18</td><td>Telltale Games</td><td>2014/11/25</td><td></td><td>Epic</td></tr>
+<tr><td>Tandem A Tale of Shadows</td><td>PEGI 12, PEGI 7</td><td>Monochrome Paris</td><td>2021/09/25</td><td></td><td>Epic</td></tr>
+<tr><td>Tank Mechanic Simulator</td><td>PEGI 3</td><td>DeGenerals</td><td>2020/02/20</td><td></td><td></td></tr>
+<tr><td>Tank Mechanic Simulator</td><td>PEGI 3</td><td>DeGenerals</td><td>2020/02/20</td><td>2024/08/06 17:52:42</td><td>Steam</td></tr>
+<tr><td>Team Fortress 2</td><td>PEGI 16</td><td>Valve</td><td>2007/10/09</td><td>2020/06/15 20:56:49</td><td>Steam</td></tr>
+<tr><td>Team Fortress Classic</td><td>PEGI 16</td><td>Valve</td><td>1999/04/07</td><td></td><td>Steam</td></tr>
+<tr><td>Techtonica</td><td>PEGI 3</td><td>Fire Hose Games</td><td>2023/07/18</td><td>2025/02/12 17:11:57</td><td>Steam</td></tr>
+<tr><td>Techtonica (Game Preview)</td><td>PEGI 3</td><td>Fire Hose Games</td><td>2023/07/18</td><td>2023/11/06 21:33:50</td><td>Xbox</td></tr>
+<tr><td>Teenagent</td><td></td><td>Metropolis Software</td><td>1994/02/26</td><td></td><td>GOG</td></tr>
+<tr><td>Tell Me Why</td><td>PEGI 16</td><td>DON'T NOD</td><td>2020/08/27</td><td>2023/09/03 20:38:30</td><td>Steam</td></tr>
+<tr><td>Terraformers</td><td>PEGI 3</td><td>Asteroid Lab</td><td>2022/04/21</td><td></td><td>Amazon</td></tr>
+<tr><td>Terraforming Mars</td><td>PEGI 3</td><td>LUCKYHAMMERS Entertainment Inc.</td><td>2018/10/17</td><td></td><td>Epic</td></tr>
+<tr><td>Terraria</td><td>PEGI 12</td><td>Re-Logic</td><td>2011/05/16</td><td>2018/11/01 23:28:04</td><td>Steam</td></tr>
+<tr><td>TerraTech</td><td>PEGI 7</td><td>Payload Studios</td><td>2018/08/10</td><td></td><td>Epic</td></tr>
+<tr><td>The Academy: The First Riddle</td><td></td><td>Pine Studio</td><td>2020/06/19</td><td></td><td>Amazon</td></tr>
+<tr><td>The Awesome Adventures of Captain Spirit</td><td></td><td>DON'T NOD</td><td>2018/06/25</td><td></td><td>Steam</td></tr>
+<tr><td>The Bridge</td><td>PEGI 3</td><td>The Quantum Astrophysicists Guild, Ty Taylor & Mario Castañeda</td><td>2013/02/22</td><td></td><td>Epic</td></tr>
+<tr><td>The Callisto Protocol</td><td>PEGI 18</td><td>Striking Distance Studios</td><td>2022/12/02</td><td></td><td>Epic</td></tr>
+<tr><td>The Callisto Protocol</td><td>PEGI 18</td><td>Striking Distance Studios</td><td>2022/12/02</td><td>2024/11/01 18:20:21</td><td>Steam</td></tr>
+<tr><td>The Collage Atlas</td><td></td><td>John Evelyn</td><td>2020/10/16</td><td></td><td>Amazon</td></tr>
+<tr><td>The Cube Factory</td><td></td><td></td><td>2021/05/14</td><td>2021/06/24 20:13:53</td><td>Steam</td></tr>
+<tr><td>The Elder Scrolls II: Daggerfall</td><td>PEGI 16</td><td>Bethesda Softworks</td><td>1996/08/31</td><td></td><td>GOG</td></tr>
+<tr><td>The Elder Scrolls IV: Oblivion - Game of the Year Edition Deluxe</td><td></td><td>Bethesda Game Studios</td><td>2009/06/16</td><td></td><td>GOG</td></tr>
+<tr><td>The Entropy Centre</td><td>PEGI 7</td><td>Stubby Games</td><td>2022/11/03</td><td>2025/01/06 20:51:39</td><td>Steam</td></tr>
+<tr><td>The Escapists</td><td>PEGI 7</td><td>Mouldy Toof Studios</td><td>2015/02/13</td><td></td><td>Epic</td></tr>
+<tr><td>The Escapists 2</td><td>PEGI 7</td><td>Mouldy Toof Studios</td><td>2017/08/22</td><td></td><td>Epic</td></tr>
+<tr><td>The Eternal Cylinder</td><td>PEGI 12</td><td>ACE Team</td><td>2021/09/30</td><td></td><td>Epic</td></tr>
+<tr><td>The Evil Within</td><td>PEGI 18</td><td>Tango Gameworks</td><td>2014/10/14</td><td></td><td>Epic</td></tr>
+<tr><td>The Evil Within 2</td><td>PEGI 18</td><td>Tango Gameworks</td><td>2017/10/12</td><td></td><td>Epic</td></tr>
+<tr><td>The Falconeer</td><td>PEGI 12</td><td>Tomas Sala</td><td>2020/11/10</td><td></td><td>Epic</td></tr>
+<tr><td>The Fall</td><td></td><td></td><td>2023/03/01</td><td></td><td>Epic</td></tr>
+<tr><td>The Forgotten City</td><td>PEGI 16</td><td>Modern Storyteller</td><td>2021/07/28</td><td></td><td>Amazon</td></tr>
+<tr><td>The Gunk</td><td>PEGI 12</td><td>Image & Form</td><td>2021/12/16</td><td></td><td>GOG</td></tr>
+<tr><td>The Gunk</td><td>PEGI 12</td><td>Image & Form</td><td>2021/12/16</td><td>2024/12/12 16:46:51</td><td>Steam</td></tr>
+<tr><td>The Jackbox Megapicker</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>The Jackbox Party Pack</td><td>PEGI 12</td><td>Jackbox Games, Inc.</td><td>2014/11/18</td><td></td><td>Epic</td></tr>
+<tr><td>The Jackbox Party Pack 7</td><td>PEGI 12</td><td>Jackbox Games, Inc.</td><td>2020/10/15</td><td>2021/06/18 19:57:48</td><td>Steam</td></tr>
+<tr><td>The LEGO Movie - Videogame</td><td>PEGI 7</td><td>TT Fusion, TT Games</td><td>2014/02/04</td><td>2024/08/20 18:09:34</td><td>Steam</td></tr>
+<tr><td>The LEGO Movie 2 - Videogame</td><td>PEGI 7</td><td>Feral Interactive, TT Games</td><td>2019/02/26</td><td>2024/07/03 12:59:20</td><td>Steam</td></tr>
+<tr><td>The LEGO NINJAGO Movie Video Game</td><td>PEGI 7</td><td>Traveller's Tales</td><td>2017/09/22</td><td></td><td>Steam</td></tr>
+<tr><td>The Lion's Song</td><td>PEGI 12</td><td>Mi'pu'mi Games</td><td>2016/07/07</td><td></td><td>Epic</td></tr>
+<tr><td>The Long Dark</td><td>PEGI 16</td><td>Hinterland Studio Inc.</td><td>2017/08/01</td><td></td><td>Epic</td></tr>
+<tr><td>The Lord of The Rings Return to Moria</td><td>PEGI 12</td><td>Free Range Games</td><td>2023/10/24</td><td></td><td>Epic</td></tr>
+<tr><td>The Operator</td><td>PEGI 16</td><td>Bastienre4</td><td>2024/07/22</td><td></td><td>Epic</td></tr>
+<tr><td>The Operator</td><td></td><td>Bastienre4</td><td>2024/07/22</td><td>2024/10/27 17:30:20</td><td>Steam</td></tr>
+<tr><td>The Outer Worlds</td><td>PEGI 18</td><td>Obsidian Entertainment</td><td>2019/10/25</td><td></td><td>GOG</td></tr>
+<tr><td>The Outer Worlds: Spacer's Choice Edition</td><td>PEGI 18</td><td></td><td>2023/03/07</td><td></td><td>Epic</td></tr>
+<tr><td>The Planet Crafter</td><td></td><td>Miju Games</td><td>2024/04/10</td><td>2025/11/25 14:52:23</td><td>Steam</td></tr>
+<tr><td>The Search</td><td></td><td>Jason Godbey</td><td>2017/04/13</td><td></td><td>Steam</td></tr>
+<tr><td>The Spectrum Retreat</td><td>PEGI 12</td><td>Dan Smith Studios</td><td>2018/07/10</td><td></td><td>Epic</td></tr>
+<tr><td>The Stanley Parable</td><td></td><td>Galactic Cafe</td><td>2013/10/17</td><td></td><td>Epic</td></tr>
+<tr><td>The Talos Principle</td><td>PEGI 7</td><td>Croteam</td><td>2014/12/11</td><td></td><td>Epic</td></tr>
+<tr><td>The Talos Principle</td><td>PEGI 7</td><td>Croteam</td><td>2014/12/11</td><td>2025/05/21 16:52:27</td><td>Steam</td></tr>
+<tr><td>The Talos Principle 2</td><td>PEGI 12</td><td>Croteam</td><td>2023/11/02</td><td>2023/11/17 16:15:56</td><td></td></tr>
+<tr><td>The Talos Principle 2</td><td>PEGI 12</td><td>Croteam</td><td>2023/11/02</td><td>2024/07/19 20:03:16</td><td>Steam</td></tr>
+<tr><td>The Talos Principle: Gold Edition</td><td></td><td>Croteam</td><td>2015/07/23</td><td></td><td>GOG</td></tr>
+<tr><td>The Talos Principle: Reawakened</td><td>PEGI 12</td><td>Croteam</td><td>2025/04/10</td><td>2025/05/23 21:23:43</td><td>Steam</td></tr>
+<tr><td>The Talos Principle: Reawakened Demo</td><td></td><td></td><td></td><td>2025/03/15 19:08:45</td><td>Steam</td></tr>
+<tr><td>The Uncertain: Last Quiet Day</td><td>PEGI 7</td><td></td><td>2016/09/22</td><td>2020/05/14 13:21:08</td><td>Steam</td></tr>
+<tr><td>The USB Stick Found in the Grass</td><td></td><td></td><td>2021/01/29</td><td>2022/03/21 15:00:38</td><td>Steam</td></tr>
+<tr><td>The Vanishing of Ethan Carter</td><td>PEGI 18</td><td>The Astronauts</td><td>2014/09/25</td><td></td><td>Epic</td></tr>
+<tr><td>The Vanishing of Ethan Carter Redux</td><td></td><td>The Astronauts</td><td>2015/09/11</td><td></td><td>Epic</td></tr>
+<tr><td>The Witcher Goodies Collection</td><td></td><td></td><td></td><td></td><td>GOG</td></tr>
+<tr><td>The Witcher: Enhanced Edition</td><td>PEGI 18</td><td>CD Projekt RED</td><td>2008/09/16</td><td></td><td>GOG</td></tr>
+<tr><td>The Witness</td><td>PEGI 3</td><td>Thekla, Inc</td><td>2016/01/26</td><td></td><td>Epic</td></tr>
+<tr><td>theHunter: Call of the Wild</td><td>PEGI 16</td><td>Expansive Worlds</td><td>2017/02/16</td><td></td><td>Epic</td></tr>
+<tr><td>There Is No Game : Wrong Dimension</td><td>PEGI 7</td><td>Draw Me A Pixel</td><td>2020/08/06</td><td></td><td>GOG</td></tr>
+<tr><td>There is no game: Jam Edition 2015</td><td></td><td>Draw Me A Pixel</td><td>2019/05/27</td><td>2025/04/30 18:34:59</td><td>Steam</td></tr>
+<tr><td>Thief</td><td>PEGI 16</td><td>Eidos Montréal</td><td>2014/02/25</td><td></td><td>Epic</td></tr>
+<tr><td>Thief Simulator</td><td>PEGI 7</td><td>Noble Muffins</td><td>2018/11/09</td><td>2025/02/10 17:51:53</td><td>Steam</td></tr>
+<tr><td>Thief Simulator 2</td><td></td><td>mrCiastku</td><td>2023/10/04</td><td>2023/10/05 20:26:46</td><td>Steam</td></tr>
+<tr><td>Thief Simulator 2: Prologue</td><td></td><td></td><td></td><td>2023/05/14 12:56:32</td><td>Steam</td></tr>
+<tr><td>Thimbleweed Park</td><td>PEGI 12</td><td>Terrible Toybox</td><td>2017/03/30</td><td></td><td>Epic</td></tr>
+<tr><td>This War of Mine</td><td>PEGI 18</td><td>11 bit studios</td><td>2014/11/14</td><td></td><td>Epic</td></tr>
+<tr><td>Ticket To Ride: Classic Edition</td><td>PEGI 3</td><td>Days of Wonder, Next Level Games</td><td>2008/06/25</td><td></td><td>Epic</td></tr>
+<tr><td>Tiny Tina's Wonderlands</td><td>PEGI 16</td><td>Gearbox Software</td><td>2022/03/25</td><td></td><td>Epic</td></tr>
+<tr><td>Tom Clancy’s The Division 2 - PPS</td><td></td><td></td><td></td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's Ghost Recon</td><td></td><td>Next Level Games</td><td>2010/11/16</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's Ghost Recon Breakpoint</td><td></td><td>Ubisoft Paris</td><td>2019/10/04</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's Ghost Recon Wildlands</td><td>PEGI 18</td><td>Ubisoft Paris</td><td>2017/03/06</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's Rainbow Six Extraction</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2022/01/20</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's Rainbow Six Siege</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2015/12/01</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's The Division</td><td>PEGI 18</td><td>Massive Entertainment</td><td>2016/03/07</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tom Clancy's The Division 2</td><td>PEGI 18</td><td>Massive Entertainment</td><td>2019/03/15</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Tomb Raider</td><td>PEGI 18</td><td>Crystal Dynamics, Feral Interactive</td><td>2013/03/04</td><td>2022/07/18 16:42:42</td><td>Steam</td></tr>
+<tr><td>Tomb Raider GAME OF THE YEAR EDITION</td><td>PEGI 18</td><td>Crystal Dynamics, Eidos Montréal, Nixxes</td><td>2014/01/28</td><td></td><td>Epic</td></tr>
+<tr><td>Tomb Raider I-III Remastered Starring Lara Croft</td><td>PEGI 18</td><td>Aspyr Media</td><td>2024/02/14</td><td></td><td>GOG</td></tr>
+<tr><td>Tomb Raider I-III Remastered Starring Lara Croft</td><td>PEGI 18</td><td>Aspyr Media</td><td>2024/02/14</td><td>2024/10/14 20:58:23</td><td>Steam</td></tr>
+<tr><td>Tomb Raider: Anniversary</td><td>PEGI 16</td><td>Buzz Monkey Software, Crystal Dynamics</td><td>2007/06/01</td><td></td><td>GOG</td></tr>
+<tr><td>Tormented Souls</td><td>PEGI 18</td><td>Abstract Digital works, Dual Effect</td><td>2021/08/27</td><td></td><td>Amazon</td></tr>
+<tr><td>Total Annihilation: Commander Pack</td><td></td><td>Cavedog Entertainment</td><td>1998/11/13</td><td></td><td>GOG</td></tr>
+<tr><td>Total Chaos Demo</td><td></td><td></td><td></td><td>2025/11/26 21:38:55</td><td>Steam</td></tr>
+<tr><td>Totally Reliable Delivery Service</td><td>PEGI 3</td><td>We're Five Games</td><td>2020/04/01</td><td></td><td>Epic</td></tr>
+<tr><td>Trackmania</td><td>PEGI 3</td><td>Ubisoft Nadeo</td><td>2020/07/01</td><td></td><td>Epic</td></tr>
+<tr><td>Trackmania</td><td>PEGI 3</td><td>Ubisoft Nadeo</td><td>2020/07/01</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Train Mechanic Simulator 2017</td><td></td><td>Si7 Studio</td><td>2017/03/23</td><td>2020/04/08 11:07:48</td><td>Steam</td></tr>
+<tr><td>Train Valley 2</td><td>PEGI 3</td><td>Flazm</td><td>2019/04/15</td><td></td><td>Epic</td></tr>
+<tr><td>Transcender</td><td></td><td>Aldo Jeffrey</td><td>2020/09/30</td><td>2020/10/27 18:19:01</td><td>Steam</td></tr>
+<tr><td>Transpose</td><td></td><td>The Secret Location</td><td>2018/11/06</td><td></td><td>Steam</td></tr>
+<tr><td>Treasure Adventure Game</td><td></td><td>Robit Games</td><td>2011/11/26</td><td></td><td>GOG</td></tr>
+<tr><td>Tropico 5</td><td>PEGI 16</td><td>Haemimont Games</td><td>2014/05/23</td><td></td><td>Epic</td></tr>
+<tr><td>Trove</td><td>PEGI 7</td><td>Trion Worlds</td><td>2015/07/05</td><td>2019/09/09 12:26:52</td><td>Steam</td></tr>
+<tr><td>True Fear: Forsaken Souls Part 1</td><td>PEGI 12</td><td>Goblinz Studio, The Digital Lounge</td><td>2016/10/19</td><td></td><td>GOG</td></tr>
+<tr><td>True Fear: Forsaken Souls Part 2</td><td>PEGI 12</td><td>Goblinz Studio, The Digital Lounge</td><td>2018/11/02</td><td></td><td>GOG</td></tr>
+<tr><td>Twin Mirror</td><td>PEGI 16</td><td>DON'T NOD</td><td>2020/12/01</td><td>2023/06/11 10:53:24</td><td>Steam</td></tr>
+<tr><td>Two Point Hospital</td><td>PEGI 3</td><td>Two Point Studios</td><td>2018/08/29</td><td></td><td>Epic</td></tr>
+<tr><td>Tyrian 2000</td><td></td><td>Eclipse Software</td><td>1999/10/07</td><td></td><td>GOG</td></tr>
+<tr><td>Ultima IV: Quest of the Avatar</td><td></td><td>Origin Systems</td><td>1985/11/01</td><td></td><td>GOG</td></tr>
+<tr><td>Ultima Worlds of Adventure 2: Martian Dreams</td><td></td><td>Origin Systems</td><td>1991/09/30</td><td></td><td>GOG</td></tr>
+<tr><td>Ultimate Custom Night</td><td>PEGI 12</td><td>ScottGames</td><td>2018/06/27</td><td>2020/08/13 20:10:13</td><td>Steam</td></tr>
+<tr><td>Undead Horde</td><td>PEGI 12</td><td>10tons, 10tons Ltd.</td><td>2019/05/15</td><td></td><td>Steam</td></tr>
+<tr><td>Unfortunate Spacemen</td><td></td><td>Deep Field Games, Geoff 'Zag' Keene</td><td>2020/06/12</td><td>2020/11/16 18:57:27</td><td>Steam</td></tr>
+<tr><td>Until Then Demo</td><td></td><td></td><td></td><td></td><td>Steam</td></tr>
+<tr><td>Unturned</td><td>PEGI 16</td><td>Nelson Sexton, Smartly Dressed Games</td><td>2017/07/07</td><td>2024/03/19 20:46:45</td><td>Steam</td></tr>
+<tr><td>Vampire Survivors</td><td>PEGI 12</td><td>Poncle</td><td>2022/02/01</td><td></td><td>Epic</td></tr>
+<tr><td>Vampyr</td><td>PEGI 18</td><td>DON'T NOD, Dontnod Eleven</td><td>2018/06/04</td><td></td><td>Epic</td></tr>
+<tr><td>Volcanoids</td><td></td><td></td><td>2019/01/29</td><td>2024/05/20 17:06:35</td><td>Steam</td></tr>
+<tr><td>Walking Simulator 2020</td><td></td><td>Pugscape</td><td>2020/03/05</td><td>2020/03/22 17:36:50</td><td>Steam</td></tr>
+<tr><td>Waltz of the Wizard</td><td></td><td>Aldin Dynamics</td><td>2019/07/10</td><td>2025/11/26 20:14:48</td><td>Steam</td></tr>
+<tr><td>War Thunder</td><td>PEGI 12</td><td>Gaijin Entertainment</td><td>2013/01/28</td><td></td><td>Steam</td></tr>
+<tr><td>Warface</td><td>PEGI 16</td><td>Allods Team, Crytek Kiev</td><td>2013/10/21</td><td>2018/08/14 14:04:45</td><td>Steam</td></tr>
+<tr><td>Watch Dogs</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2014/05/26</td><td></td><td>Epic</td></tr>
+<tr><td>Watch Dogs 2</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2016/11/15</td><td></td><td>Epic</td></tr>
+<tr><td>Watch Dogs: Legion</td><td>PEGI 18</td><td>Ubisoft Toronto</td><td>2020/10/29</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Watch Dogs: Legion of the Dead</td><td></td><td></td><td></td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Watch_Dogs</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2014/05/26</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>WATCH_DOGS 2</td><td>PEGI 18</td><td>Ubisoft Montreal</td><td>2016/11/15</td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>Waterpark Simulator</td><td></td><td>CayPlay</td><td>2025/08/22</td><td>2025/11/16 09:26:59</td><td>Steam</td></tr>
+<tr><td>We Were Here</td><td>PEGI 7</td><td>Total Mayhem Games</td><td>2017/02/03</td><td>2024/11/09 18:19:19</td><td>Steam</td></tr>
+<tr><td>We Were Here Expeditions: The FriendShip</td><td>PEGI 3</td><td>Total Mayhem Games</td><td>2023/09/14</td><td></td><td>Epic</td></tr>
+<tr><td>We Were Here Expeditions: The FriendShip</td><td>PEGI 3</td><td>Total Mayhem Games</td><td>2023/09/14</td><td>2023/10/03 20:35:41</td><td>Steam</td></tr>
+<tr><td>We Were Here Together</td><td>PEGI 12</td><td>Total Mayhem Games</td><td>2019/10/10</td><td>2020/12/27 20:49:37</td><td>Steam</td></tr>
+<tr><td>We Were Here Too</td><td>PEGI 3</td><td>Total Mayhem Games</td><td>2018/02/02</td><td></td><td>Steam</td></tr>
+<tr><td>while True: learn()</td><td>PEGI 3</td><td>Luden.io</td><td>2019/01/17</td><td></td><td>Epic</td></tr>
+<tr><td>Wild West Saga</td><td></td><td>Tamasenco</td><td>2018/05/30</td><td>2019/02/02 07:58:25</td><td>Steam</td></tr>
+<tr><td>Windbound</td><td>PEGI 12</td><td>5 Lives Studios</td><td>2020/08/21</td><td></td><td>Epic</td></tr>
+<tr><td>Wipeout HD Fury</td><td>PEGI 3</td><td>SCE Studio Liverpool</td><td>2009</td><td></td><td></td></tr>
+<tr><td>Wolfenstein: The New Order</td><td>PEGI 18</td><td>MachineGames</td><td>2014/05/20</td><td></td><td>Epic</td></tr>
+<tr><td>World War Z</td><td>PEGI 18</td><td>Saber Interactive</td><td>2019/04/16</td><td></td><td>Epic</td></tr>
+<tr><td>Worlds of Ultima: The Savage Empire</td><td></td><td>Origin Systems</td><td>1990/12/31</td><td></td><td>GOG</td></tr>
+<tr><td>XCOM 2</td><td>PEGI 16</td><td>Firaxis Games</td><td>2016/02/04</td><td></td><td>Epic</td></tr>
+<tr><td>XDefiant - Server Test Session</td><td></td><td></td><td></td><td></td><td>Ubisoft Connect</td></tr>
+<tr><td>X-Morph: Defense</td><td>PEGI 12</td><td>Exor Studios</td><td>2017/08/30</td><td></td><td>Steam</td></tr>
+<tr><td>You Have 10 Seconds</td><td></td><td></td><td>2016/08/02</td><td>2018/09/15 20:42:07</td><td>Steam</td></tr>
+<tr><td>You Have to Win the Game</td><td></td><td>Minor Key Games</td><td>2012/05/06</td><td>2015/06/04 17:55:08</td><td>Steam</td></tr>
+<tr><td>You Suck at Parking - Complete Edition</td><td>PEGI 3</td><td>Happy Volcano</td><td>2022/09/14</td><td>2025/11/07 16:25:23</td><td>Steam</td></tr>
+<tr><td>You Will Die Here Tonight</td><td></td><td>Spiral Bound Interactive</td><td>2023/10/31</td><td></td><td>GOG</td></tr>
 
 </tbody>
 </table>
 </div>
 
 <script>
-// Toggle dark mode
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-}
-
-// Search filter
-document.getElementById("search").addEventListener("input", function () {
-  let filter = this.value.toLowerCase();
-  let rows = document.querySelectorAll("#data-table tbody tr");
-
-  rows.forEach(row => {
-    row.style.display = row.innerText.toLowerCase().includes(filter) ? "" : "none";
-  });
-});
-
-// Sorting
-function sortTable(n) {
-  let table = document.getElementById("data-table");
-  let switching = true;
-  let dir = "asc";
-
-  while (switching) {
-    switching = false;
-    let rows = table.rows;
-
-    for (let i = 1; i < rows.length - 1; i++) {
-      let shouldSwitch = false;
-      let x = rows[i].getElementsByTagName("TD")[n];
-      let y = rows[i + 1].getElementsByTagName("TD")[n];
-
-      if (dir === "asc" && x.innerText.toLowerCase() > y.innerText.toLowerCase()) {
-        shouldSwitch = true;
-      } else if (dir === "desc" && x.innerText.toLowerCase() < y.innerText.toLowerCase()) {
-        shouldSwitch = true;
-      }
-
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-        break;
-      }
-    }
-
-    if (!switching && dir === "asc") {
-      dir = "desc";
-      switching = true;
-    }
-  }
-}
-
-// Column Filters
+document.getElementById("search").addEventListener("input", updateTableVisibility);
 document.querySelectorAll(".filter-select").forEach(select => {
-  select.addEventListener("change", applyFilters);
+    select.addEventListener("change", updateTableVisibility);
 });
 
-function applyFilters() {
-  let filters = {};
+function sortTable(n) {
+    let table = document.getElementById("data-table");
+    let switching = true;
+    let dir = "asc";
+    let rows, i, x, y, shouldSwitch;
 
-  document.querySelectorAll(".filter-select").forEach(elem => {
-    filters[elem.dataset.col] = elem.value.toLowerCase();
-  });
+    document.querySelectorAll('#data-table th').forEach(th => th.removeAttribute('data-sort-dir'));
 
-  let rows = document.querySelectorAll("#data-table tbody tr");
+    while (switching) {
+        switching = false;
+        rows = table.rows;
 
-  rows.forEach(row => {
-    let cells = row.getElementsByTagName("td");
-    let visible = true;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            
+            let isNumeric = !isNaN(parseFloat(x.innerText)) && isFinite(x.innerText);
+            let valX = isNumeric ? parseFloat(x.innerText) : x.innerText.toLowerCase();
+            let valY = isNumeric ? parseFloat(y.innerText) : y.innerText.toLowerCase();
 
-    Object.keys(filters).forEach(col => {
-      let colIndex = Array.from(document.querySelectorAll("th")).findIndex(th => th.innerText === col);
-      let cellValue = cells[colIndex].innerText.toLowerCase();
+            if (dir === "asc") {
+                if (valX > valY) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir === "desc") {
+                if (valX < valY) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
 
-      if (filters[col] && cellValue !== filters[col]) {
-        visible = false;
-      }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        } else if (dir === "asc") {
+            dir = "desc";
+            switching = true;
+        }
+    }
+    table.rows[0].getElementsByTagName("TH")[n].setAttribute('data-sort-dir', dir);
+}
+
+function updateTableVisibility() {
+    let searchFilter = document.getElementById("search").value.toLowerCase();
+    let selectFilters = {};
+
+    document.querySelectorAll(".filter-select").forEach(elem => {
+        selectFilters[elem.dataset.col] = elem.value.toLowerCase();
     });
 
-    row.style.display = visible ? "" : "none";
-  });
+    let rows = document.querySelectorAll("#data-table tbody tr");
+    let headers = Array.from(document.querySelectorAll("th"));
+
+    rows.forEach(row => {
+        let cells = row.getElementsByTagName("td");
+        let allFiltersMatch = true;
+        
+        let rowText = row.innerText.toLowerCase();
+        let isSearchMatch = rowText.includes(searchFilter);
+
+        if (!isSearchMatch) {
+            allFiltersMatch = false;
+        } else {
+            Object.keys(selectFilters).forEach(colName => {
+                let filterValue = selectFilters[colName];
+                
+                if (filterValue) {
+                    let colIndex = headers.findIndex(th => th.innerText === colName);
+
+                    if (colIndex !== -1 && cells[colIndex]) {
+                        let cellValue = cells[colIndex].innerText.toLowerCase();
+
+                        if (cellValue !== filterValue) {
+                            allFiltersMatch = false;
+                        }
+                    }
+                }
+            });
+        }
+        
+        row.style.display = allFiltersMatch ? "" : "none";
+    });
 }
 </script>
 
